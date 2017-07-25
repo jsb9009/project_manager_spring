@@ -15,7 +15,7 @@
 <div>
   <h3> Choose your employee number here </h3>
 
-  <form:form name="chooseempform" action="choseemployee" method="POST" modelAttribute="chooseemployeeBean">
+  <form:form name="chooseempform" action="view_assigned_tasks" method="POST" modelAttribute="employeenumberBean">
     <table border="0">
       <tbody>
 

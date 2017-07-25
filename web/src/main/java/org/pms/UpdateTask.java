@@ -31,7 +31,7 @@ public class UpdateTask {
     }
 
     @RequestMapping(value = "/updatetask",method= RequestMethod.POST)
-    public ModelAndView assignTask(@ModelAttribute("updatetaskBean") UpdateTaskBean updatetaskBean){
+    public ModelAndView updateTask(@ModelAttribute("updatetaskBean") UpdateTaskBean updatetaskBean){
 
         updatetaskDaoImpl.updateTask(updatetaskBean);
         return new ModelAndView("redirect:/update_tasks");

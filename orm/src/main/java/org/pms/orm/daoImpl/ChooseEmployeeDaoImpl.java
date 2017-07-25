@@ -4,9 +4,11 @@ import org.pms.orm.ChooseEmployeeDao;
 import org.pms.orm.beans.AssignBean;
 import org.pms.orm.beans.ChooseEmployeeBean;
 import org.pms.orm.beans.EmployeeBean;
+import org.pms.orm.beans.ViewTasksBean;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
+import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.stereotype.Repository;
 
 import java.sql.ResultSet;
@@ -24,35 +26,37 @@ public class ChooseEmployeeDaoImpl implements ChooseEmployeeDao{
     private JdbcTemplate jdbcTemplate;
 
     public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
+       this.jdbcTemplate = jdbcTemplate;
+   }
+
+
+    public String chooseEmpoyeeNo(String emp_no) {
+
+//        JdbcTemplate jdbcTemplate = new JdbcTemplate();
+        String sql1 = "select index_no from employee where employee_no=?";
+
+
+        String indexNo = jdbcTemplate.queryForObject(
+                sql1, new Object[] { emp_no }, String.class);
+        return indexNo;
+
     }
 
 
-    public void saveEmployee(ChooseEmployeeBean chooseemployeeBean) {
 
-        String sql1 = "select employee_no from employee where index_no=?";
-
-        jdbcTemplate.queryForObject(sql1, new Object[]
-                {chooseemployeeBean.getEmp_no()});
-
-
-    }
+    public List<ChooseEmployeeBean> viewassignedTasks(String emp_no){
+        String indexNo = chooseEmpoyeeNo(emp_no);
+//        JdbcTemplate jdbcTemplate = new JdbcTemplate();
+        String sql2 = "select task_no,task_name,project_no,no_of_hours from task,project,employee where task.index_no_project=project.index_no and task.index_no_employee=employee.index_no and index_no_employee=?";
 
 
+//        JdbcTemplate.queryForObject(sql2, new Object[] {indexNo}, String.class);
 
 
+//        jdbcTemplate.queryForObject(sql2, new Object[]
+//                {indexNo});
 
-    public List<ChooseEmployeeBean> viewassignedTasks(){
-
-        String sql2 = "select task_no,task_name,project_no,no_of_hours from task,project,employee where task.index_no_project=project.index_no and task.index_no_employee=employee.index_no";
-
-
-        jdbcTemplate.update(sql2, new Object[]
-                {chooseemployeeBean.getEmp_no()});
-
-        jdbcTemplate.query(sql2, chooseemployeeBean.getEmp_no());
-
-        List<ChooseEmployeeBean> tasksList1 = jdbcTemplate.query(sql2, new ResultSetExtractor<List<ChooseEmployeeBean>>()
+        List<ChooseEmployeeBean> tasksList1 = jdbcTemplate.query(sql2,new Object[] {indexNo}, new ResultSetExtractor<List<ChooseEmployeeBean>>()
         {
             @Override
             public List<ChooseEmployeeBean> extractData(ResultSet rs) throws SQLException, DataAccessException

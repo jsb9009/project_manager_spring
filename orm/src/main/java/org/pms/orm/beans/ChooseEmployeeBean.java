@@ -5,7 +5,6 @@ package org.pms.orm.beans;
  */
 public class ChooseEmployeeBean {
 
-    private String emp_no;
 
     private String task_number;
 
@@ -18,13 +17,6 @@ public class ChooseEmployeeBean {
     public ChooseEmployeeBean() {
     }
 
-    public String getEmp_no() {
-        return emp_no;
-    }
-
-    public void setEmp_no(String emp_no) {
-        this.emp_no = emp_no;
-    }
 
     public String getTask_number() {
         return task_number;

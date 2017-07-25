@@ -11,5 +11,7 @@ import java.util.List;
  */
 public interface ChooseEmployeeDao {
 
-    public List<ChooseEmployeeBean> viewassignedTasks(ChooseEmployeeBean chooseemployeeBean);
+
+    public String chooseEmpoyeeNo(String emp_no);
+    public List<ChooseEmployeeBean> viewassignedTasks(String indexNo);
 }

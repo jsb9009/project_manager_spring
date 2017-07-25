@@ -22,12 +22,12 @@
 
   </tr>
 
-  <c:forEach items="${assignedtaskList}" var="chooseemployeeBean">
+  <c:forEach items="${tasksList1}" var="chooseemployeeBean">
     <tr>
-      <td>${chooseemployeeBean.itemNumber}</td>
-      <td>${chooseemployeeBean.itemName}</td>
-      <td>${chooseemployeeBean.itemType}</td>
-      <td>${chooseemployeeBean.itemType}</td>
+      <td>${chooseemployeeBean.task_number}</td>
+      <td>${chooseemployeeBean.task_name}</td>
+      <td>${chooseemployeeBean.no_of_hours}</td>
+      <td>${chooseemployeeBean.project_number}</td>
     </tr>
 
   </c:forEach>

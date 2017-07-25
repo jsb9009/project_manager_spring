@@ -26,7 +26,7 @@
 <a href="update_tasks">Update assigned tasks status</a>
 <br>
 <br>
-<a href="view_assigned_tasks">View assigned tasks</a>
+<a href="view_assigned_tasks_list">View assigned tasks</a>
 
 
 </body>
