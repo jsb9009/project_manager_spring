@@ -22,13 +22,17 @@
 
 <br>
 <br>
-
+<div align="center">
 <a href="update_tasks">Update assigned tasks status</a>
 <br>
 <br>
 <a href="view_assigned_tasks_list">View assigned tasks</a>
 
+<br>
+<br>
 
+<td><input type="button" name="home" style=" float: left" value="Log Out" onclick="history.go(-1);"></td>
+</div>
 </body>
 
 </html>

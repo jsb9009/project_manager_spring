@@ -23,13 +23,16 @@
 
     <br>
     <br>
-
+<div align="center">
     <a href="add_employees">Add employees to the workstation</a>
     <br>
     <br>
     <br>
     <a href="add_projects">Add projects</a>
-
+    <br>
+    <br>
+    <td><input type="button" name="home" style=" float: left" value="Log Out" onclick="history.go(-1);"></td>
+</div>
 
 </body>
 

@@ -16,7 +16,7 @@
   <h3> Add projects here </h3>
 
   <form:form name="projectform" action="addproject" method="POST" modelAttribute="projectBean">
-    <table border="0">
+    <table border="0" align="center">
       <tbody>
       <tr>
         <td>Project Number</td>

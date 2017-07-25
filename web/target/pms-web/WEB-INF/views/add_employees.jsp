@@ -17,7 +17,7 @@
   <h3> Add Employees here </h3>
 
   <form:form name="employeeform" action="addemployee" method="POST" modelAttribute="employeeBean">
-    <table border="0">
+    <table border="0" align="center">
       <tbody>
       <tr>
         <td>Employee Number</td>
@@ -43,7 +43,6 @@
       </tbody>
     </table>
   </form:form>
-
 
   <c:if test="${not empty sucessMsg}">
     <h4 class="error message" style="width: 900px">${sucessMsg}</h4>

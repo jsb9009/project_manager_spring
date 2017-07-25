@@ -16,7 +16,7 @@
   <h3> Assign tasks here </h3>
 
   <form:form name="assigntaskform" action="assigntask" method="POST" modelAttribute="assignBean">
-    <table border="0">
+    <table border="0" align="center">
       <tbody>
 
       <tr>

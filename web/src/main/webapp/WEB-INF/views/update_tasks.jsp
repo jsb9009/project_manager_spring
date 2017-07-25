@@ -16,7 +16,7 @@
   <h3> Update assigned tasks status here </h3>
 
   <form:form name="updatetaskform" action="updatetask" method="POST" modelAttribute="updatetaskBean">
-    <table border="0">
+    <table border="0" align="centre">
       <tbody>
 
       <tr>

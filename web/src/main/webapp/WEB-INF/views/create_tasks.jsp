@@ -17,7 +17,7 @@
 
 <form:form name="taskform" action="createtask" method="POST" modelAttribute="taskBean">
 
-    <table border="0">
+    <table border="0" align="center">
       <tbody>
 
 

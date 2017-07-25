@@ -16,6 +16,10 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <title>Login</title>
+
+    <style type="text/css">
+
+    </style>
 </head>
 
 <body>
@@ -23,7 +27,7 @@
 <h1>I am in Login</h1>
 
 <form:form method="POST" name="loginsubmit" action="loginin"
-           modelAttribute="loginBean">    <%--<form:form method="POST" action="/spring-mvc-xml/addEmployee" modelAttribute="employee">--%>
+           modelAttribute="loginBean">
     <table align="center">
         <tr>
             <td>User Name</td>
@@ -35,7 +39,7 @@
 
         </tr>
         <tr>
-            <td><input type="submit" value="Submit"/></td>
+            <td><input type="submit" value="Log In"/></td>
         </tr>
 
     </table>

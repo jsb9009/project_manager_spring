@@ -22,16 +22,19 @@
 
 <br>
 <br>
-
+<div align="centre">
 <td><a href="create_tasks">Create tasks for projects</a>
   <br>
   <br>
-<td><a href="assign_tasks">Assign tasks to employees</a>
+<td><a href="assign_tasks">Assign tasks to employees</a></td>>
   <br>
   <br>
-<td><a href="view_tasks">View current tasks status</a>
+<td><a href="view_tasks">View current tasks status</a></td>
 
-
+  <br>
+  <br>
+  <td><input type="button" name="home" style=" float: left" value="Log Out" onclick="history.go(-1);"></td>
+</div>
 </body>
 
 </html>

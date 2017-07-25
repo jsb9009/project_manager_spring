@@ -13,7 +13,7 @@
 </head>
 <body>
 
-<table border="1">
+<table border="1" align="centre">
   <tr>
     <th>Task Number</th>
     <th>Task Name</th>
