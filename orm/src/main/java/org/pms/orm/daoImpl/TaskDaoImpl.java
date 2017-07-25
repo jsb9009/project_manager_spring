@@ -26,6 +26,8 @@ public class TaskDaoImpl implements TaskDao{
         jdbcTemplate.update(sql1, new Object[]
                 {taskBean.getTask_no(),taskBean.getTask_name(),taskBean.getStatus(), taskBean.getNo_of_hours()});
 
+
+        //TODO move following functionality to a new method
         String sql2 = "update task set index_no_project=(select index_no from project where project_no=?) where task_no=?";
         jdbcTemplate.update(sql2, new Object[]
                 {taskBean.getProject_no(),taskBean.getTask_no()});
