@@ -34,7 +34,6 @@ public class EmployeeBean implements Serializable {
     }
 
 
-
     public void setEmpNo(String empNo) {
         this.empNo = empNo;
     }

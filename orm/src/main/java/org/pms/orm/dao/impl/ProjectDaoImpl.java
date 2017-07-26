@@ -1,8 +1,7 @@
 package org.pms.orm.dao.impl;
 
-import org.pms.orm.ProjectDao;
-import org.pms.orm.beans.EmployeeBean;
 import org.pms.orm.beans.ProjectBean;
+import org.pms.orm.ProjectDao;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -24,7 +23,7 @@ public class ProjectDaoImpl implements ProjectDao {
         String sql = "insert into project(project_no, project_name, client,project_type) values(?,?,?,?)";
 
         jdbcTemplate.update(sql, new Object[]
-                {projectBean.getProjectNo(),projectBean.getProjectName(),projectBean.getClient(), projectBean.getType()});
+                {projectBean.getProjectNo(), projectBean.getProjectName(), projectBean.getClient(), projectBean.getType()});
 
     }
 

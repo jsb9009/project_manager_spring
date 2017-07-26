@@ -11,5 +11,14 @@
 
     <artifactId>pms-core</artifactId>
 
+    <dependencies>
+        <dependency>
+            <artifactId>pms-orm</artifactId>
+            <groupId>hms.poject_management</groupId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
+
 
 </project>

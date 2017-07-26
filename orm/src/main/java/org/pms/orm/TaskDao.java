@@ -1,6 +1,5 @@
 package org.pms.orm;
 
-import org.pms.orm.beans.ProjectBean;
 import org.pms.orm.beans.TaskBean;
 
 /**

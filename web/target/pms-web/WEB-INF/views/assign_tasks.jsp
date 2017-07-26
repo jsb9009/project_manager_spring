@@ -5,26 +5,26 @@
   Time: 4:41 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%@taglib uri = "http://www.springframework.org/tags/form" prefix = "form"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <html>
 <head>
-  <title>Assign_tasks</title>
+    <title>Assign_tasks</title>
 </head>
 <body>
 
 <div>
-  <h3> Assign tasks here </h3>
+    <h3> Assign tasks here </h3>
 
-  <form:form name="assigntaskform" action="assigntask" method="POST" modelAttribute="assignBean">
-    <table border="0" align="center">
-      <tbody>
+    <form:form name="assigntaskform" action="assigntask" method="POST" modelAttribute="assignBean">
+        <table border="0" align="center">
+            <tbody>
 
-      <tr>
-        <td>Employee Number</td>
-        <td><form:input path = "empNo" /></td>
-      </tr>
+            <tr>
+                <td>Employee Number</td>
+                <td><form:input path="empNo"/></td>
+            </tr>
 
-      <!-- <tr>
+            <!-- <tr>
         <select name='projects'>
           <c:forEach var="list" items="${listCat}">
             <option id="${list.key}" value="${list.value.getProjectName()}">${list.value.getProjectName()}</option>
@@ -32,12 +32,12 @@
         </select>
       </tr>
       -->
-      <tr>
-        <td>Task Number</td>
-        <td><form:input path = "taskNo" /></td>
-      </tr>
+            <tr>
+                <td>Task Number</td>
+                <td><form:input path="taskNo"/></td>
+            </tr>
 
-      <!-- <tr>
+            <!-- <tr>
         <select name='projects'>
           <c:forEach var="list" items="${listCat}">
             <option id="${list.key}" value="${list.value.getProjectName()}">${list.value.getProjectName()}</option>
@@ -46,17 +46,17 @@
       </tr>
       -->
 
-      <td></td>
-      <td></td>
-      </tr>
-      <tr>
-        <td><input type="button" name="home" style=" float: left" value="Back" onclick="history.go(-1);"></td>
-        <td><input type="submit" style=" float: right" value="Assign" name="submit"/>
-          <input type="reset" style=" float: right" value="Clear" name="reset"/></td>
-      </tr>
-      </tbody>
-    </table>
-  </form:form>
+            <td></td>
+            <td></td>
+            </tr>
+            <tr>
+                <td><input type="button" name="home" style=" float: left" value="Back" onclick="history.go(-1);"></td>
+                <td><input type="submit" style=" float: right" value="Assign" name="submit"/>
+                    <input type="reset" style=" float: right" value="Clear" name="reset"/></td>
+            </tr>
+            </tbody>
+        </table>
+    </form:form>
 </div>
 </body>
 </html>

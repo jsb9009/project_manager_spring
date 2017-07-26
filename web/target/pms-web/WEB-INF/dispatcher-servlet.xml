@@ -39,7 +39,11 @@
         <property name="jdbcTemplate" ref="jdbcTemplate" />
     </bean>
 
-    <bean id="chooseemployeedaoImpl" class="org.pms.orm.dao.impl.ChooseEmployeeDaoImpl">
+    <bean id="viewassignedtasksdaoImpl" class="org.pms.orm.dao.impl.ViewAssignedTasksDaoImpl">
+        <property name="jdbcTemplate" ref="jdbcTemplate" />
+    </bean>
+
+    <bean id="logindaoImpl" class="org.pms.orm.dao.impl.LoginDaoImpl">
         <property name="jdbcTemplate" ref="jdbcTemplate" />
     </bean>
 

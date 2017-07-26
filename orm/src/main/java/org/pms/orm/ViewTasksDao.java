@@ -1,6 +1,5 @@
 package org.pms.orm;
 
-import org.pms.orm.beans.TaskBean;
 import org.pms.orm.beans.ViewTasksBean;
 
 import java.util.List;

@@ -1,7 +1,6 @@
 package org.pms.orm.dao.impl;
 
 import org.pms.orm.UpdateTaskDao;
-import org.pms.orm.beans.AssignBean;
 import org.pms.orm.beans.UpdateTaskBean;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;

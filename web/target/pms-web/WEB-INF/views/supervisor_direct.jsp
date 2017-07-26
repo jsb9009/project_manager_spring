@@ -12,8 +12,8 @@
 <html>
 
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-  <title>Supervisor Direct</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title>Supervisor Direct</title>
 </head>
 
 <body>
@@ -22,18 +22,20 @@
 
 <br>
 <br>
-<div align="centre">
-<td><a href="create_tasks">Create tasks for projects</a>
-  <br>
-  <br>
-<td><a href="assign_tasks">Assign tasks to employees</a></td>>
-  <br>
-  <br>
-<td><a href="view_tasks">View current tasks status</a></td>
 
-  <br>
-  <br>
-  <td><input type="button" name="home" style=" float: left" value="Log Out" onclick="history.go(-1);"></td>
+<div align="centre">
+    <td><a href="create_tasks">Create tasks for projects</a>
+        <br>
+        <br>
+    <td><a href="assign_tasks">Assign tasks to employees</a></td>
+
+    <br>
+    <br>
+    <td><a href="view_tasks">View current tasks status</a></td>
+
+    <br>
+    <br>
+    <td><input type="button" name="home" style=" float: left" value="Log Out" onclick="history.go(-1);"></td>
 </div>
 </body>
 
