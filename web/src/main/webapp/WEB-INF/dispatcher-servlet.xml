@@ -15,35 +15,35 @@
     </bean>
 
 
-    <bean id="employeeDaoImpl" class="org.pms.orm.dao.impl.EmployeeDaoImpl">
+    <bean id="employeeDaoImpl" class="org.pms.orm.impl.EmployeeDaoImpl">
         <property name="jdbcTemplate" ref="jdbcTemplate" />
     </bean>
 
-    <bean id="projectDaoImpl" class="org.pms.orm.dao.impl.ProjectDaoImpl">
+    <bean id="projectDaoImpl" class="org.pms.orm.impl.ProjectDaoImpl">
         <property name="jdbcTemplate" ref="jdbcTemplate" />
     </bean>
 
-    <bean id="taskDaoImpl" class="org.pms.orm.dao.impl.TaskDaoImpl">
+    <bean id="taskDaoImpl" class="org.pms.orm.impl.TaskDaoImpl">
         <property name="jdbcTemplate" ref="jdbcTemplate" />
     </bean>
 
-    <bean id="viewtasksDaoImpl" class="org.pms.orm.dao.impl.ViewTasksDaoImpl">
+    <bean id="viewtasksDaoImpl" class="org.pms.orm.impl.ViewTasksDaoImpl">
         <property name="jdbcTemplate" ref="jdbcTemplate" />
     </bean>
 
-    <bean id="assignDaoImpl" class="org.pms.orm.dao.impl.AssignDaoImpl">
+    <bean id="assignDaoImpl" class="org.pms.orm.impl.AssignDaoImpl">
         <property name="jdbcTemplate" ref="jdbcTemplate" />
     </bean>
 
-    <bean id="updatetaskDaoImpl" class="org.pms.orm.dao.impl.UpdateTaskDaoImpl">
+    <bean id="updatetaskDaoImpl" class="org.pms.orm.impl.UpdateTaskDaoImpl">
         <property name="jdbcTemplate" ref="jdbcTemplate" />
     </bean>
 
-    <bean id="viewassignedtasksdaoImpl" class="org.pms.orm.dao.impl.ViewAssignedTasksDaoImpl">
+    <bean id="viewassignedtasksdaoImpl" class="org.pms.orm.impl.ViewAssignedTasksDaoImpl">
         <property name="jdbcTemplate" ref="jdbcTemplate" />
     </bean>
 
-    <bean id="logindaoImpl" class="org.pms.orm.dao.impl.LoginDaoImpl">
+    <bean id="logindaoImpl" class="org.pms.orm.impl.LoginDaoImpl">
         <property name="jdbcTemplate" ref="jdbcTemplate" />
     </bean>
 

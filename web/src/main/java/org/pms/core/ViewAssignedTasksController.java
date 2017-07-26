@@ -1,5 +1,6 @@
 package org.pms.core;
 
+import org.pms.core.service.ViewAssignedTasksService;
 import org.pms.orm.beans.ViewAssignedTasksBean;
 import org.pms.orm.beans.EmployeeNumberBean;
 import org.springframework.beans.factory.annotation.Autowired;
