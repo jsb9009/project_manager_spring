@@ -30,11 +30,11 @@ public class LoginController {
                 model.addAttribute("msg", "welcome manager");
                 return "manager_direct";
 
-            } else if((loginBean.getUsername().equals("supervisor") && loginBean.getPassword().equals("supervisor"))){
+            } else if ((loginBean.getUsername().equals("supervisor") && loginBean.getPassword().equals("supervisor"))) {
                 model.addAttribute("msg1", "welcome supervisor");
                 return "supervisor_direct";
 
-            } else if((loginBean.getUsername().equals("employee") && loginBean.getPassword().equals("employee"))){
+            } else if ((loginBean.getUsername().equals("employee") && loginBean.getPassword().equals("employee"))) {
                 model.addAttribute("msg2", "welcome employee");
                 return "employee_direct";
 

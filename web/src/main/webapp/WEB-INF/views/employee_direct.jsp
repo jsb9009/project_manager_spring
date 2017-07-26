@@ -12,8 +12,8 @@
 <html>
 
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-  <title>Employee Direct</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title>Employee Direct</title>
 </head>
 
 <body>
@@ -22,16 +22,17 @@
 
 <br>
 <br>
+
 <div align="center">
-<a href="update_tasks">Update assigned tasks status</a>
-<br>
-<br>
-<a href="view_assigned_tasks_list">View assigned tasks</a>
+    <a href="update_tasks">Update assigned tasks status</a>
+    <br>
+    <br>
+    <a href="view_assigned_tasks_list">View assigned tasks</a>
 
-<br>
-<br>
+    <br>
+    <br>
 
-<td><input type="button" name="home" style=" float: left" value="Log Out" onclick="history.go(-1);"></td>
+    <td><input type="button" name="home" style=" float: left" value="Log Out" onclick="history.go(-1);"></td>
 </div>
 </body>
 

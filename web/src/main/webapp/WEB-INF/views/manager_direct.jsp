@@ -12,17 +12,18 @@
 <html>
 
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" >
-  <title>Manager Direct</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title>Manager Direct</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 </head>
 
 <body>
 
-    <h3>Welcome ${username}</h3>
+<h3>Welcome ${username}</h3>
 
-    <br>
-    <br>
+<br>
+<br>
+
 <div align="center">
     <a href="add_employees">Add employees to the workstation</a>
     <br>
