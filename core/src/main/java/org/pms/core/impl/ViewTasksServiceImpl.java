@@ -17,11 +17,11 @@ public class ViewTasksServiceImpl implements ViewTasksService {
 
 
     @Autowired
-    private ViewTasksDaoImpl viewtasksDaoImpl;
+    private ViewTasksDaoImpl viewtasksDao;
 
     public List<ViewTasksBean> viewTasks() {
 
-        return viewtasksDaoImpl.viewTasks();
+        return viewtasksDao.viewTasks();
 
     }
 }

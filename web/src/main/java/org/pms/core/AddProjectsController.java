@@ -5,6 +5,7 @@ import org.pms.orm.beans.ProjectBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -28,10 +29,11 @@ public class AddProjectsController {
     }
 
     @RequestMapping(value = "/addproject", method = RequestMethod.POST)
-    public ModelAndView saveProject(@ModelAttribute("projectBean") ProjectBean projectBean) {
+    public String saveProject(@ModelAttribute("projectBean") ProjectBean projectBean,ModelMap model) {
 
         addprojectsService.addProjects(projectBean);
-        return new ModelAndView("redirect:/add_projects");
+        model.put("sucessMsg", "Project Sucessfully added");
+        return "/add_projects";
     }
 
 

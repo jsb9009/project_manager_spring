@@ -8,6 +8,9 @@
 
     <mvc:annotation-driven />
     <context:component-scan  base-package="org.pms" />
+    <mvc:resources mapping="/css/**" location="css"/>
+    <mvc:resources mapping="/resources/**" location="bootstrap/" />
+    <mvc:resources mapping="/images/**" location="WEB-INF/resources/images/" />
 
     <bean class= "org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/views/" />
@@ -15,35 +18,35 @@
     </bean>
 
 
-    <bean id="employeeDaoImpl" class="org.pms.orm.impl.EmployeeDaoImpl">
+    <bean id="employeeDao" class="org.pms.orm.impl.EmployeeDaoImpl">
         <property name="jdbcTemplate" ref="jdbcTemplate" />
     </bean>
 
-    <bean id="projectDaoImpl" class="org.pms.orm.impl.ProjectDaoImpl">
+    <bean id="projectDao" class="org.pms.orm.impl.ProjectDaoImpl">
         <property name="jdbcTemplate" ref="jdbcTemplate" />
     </bean>
 
-    <bean id="taskDaoImpl" class="org.pms.orm.impl.TaskDaoImpl">
+    <bean id="taskDao" class="org.pms.orm.impl.TaskDaoImpl">
         <property name="jdbcTemplate" ref="jdbcTemplate" />
     </bean>
 
-    <bean id="viewtasksDaoImpl" class="org.pms.orm.impl.ViewTasksDaoImpl">
+    <bean id="viewtasksDao" class="org.pms.orm.impl.ViewTasksDaoImpl">
         <property name="jdbcTemplate" ref="jdbcTemplate" />
     </bean>
 
-    <bean id="assignDaoImpl" class="org.pms.orm.impl.AssignDaoImpl">
+    <bean id="assignDao" class="org.pms.orm.impl.AssignDaoImpl">
         <property name="jdbcTemplate" ref="jdbcTemplate" />
     </bean>
 
-    <bean id="updatetaskDaoImpl" class="org.pms.orm.impl.UpdateTaskDaoImpl">
+    <bean id="updatetaskDao" class="org.pms.orm.impl.UpdateTaskDaoImpl">
         <property name="jdbcTemplate" ref="jdbcTemplate" />
     </bean>
 
-    <bean id="viewassignedtasksdaoImpl" class="org.pms.orm.impl.ViewAssignedTasksDaoImpl">
+    <bean id="viewassignedtasksdao" class="org.pms.orm.impl.ViewAssignedTasksDaoImpl">
         <property name="jdbcTemplate" ref="jdbcTemplate" />
     </bean>
 
-    <bean id="logindaoImpl" class="org.pms.orm.impl.LoginDaoImpl">
+    <bean id="logindao" class="org.pms.orm.impl.LoginDaoImpl">
         <property name="jdbcTemplate" ref="jdbcTemplate" />
     </bean>
 

@@ -5,6 +5,7 @@ import org.pms.orm.beans.AssignBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -28,10 +29,11 @@ public class AssignTasksController {
     }
 
     @RequestMapping(value = "/assigntask", method = RequestMethod.POST)
-    public ModelAndView assignTask(@ModelAttribute("assignBean") AssignBean assignBean) {
+    public String assignTask(@ModelAttribute("assignBean") AssignBean assignBean,ModelMap model) {
 
         assigntasksService.assignTask(assignBean);
-        return new ModelAndView("redirect:/assign_tasks");
+        model.put("sucessMsg", "Task Sucessfully assigned");
+        return "/assign_tasks";
     }
 
 }

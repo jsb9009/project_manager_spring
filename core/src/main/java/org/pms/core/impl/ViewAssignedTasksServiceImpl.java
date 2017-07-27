@@ -17,19 +17,19 @@ public class ViewAssignedTasksServiceImpl implements ViewAssignedTasksService {
 
 
     @Autowired
-    private ViewAssignedTasksDaoImpl viewassignedtasksdaoImpl;
+    private ViewAssignedTasksDaoImpl viewassignedtasksdao;
 
 
     public String chooseEmployeeNo(String emp_no) {
 
-        viewassignedtasksdaoImpl.chooseEmpoyeeNo(emp_no);
+        viewassignedtasksdao.chooseEmpoyeeNo(emp_no);
 
         return emp_no;
     }
 
     public List<ViewAssignedTasksBean> viewassignedTasks(String indexNo) {
 
-        return viewassignedtasksdaoImpl.viewassignedTasks(indexNo);
+        return viewassignedtasksdao.viewassignedTasks(indexNo);
     }
 
 

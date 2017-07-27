@@ -9,40 +9,43 @@
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <title>Login</title>
+    <link rel="stylesheet" href="<c:url value="/css/style.css"/>"/>
+    <link rel="stylesheet" href="<c:url value="/bootstrap/css/bootstrap.min.css"/>"/>
 
-    <style type="text/css">
-
-    </style>
 </head>
 
-<body>
-
-<h1>I am in Login</h1>
+<h3><span class="label label-info">Please Login..</span></h3>
 
 <form:form method="POST" name="loginsubmit" action="loginin"
            modelAttribute="loginBean">
+<div class="form-group">
     <table align="center">
         <tr>
             <td>User Name</td>
-            <td><form:input path="username"/></td>
+            <td><form:input class="form-control" path="username"/></td>
         </tr>
         <tr>
             <td>Password</td>
-            <td><form:password path="password"/></td>
+            <td><form:password class="form-control" path="password"/></td>
 
         </tr>
+        <tr>&nbsp;<td></td></tr>
+        <tr>&nbsp;<td></td></tr>
         <tr>
-            <td><input type="submit" value="Log In"/></td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td><input class="btn btn-primary" float="right" type="submit" value="Log In"/></td>
         </tr>
 
     </table>
+    </div>
 </form:form>
 
 </body>

@@ -15,10 +15,10 @@ public class UpdateTaskServiceImpl implements UpdateTaskService {
 
 
     @Autowired
-    private UpdateTaskDaoImpl updatetaskDaoImpl;
+    private UpdateTaskDaoImpl updatetaskDao;
 
     public void updateTask(UpdateTaskBean updatetaskBean) {
 
-        updatetaskDaoImpl.updateTask(updatetaskBean);
+        updatetaskDao.updateTask(updatetaskBean);
     }
 }

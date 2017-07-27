@@ -14,11 +14,11 @@ import org.springframework.stereotype.Service;
 public class CreateTasksServiceImpl implements CreateTasksService {
 
     @Autowired
-    private TaskDaoImpl taskDaoImpl;
+    private TaskDaoImpl taskDao;
 
     public void createTasks(TaskBean taskBean) {
 
-        taskDaoImpl.createTask(taskBean);
+        taskDao.createTask(taskBean);
 
     }
 }

@@ -31,7 +31,7 @@ public class AddEmployeesController {
     public String saveEmployee(@ModelAttribute("employeeBean") EmployeeBean employeeBean, ModelMap model) {
 
         addemployeesService.addEmployee(employeeBean);
-        model.put("sucessMsg", "Sucessfully inserted");
+        model.put("sucessMsg", "Employee Sucessfully added");
         return "/add_employees";
     }
 

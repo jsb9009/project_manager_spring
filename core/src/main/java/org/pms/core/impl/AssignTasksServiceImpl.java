@@ -14,11 +14,11 @@ import org.springframework.stereotype.Service;
 public class AssignTasksServiceImpl implements AssignTasksService {
 
     @Autowired
-    private AssignDaoImpl assignDaoImpl;
+    private AssignDaoImpl assignDao;
 
     public void assignTask(AssignBean assignBean) {
 
-        assignDaoImpl.assignTask(assignBean);
+        assignDao.assignTask(assignBean);
 
     }
 

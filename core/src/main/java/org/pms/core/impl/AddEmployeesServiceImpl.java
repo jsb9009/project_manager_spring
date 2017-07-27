@@ -14,11 +14,11 @@ import org.springframework.stereotype.Service;
 public class AddEmployeesServiceImpl implements AddEmployeesService {
 
     @Autowired
-    private EmployeeDaoImpl employeeDaoImpl;
+    private EmployeeDaoImpl employeeDao;
 
     public void addEmployee(EmployeeBean employeeBean) {
 
-        employeeDaoImpl.saveEmployee(employeeBean);
+        employeeDao.saveEmployee(employeeBean);
 
 
     }

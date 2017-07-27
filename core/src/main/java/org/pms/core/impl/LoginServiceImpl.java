@@ -15,11 +15,11 @@ public class LoginServiceImpl implements LoginService {
 
 
     @Autowired
-    private LoginDaoImpl logindaoImpl;
+    private LoginDaoImpl logindao;
 
     public int login(LoginBean loginBean){
 
-        return logindaoImpl.login(loginBean);
+        return logindao.login(loginBean);
     }
 
 

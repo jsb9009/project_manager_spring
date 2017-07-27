@@ -10,10 +10,15 @@
 <html>
 <head>
     <title></title>
+    <link rel="stylesheet" href="<c:url value="/bootstrap/css/bootstrap.min.css"/>"/>
 </head>
 <body>
 
-<table border="1" align="centre">
+<div>
+<h3><span class="label label-info">Your assigned tasks are..</span></h3>
+
+
+<table border="1" class="table table-striped" align="centre">
     <tr>
         <th>Task Number</th>
         <th>Task Name</th>
@@ -33,7 +38,9 @@
     </c:forEach>
 
 </table>
-
-<input type="button" name="home" value="Back" onclick="history.go(-1);">
+<br>
+<br>
+<input type="button" name="home" class="btn btn-primary" value="Back" onclick="history.go(-1);">
+</div>
 </body>
 </html>

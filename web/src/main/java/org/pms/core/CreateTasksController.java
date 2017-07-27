@@ -5,6 +5,7 @@ import org.pms.orm.beans.TaskBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -27,10 +28,11 @@ public class CreateTasksController {
     }
 
     @RequestMapping(value = "/createtask", method = RequestMethod.POST)
-    public ModelAndView createTask(@ModelAttribute("taskBean") TaskBean taskBean) {
+    public String createTask(@ModelAttribute("taskBean") TaskBean taskBean,ModelMap model) {
 
         createtasksService.createTasks(taskBean);
-        return new ModelAndView("redirect:/create_tasks");
+        model.put("sucessMsg", "Task Sucessfully created");
+        return "/create_tasks";
     }
 
 }

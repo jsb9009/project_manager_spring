@@ -15,11 +15,11 @@ public class AddProjectsServiceImpl implements AddProjectsService {
 
 
     @Autowired
-    private ProjectDaoImpl projectDaoImpl;
+    private ProjectDaoImpl projectDao;
 
     public void addProjects(ProjectBean projectBean) {
 
-        projectDaoImpl.saveProject(projectBean);
+        projectDao.saveProject(projectBean);
 
 
     }
