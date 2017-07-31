@@ -12,6 +12,7 @@
     <mvc:resources mapping="/resources/**" location="bootstrap/" />
     <mvc:resources mapping="/images/**" location="WEB-INF/resources/images/" />
 
+
     <bean class= "org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/views/" />
         <property name="suffix" value=".jsp" />
@@ -47,6 +48,18 @@
     </bean>
 
     <bean id="logindao" class="org.pms.orm.impl.LoginDaoImpl">
+        <property name="jdbcTemplate" ref="jdbcTemplate" />
+    </bean>
+
+    <bean id="gettasksdao" class="org.pms.orm.impl.GetTasksDaoImpl">
+        <property name="jdbcTemplate" ref="jdbcTemplate" />
+    </bean>
+
+    <bean id="getprojectsdao" class="org.pms.orm.impl.GetProjectsDaoImpl">
+        <property name="jdbcTemplate" ref="jdbcTemplate" />
+    </bean>
+
+    <bean id="getemployeesdao" class="org.pms.orm.impl.GetEmployeesDaoImpl">
         <property name="jdbcTemplate" ref="jdbcTemplate" />
     </bean>
 

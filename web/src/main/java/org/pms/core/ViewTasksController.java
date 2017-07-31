@@ -24,9 +24,7 @@ public class ViewTasksController {
     {
 
         List tasksList = viewtasksService.viewTasks();
-        System.out.println(tasksList);
         model.put("tasksList", tasksList);
-
         return "view_tasks";
     }
 }

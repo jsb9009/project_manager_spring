@@ -24,19 +24,31 @@
             <tbody>
             <tr>
                 <td>Employee Number</td>
-                <td><form:input class="form-control" path="empNo"/></td>
+                <td><form:input required="required" class="form-control" path="empNo"/></td>
+            </tr>
+            <tr>
+                <td colspan="5">&nbsp;</td>
             </tr>
             <tr>
                 <td>Employee Name</td>
-                <td><form:input class="form-control" path="empName"/></td>
+                <td><form:input required="required" class="form-control" path="empName"/></td>
+            </tr>
+            <tr>
+                <td colspan="5">&nbsp;</td>
             </tr>
             <tr>
                 <td>Position</td>
-                <td><form:input class="form-control" path="position"/></td>
+                <td><form:input required="required" class="form-control" path="position"/></td>
             </tr>
 
             <td></td>
             <td></td>
+            </tr>
+            <tr>
+                <td colspan="5">&nbsp;</td>
+            </tr>
+            <tr>
+                <td colspan="5">&nbsp;</td>
             </tr>
             <tr>
                 <td><input type="button" class="btn btn-primary" name="home" style=" float: left" value="Back" onclick="history.go(-1);"></td>

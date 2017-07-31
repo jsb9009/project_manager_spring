@@ -25,41 +25,57 @@
 
 
             <tr>
-                <td>Project Number</td>
-                <td><form:input class="form-control" path="project_no"/></td>
-            </tr>
-            <!--   <tr>
-        <select name='projects'>
-          <c:forEach var="list" items="${listCat}">
-            <option id="${list.key}" value="${list.value.getProjectName()}">${list.value.getProjectName()}</option>
-          </c:forEach>
-        </select>
-      </tr>
--->
+                <td>Project Number</td><td>&nbsp;</td>
+                <td><form:select path="project_no" class="form-control" data-toggle="dropdown" style="width: 220px;">
+                    <form:option value="NONE" label="--Select--"/>
+                    <form:options items="${projectsList}" itemLabel="projectNo" itemValue="projectNo"/>
+                </form:select></td>
 
-            <tr>
-                <td>Task Number</td>
-                <td><form:input class="form-control" path="task_no"/></td>
+            </tr>
+                <td colspan="5">&nbsp;</td>
             </tr>
             <tr>
-                <td>Task Name</td>
-                <td><form:input class="form-control" path="task_name"/></td>
+                <td>Task Number</td><td>&nbsp;</td>
+                <td><form:input required="required" class="form-control" path="task_no"/></td>
             </tr>
             <tr>
-                <td>Status</td>
-                <td><form:input class="form-control" path="status"/></td>
+                <td colspan="5">&nbsp;</td>
+            </tr>
+            <tr>
+                <td>Task Name</td><td>&nbsp;</td>
+                <td><form:input required="required" class="form-control" path="task_name"/></td>
+            </tr>
+            <tr>
+                <td colspan="5">&nbsp;</td>
+            </tr>
+            <tr>
+                <td>Status</td><td>&nbsp;</td>
+                <td><form:select path="status" class="form-control" data-toggle="dropdown" style="width:220px;" >
+                    <form:option value="NONE" label="--Select--"/>
+                    <form:options items="${statusList}" />
+                </form:select></td>
+
+            </tr>
+            <tr>
+                <td colspan="5">&nbsp;</td>
             </tr>
             <tr>
             <tr>
-                <td>Number of hours</td>
-                <td><form:input class="form-control" path="no_of_hours"/></td>
+                <td>Number of hours</td><td>&nbsp;</td>
+                <td><form:input required="required" class="form-control" path="no_of_hours"/></td>
             </tr>
             <tr>
                 <td></td>
                 <td></td>
             </tr>
             <tr>
-                <td><input type="button" class="btn btn-primary" name="home" style=" float: left" value="Back" onclick="history.go(-1);"></td>
+                <td colspan="5">&nbsp;</td>
+            </tr>
+            <tr>
+                <td colspan="5">&nbsp;</td>
+            </tr>
+            <tr>
+                <td><input type="button" class="btn btn-primary" name="home" style=" float: left" value="Back" onclick="history.go(-1);"></td><td>&nbsp;</td>
                 <td><input type="submit" class="btn btn-success" style=" float: right" value="Create" name="submit"/>
                     <input type="reset" class="btn btn-primary" style=" float: right" value="Clear" name="reset"/></td>
             </tr>

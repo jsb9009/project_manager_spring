@@ -1,5 +1,6 @@
 package org.pms.core;
 
+import org.pms.core.service.GetEmployeesService;
 import org.pms.core.service.ViewAssignedTasksService;
 import org.pms.orm.beans.ViewAssignedTasksBean;
 import org.pms.orm.beans.EmployeeNumberBean;
@@ -26,6 +27,9 @@ public class ViewAssignedTasksController {
     @Autowired
     private ViewAssignedTasksService viewassignedtasksService;
 
+    @Autowired
+    private GetEmployeesService getemployeesService;
+
     @RequestMapping("/view_assigned_tasks_list")
     public String projects(Model model7) {
         model7.addAttribute("employeenumberBean", new EmployeeNumberBean());
@@ -44,11 +48,17 @@ public class ViewAssignedTasksController {
     public String viewassignedTasks(ModelMap model, EmployeeNumberBean employeenumberBean, ViewAssignedTasksBean viewassignedtasksBean) {
 
         List<ViewAssignedTasksBean> tasksList1 = viewassignedtasksService.viewassignedTasks(employeenumberBean.getEmp_no());
-        System.out.println(tasksList1);
         model.put("tasksList1", tasksList1);
         return "view_assigned_tasks";
 
     }
 
+    @ModelAttribute("employeesList")
+    public List<EmployeeNumberBean> getEmployees()
+    {
+        List employeesList = getemployeesService.getEmployees();
+
+        return employeesList;
+    }
 
 }

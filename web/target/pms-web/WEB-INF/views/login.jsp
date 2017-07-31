@@ -18,29 +18,44 @@
     <title>Login</title>
     <link rel="stylesheet" href="<c:url value="/css/style.css"/>"/>
     <link rel="stylesheet" href="<c:url value="/bootstrap/css/bootstrap.min.css"/>"/>
-
+    <style>
+        body {
+            background-image: url(<c:url value="/images/bb.png"/>);
+        }
+    </style>
 </head>
 
-<h3><span class="label label-info">Please Login..</span></h3>
+<div class="container">
+    <div class="page-header" style=" float: right">
+        <h1>Project Management System</h1>
+        <p style=" float: right">Simply manage your tasks..</p>
+    </div>
+</div>
 
+<div style=" float: right" >
 <form:form method="POST" name="loginsubmit" action="loginin"
            modelAttribute="loginBean">
 <div class="form-group">
     <table align="center">
         <tr>
             <td>User Name</td>
-            <td><form:input class="form-control" path="username"/></td>
+            <td><form:input required="required" class="form-control" path="username"/></td>
+        </tr>
+        <tr>
+            <td colspan="5">&nbsp;</td>
         </tr>
         <tr>
             <td>Password</td>
-            <td><form:password class="form-control" path="password"/></td>
+            <td><form:password required="required" class="form-control" path="password"/></td>
 
         </tr>
-        <tr>&nbsp;<td></td></tr>
-        <tr>&nbsp;<td></td></tr>
+
+        <tr>
+            <td colspan="5">&nbsp;</td>
+        </tr>
         <tr>
             <td>&nbsp;</td>
-            <td>&nbsp;</td>
+        <td>&nbsp;</td>
             <td><input class="btn btn-primary" float="right" type="submit" value="Log In"/></td>
         </tr>
 
@@ -48,6 +63,7 @@
     </div>
 </form:form>
 
+</div>
 </body>
 
 </html>

@@ -23,35 +23,36 @@
             <tbody>
 
             <tr>
-                <td>Task Number</td>
-                <td><form:input class="form-control" path="taskNo"/></td>
+                <td>Task Number</td><td>&nbsp;</td>
+                <td><form:select path="taskNo" class="form-control" data-toggle="dropdown" style="width: 220px;">
+                    <form:option value="NONE" label="--Select--"/>
+                    <form:options items="${tasksList}" itemLabel="task_no" itemValue="task_no"/>
+                </form:select></td>
+
+            </tr>
+            <tr>
+                <td colspan="5">&nbsp;</td>
             </tr>
 
-            <!-- <tr>
-        <select name='tasks'>
-          <c:forEach var="list" items="${listCat}">
-            <option id="${list.key}" value="${list.value.getTaskNo()}">${list.value.getTaskNo()}</option>
-          </c:forEach>
-        </select>
-      </tr>
-      -->
-                <%--<tr>--%>
-                <%--<form:select path="status">--%>
-                <%--<form:option value="NONE" label="Select"/>--%>
-                <%--<form:options items="${statusList}" />--%>
-                <%--</form:select>--%>
-                <%--</tr>--%>
-
             <tr>
-                <td>Status</td>
-                <td><form:input class="form-control" path="taskStatus"/></td>
+                <td>Status</td><td>&nbsp;</td>
+                <td><form:select path="taskStatus" class="form-control" data-toggle="dropdown" style="width:220px;" >
+                    <form:option value="NONE" label="--Select--"/>
+                    <form:options items="${statusList}" />
+                </form:select></td>
 
             </tr>
 
             <td></td>
             <td></td>
             <tr>
-                <td><input type="button" class="btn btn-primary" name="home" style=" float: left" value="Back" onclick="history.go(-1);"></td>
+                <td colspan="5">&nbsp;</td>
+            </tr>
+            <tr>
+                <td colspan="5">&nbsp;</td>
+            </tr>
+            <tr>
+                <td><input type="button" class="btn btn-primary" name="home" style=" float: left" value="Back" onclick="history.go(-1);"></td><td>&nbsp;</td>
                 <td><input type="submit" class="btn btn-success" style=" float: right" value="Update" name="submit"/>
                     <input type="reset" class="btn btn-primary" style=" float: right" value="Clear" name="reset"/></td>
             </tr>

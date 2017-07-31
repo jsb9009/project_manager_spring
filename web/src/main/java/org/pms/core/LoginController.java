@@ -17,13 +17,6 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class LoginController {
 
-    @RequestMapping("/login")
-    public String login(Model m) {
-        m.addAttribute("loginBean", new LoginBean());
-        return "login";
-    }
-
-
     @Autowired
     private LoginService loginService;
 

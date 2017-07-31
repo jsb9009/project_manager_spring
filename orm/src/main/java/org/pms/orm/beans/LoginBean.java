@@ -6,7 +6,9 @@ package org.pms.orm.beans;
 
 public class LoginBean {
 
+
     private String username;
+
 
     private String password;
 

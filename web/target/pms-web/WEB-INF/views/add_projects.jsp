@@ -25,22 +25,37 @@
             <tbody>
             <tr>
                 <td>Project Number</td>
-                <td><form:input class="form-control" path="projectNo"/></td>
+                <td><form:input required="required" class="form-control" path="projectNo"/></td>
+            </tr>
+            <tr>
+                <td colspan="5">&nbsp;</td>
             </tr>
             <tr>
                 <td>Project Name</td>
-                <td><form:input class="form-control" path="projectName"/></td>
+                <td><form:input required="required" class="form-control" path="projectName"/></td>
+            </tr>
+            <tr>
+                <td colspan="5">&nbsp;</td>
             </tr>
             <tr>
                 <td>Client Name</td>
-                <td><form:input class="form-control" path="client"/></td>
+                <td><form:input required="required" class="form-control" path="client"/></td>
+            </tr>
+            <tr>
+                <td colspan="5">&nbsp;</td>
             </tr>
             <tr>
                 <td>Project Type</td>
-                <td><form:input class="form-control" path="type"/></td>
+                <td><form:input required="required" class="form-control" path="type"/></td>
             </tr>
             <td></td>
             <td></td>
+            </tr>
+            <tr>
+                <td colspan="5">&nbsp;</td>
+            </tr>
+            <tr>
+                <td colspan="5">&nbsp;</td>
             </tr>
             <tr>
                 <td><input type="button" class="btn btn-primary" name="home" style=" float: left" value="Back" onclick="history.go(-1);"></td>
