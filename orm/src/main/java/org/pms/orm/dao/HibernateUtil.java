@@ -7,6 +7,6 @@ import java.io.Serializable;
  */
 public interface HibernateUtil {
 
-    public <T> Serializable create(final T entity);
+    <T> Serializable create(final T entity);
 
 }

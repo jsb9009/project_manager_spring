@@ -10,9 +10,6 @@ import java.util.List;
  */
 public interface ViewAssignedTasksDao {
 
-
-//    String chooseEmpoyeeNo(Tasks tasks);
-
     List<Tasks> viewassignedTasks(Tasks tasks);
 
 }

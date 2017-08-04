@@ -1,4 +1,4 @@
-package org.pms.core;
+package org.pms.web.controller;
 
 /**
  * Created by jaliya on 7/18/17.

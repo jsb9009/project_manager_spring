@@ -1,4 +1,4 @@
-package org.pms.core;
+package org.pms.web.controller;
 
 import org.pms.core.service.CreateTasksService;
 import org.pms.core.service.GetProjectsService;

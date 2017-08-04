@@ -1,4 +1,4 @@
-package org.pms.core;
+package org.pms.web.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
