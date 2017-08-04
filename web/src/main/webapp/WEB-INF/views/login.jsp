@@ -34,7 +34,7 @@
 
 <div style=" float: right" >
 <form:form method="POST" name="loginsubmit" action="loginin"
-           modelAttribute="loginBean">
+           modelAttribute="login">
 <div class="form-group">
     <table align="center">
         <tr>

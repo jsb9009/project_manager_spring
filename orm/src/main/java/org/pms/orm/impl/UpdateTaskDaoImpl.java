@@ -1,40 +1,40 @@
 package org.pms.orm.impl;
 
-import org.pms.orm.beans.TaskBean;
-import org.pms.orm.beans.ViewTasksBean;
-import org.pms.orm.dao.UpdateTaskDao;
-import org.pms.orm.beans.UpdateTaskBean;
-import org.springframework.dao.DataAccessException;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.ResultSetExtractor;
-import org.springframework.stereotype.Repository;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.pms.orm.dao.UpdateTaskDao;
+
+import org.pms.orm.model.Tasks;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
+import javax.annotation.Resource;
+
 
 /**
  * Created by jaliya on 7/24/17.
  */
 
 @Repository
+@Transactional
 public class UpdateTaskDaoImpl implements UpdateTaskDao {
 
-    private JdbcTemplate jdbcTemplate;
+    @Autowired
+    private HibernateUtilImpl hibernateutilimpl;
 
-    public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
-    }
+    @Resource(name = "sessionFactory")
+    protected SessionFactory sessionFactory;
 
+    public void updateTask(Tasks tasks) {
 
-    public void updateTask(UpdateTaskBean updatetaskBean) {
+        Session session = sessionFactory.openSession();
 
-        String sql = "update task set status=? where task_no=?";
+        Tasks taskDb = session.get(Tasks.class, tasks.getTaskId());
+        taskDb.setStatus(tasks.getStatus());
 
-
-        jdbcTemplate.update(sql, new Object[]
-                {updatetaskBean.getTaskStatus(), updatetaskBean.getTaskNo()});
+        hibernateutilimpl.update(taskDb);
 
     }
 

@@ -1,14 +1,13 @@
 package org.pms.core.service;
 
-import org.pms.orm.beans.TaskBean;
+import org.pms.orm.model.Tasks;
 
 /**
  * Created by jaliya on 7/26/17.
  */
 public interface CreateTasksService {
 
-
-     void createTasks(TaskBean taskBean);
+     String createTasks(Tasks tasks);
 }
 
 

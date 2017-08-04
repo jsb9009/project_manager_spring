@@ -1,6 +1,6 @@
 package org.pms.orm.dao;
 
-import org.pms.orm.beans.EmployeeBean;
+import org.pms.orm.model.Employees;
 
 /**
  * Created by jaliya on 7/21/17.
@@ -8,6 +8,6 @@ import org.pms.orm.beans.EmployeeBean;
 
 public interface EmployeeDao {
 
-    void saveEmployee(EmployeeBean employeeBean);
+    String saveEmployee(Employees employees);
 
 }

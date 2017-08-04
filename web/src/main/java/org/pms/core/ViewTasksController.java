@@ -20,8 +20,7 @@ public class ViewTasksController {
 
 
     @RequestMapping(value = "/view_tasks")
-    public String viewTasks(ModelMap model)
-    {
+    public String viewTasks(ModelMap model) {
 
         List tasksList = viewtasksService.viewTasks();
         model.put("tasksList", tasksList);

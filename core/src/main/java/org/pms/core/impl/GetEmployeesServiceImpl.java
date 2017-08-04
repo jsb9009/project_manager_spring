@@ -1,11 +1,11 @@
 package org.pms.core.impl;
 
 import org.pms.core.service.GetEmployeesService;
-import org.pms.orm.beans.EmployeeNumberBean;
-import org.pms.orm.impl.GetEmployeesDaoImpl;
-import org.pms.orm.impl.GetProjectsDaoImpl;
+import org.pms.orm.dao.GetEmployeesDao;
+import org.pms.orm.model.Employees;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -14,14 +14,15 @@ import java.util.List;
  */
 
 @Service
+@Transactional
 public class GetEmployeesServiceImpl implements GetEmployeesService {
 
 
     @Autowired
-    private GetEmployeesDaoImpl getemployeesdao;
+    private GetEmployeesDao getemployeesdao;
 
 
-    public List<EmployeeNumberBean> getEmployees(){
+    public List<Employees> getEmployees(){
 
 
         return getemployeesdao.getEmployees();

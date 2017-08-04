@@ -1,27 +1,30 @@
 package org.pms.core.impl;
 
 import org.pms.core.service.AddEmployeesService;
-import org.pms.orm.beans.EmployeeBean;
-import org.pms.orm.impl.EmployeeDaoImpl;
+
+import org.pms.orm.dao.EmployeeDao;
+
+import org.pms.orm.model.Employees;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Created by jaliya on 7/26/17.
  */
 
 @Service
+@Transactional
 public class AddEmployeesServiceImpl implements AddEmployeesService {
 
     @Autowired
-    private EmployeeDaoImpl employeeDao;
+    private EmployeeDao employeeDao;
 
-    public void addEmployee(EmployeeBean employeeBean) {
 
-        employeeDao.saveEmployee(employeeBean);
+    public String addEmployee(Employees employees) {
 
+       return employeeDao.saveEmployee(employees);
 
     }
-
 
 }

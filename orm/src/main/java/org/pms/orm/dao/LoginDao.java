@@ -1,6 +1,6 @@
 package org.pms.orm.dao;
 
-import org.pms.orm.beans.LoginBean;
+import org.pms.orm.model.Login;
 
 /**
  * Created by jaliya on 7/26/17.
@@ -9,5 +9,5 @@ import org.pms.orm.beans.LoginBean;
 
 public interface LoginDao {
 
-    int login(LoginBean loginBean);
+    String login(Login login);
 }

@@ -1,50 +1,50 @@
 package org.pms.orm.impl;
 
-import org.pms.orm.beans.GetProjectsBean;
-import org.pms.orm.beans.GetTasksBean;
-import org.pms.orm.dao.GetProjectsDao;
-import org.springframework.dao.DataAccessException;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.ResultSetExtractor;
-import org.springframework.stereotype.Repository;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import org.pms.orm.dao.GetProjectsDao;
+
+import org.pms.orm.model.Projects;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
+import javax.annotation.Resource;
+import java.math.BigInteger;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Created by jaliya on 7/31/17.
  */
 
 @Repository
+@Transactional
 public class GetProjectsDaoImpl implements GetProjectsDao {
 
+    @Autowired
+    private HibernateUtilImpl hibernateutilimpl;
 
-    private JdbcTemplate jdbcTemplate;
+    public List<Projects> getProjects() {
 
-    public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
-    }
+        String sql = "select project_id from project";
 
-    public List<GetProjectsBean> getProjects() {
+        List<Object> projectObjects = hibernateutilimpl.fetchAll(sql);
 
-        String sql = "select project_no from project";
+        List<Projects> projectsList = new ArrayList<Projects>();
 
-        List<GetProjectsBean> projectsList = jdbcTemplate.query(sql, new ResultSetExtractor<List<GetProjectsBean>>() {
+        for (Object projectObject : projectObjects) {
+            Projects project = new Projects();
+            String id = (String) projectObject;
 
-            @Override
-            public List<GetProjectsBean> extractData(ResultSet rs) throws SQLException, DataAccessException {
-                List<GetProjectsBean> list = new ArrayList<GetProjectsBean>();
-                while (rs.next()) {
+            project.setProjectId(id);
 
-                    GetProjectsBean  getprojectsBean = new GetProjectsBean();
-                    getprojectsBean.setProjectNo(rs.getString(1));
-                    list.add(getprojectsBean);
-                }
-                return list;
-            }
-        });
+            projectsList.add(project);
+        }
         return projectsList;
     }
 

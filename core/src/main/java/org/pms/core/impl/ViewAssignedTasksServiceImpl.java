@@ -1,10 +1,14 @@
 package org.pms.core.impl;
 
 import org.pms.core.service.ViewAssignedTasksService;
-import org.pms.orm.beans.ViewAssignedTasksBean;
-import org.pms.orm.impl.ViewAssignedTasksDaoImpl;
+
+import org.pms.orm.dao.ViewAssignedTasksDao;
+
+import org.pms.orm.model.Employees;
+import org.pms.orm.model.Tasks;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -13,24 +17,24 @@ import java.util.List;
  */
 
 @Service
+@Transactional
 public class ViewAssignedTasksServiceImpl implements ViewAssignedTasksService {
 
 
     @Autowired
-    private ViewAssignedTasksDaoImpl viewassignedtasksdao;
+    private ViewAssignedTasksDao viewassignedtasksdao;
 
 
-    public String chooseEmployeeNo(String emp_no) {
+//    public Tasks chooseEmployeeNo(Tasks tasks) {
+//
+//        viewassignedtasksdao.chooseEmpoyeeNo(tasks);
+//
+//        return tasks;
+//    }
 
-        viewassignedtasksdao.chooseEmpoyeeNo(emp_no);
+    public List<Tasks> viewassignedTasks(Tasks tasks) {
 
-        return emp_no;
+        return viewassignedtasksdao.viewassignedTasks(tasks);
     }
-
-    public List<ViewAssignedTasksBean> viewassignedTasks(String indexNo) {
-
-        return viewassignedtasksdao.viewassignedTasks(indexNo);
-    }
-
-
 }
+

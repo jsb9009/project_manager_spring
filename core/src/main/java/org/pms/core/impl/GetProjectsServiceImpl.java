@@ -1,12 +1,13 @@
 package org.pms.core.impl;
 
 import org.pms.core.service.GetProjectsService;
-import org.pms.orm.beans.GetProjectsBean;
-import org.pms.orm.beans.GetTasksBean;
-import org.pms.orm.impl.GetProjectsDaoImpl;
-import org.pms.orm.impl.GetTasksDaoImpl;
+
+import org.pms.orm.dao.GetProjectsDao;
+
+import org.pms.orm.model.Projects;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -14,13 +15,14 @@ import java.util.List;
  * Created by jaliya on 7/31/17.
  */
 
+@Transactional
 @Service
 public class GetProjectsServiceImpl implements GetProjectsService{
 
     @Autowired
-    private GetProjectsDaoImpl getprojectsdao;
+    private GetProjectsDao getprojectsdao;
 
-    public List<GetProjectsBean> getProjects() {
+    public List<Projects> getProjects() {
 
         return getprojectsdao.getProjects();
 

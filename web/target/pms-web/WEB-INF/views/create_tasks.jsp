@@ -18,7 +18,7 @@
     <h3><span class="label label-info">Add new task details</span></h3>
 
     <div class="form-group">
-    <form:form name="taskform" action="createtask" method="POST" modelAttribute="taskBean">
+    <form:form name="taskform" action="createtask" method="POST" modelAttribute="tasks">
 
         <table border="0" align="center">
             <tbody>
@@ -26,9 +26,9 @@
 
             <tr>
                 <td>Project Number</td><td>&nbsp;</td>
-                <td><form:select path="project_no" class="form-control" data-toggle="dropdown" style="width: 220px;">
+                <td><form:select path="Projects.projectId" class="form-control" data-toggle="dropdown" style="width: 220px;">
                     <form:option value="NONE" label="--Select--"/>
-                    <form:options items="${projectsList}" itemLabel="projectNo" itemValue="projectNo"/>
+                    <form:options items="${projectsList}" itemLabel="projectId" itemValue="projectId"/>
                 </form:select></td>
 
             </tr>
@@ -36,14 +36,14 @@
             </tr>
             <tr>
                 <td>Task Number</td><td>&nbsp;</td>
-                <td><form:input required="required" class="form-control" path="task_no"/></td>
+                <td><form:input required="required" class="form-control" path="taskId"/></td>
             </tr>
             <tr>
                 <td colspan="5">&nbsp;</td>
             </tr>
             <tr>
                 <td>Task Name</td><td>&nbsp;</td>
-                <td><form:input required="required" class="form-control" path="task_name"/></td>
+                <td><form:input required="required" class="form-control" path="taskName"/></td>
             </tr>
             <tr>
                 <td colspan="5">&nbsp;</td>
@@ -62,7 +62,7 @@
             <tr>
             <tr>
                 <td>Number of hours</td><td>&nbsp;</td>
-                <td><form:input required="required" class="form-control" path="no_of_hours"/></td>
+                <td><form:input required="required" class="form-control" path="noOfHours"/></td>
             </tr>
             <tr>
                 <td></td>

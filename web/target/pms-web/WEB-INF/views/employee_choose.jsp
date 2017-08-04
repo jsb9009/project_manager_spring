@@ -18,15 +18,15 @@
     <h3><span class="label label-info">Choose your employee number here</span></h3>
 
     <div class="form-group">
-    <form:form name="chooseempform" action="view_assigned_tasks" method="POST" modelAttribute="employeenumberBean">
+    <form:form name="chooseempform" action="view_assigned_tasks" method="POST" modelAttribute="tasks">
         <table border="0" align="center">
             <tbody>
 
             <tr>
                 <td>Employee Number</td><td>&nbsp;</td>
-                <td><form:select path="emp_no" class="form-control" data-toggle="dropdown" style="width: 220px;">
+                <td><form:select path="Employees.empId" class="form-control" data-toggle="dropdown" style="width: 220px;">
                     <form:option value="NONE" label="--Select--"/>
-                    <form:options items="${employeesList}" itemLabel="emp_no" itemValue="emp_no"/>
+                    <form:options items="${employeesList}" itemLabel="empId" itemValue="empId"/>
                 </form:select></td>
 
             </tr>

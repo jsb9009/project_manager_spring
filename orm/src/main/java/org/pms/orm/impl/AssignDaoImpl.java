@@ -1,31 +1,39 @@
 package org.pms.orm.impl;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.pms.orm.dao.AssignDao;
-import org.pms.orm.beans.AssignBean;
-import org.springframework.jdbc.core.JdbcTemplate;
+import org.pms.orm.model.Employees;
+import org.pms.orm.model.Tasks;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
+import javax.annotation.Resource;
 
 /**
  * Created by jaliya on 7/21/17.
  */
 
 @Repository
+@Transactional
 public class AssignDaoImpl implements AssignDao {
 
+    @Autowired
+    private HibernateUtilImpl hibernateutilimpl;
 
-    private JdbcTemplate jdbcTemplate;
+    @Resource(name = "sessionFactory")
+    protected SessionFactory sessionFactory;
 
-    public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
-    }
+    public void assignTask(Tasks tasks) {
 
-    public void assignTask(AssignBean assignBean) {
+        Session session = sessionFactory.openSession();
 
-        String sql = "update task set index_no_employee=(select index_no from employee where employee_no=?) where task_no=?";
+        Employees employee = session.get(Employees.class, tasks.getEmployees().getEmpId());
+        Tasks taskDb = session.get(Tasks.class, tasks.getTaskId());
+        taskDb.setEmployees(employee);
 
-
-        jdbcTemplate.update(sql, new Object[]
-                {assignBean.getEmpNo(), assignBean.getTaskNo()});
+        hibernateutilimpl.update(taskDb);
 
     }
 

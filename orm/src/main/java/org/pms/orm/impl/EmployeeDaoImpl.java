@@ -1,9 +1,10 @@
 package org.pms.orm.impl;
 
 import org.pms.orm.dao.EmployeeDao;
-import org.pms.orm.beans.EmployeeBean;
-import org.springframework.jdbc.core.JdbcTemplate;
+import org.pms.orm.model.Employees;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Created by jaliya on 7/21/17.
@@ -11,20 +12,15 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
+@Transactional
 public class EmployeeDaoImpl implements EmployeeDao {
 
-    private JdbcTemplate jdbcTemplate;
+    @Autowired
+    private HibernateUtilImpl hibernateutilimpl;
 
-    public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
-    }
+    @Override
+    public String saveEmployee(Employees employees) {
 
-    public void saveEmployee(EmployeeBean employeeBean) {
-
-        String sql = "insert into employee(employee_no, employee_name, position) values(?,?,?)";
-
-        jdbcTemplate.update(sql, new Object[]
-                {employeeBean.getEmpNo(), employeeBean.getEmpName(), employeeBean.getPosition()});
-
+        return (String) hibernateutilimpl.create(employees);
     }
 }

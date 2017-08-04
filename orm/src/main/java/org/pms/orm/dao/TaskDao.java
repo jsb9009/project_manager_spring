@@ -1,11 +1,11 @@
 package org.pms.orm.dao;
 
-import org.pms.orm.beans.TaskBean;
+import org.pms.orm.model.Tasks;
 
 /**
  * Created by jaliya on 7/21/17.
  */
 public interface TaskDao {
 
-    void createTask(TaskBean taskBean);
+    String createTask(Tasks tasks);
 }

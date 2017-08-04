@@ -2,8 +2,7 @@ package org.pms.core;
 
 import org.pms.core.service.GetTasksService;
 import org.pms.core.service.UpdateTaskService;
-import org.pms.orm.beans.GetTasksBean;
-import org.pms.orm.beans.UpdateTaskBean;
+import org.pms.orm.model.Tasks;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,15 +27,14 @@ public class UpdateTaskController {
     @Autowired
     private GetTasksService gettasksService;
 
-    @RequestMapping(value="/update_tasks",method= RequestMethod.GET)
+    @RequestMapping(value = "/update_tasks", method = RequestMethod.GET)
     public String projects(Model model6) {
-        model6.addAttribute("updatetaskBean", new UpdateTaskBean());
+        model6.addAttribute("tasks", new Tasks());
         return "update_tasks";
     }
 
     @ModelAttribute("statusList")
-    public List<String> getStatusList()
-    {
+    public List<String> getStatusList() {
         List<String> statusList = new ArrayList<String>();
         statusList.add("Beginning");
         statusList.add("On going");
@@ -46,18 +44,17 @@ public class UpdateTaskController {
 
 
     @ModelAttribute("tasksList")
-    public List<GetTasksBean> getTasks()
-    {
+    public List<Tasks> getTasks() {
         List tasksList = gettasksService.getTasks();
 
         return tasksList;
     }
 
 
-    @RequestMapping(value = "/updatetask",method= RequestMethod.POST)
-    public String updateTask(@ModelAttribute("updatetaskBean") UpdateTaskBean updatetaskBean,ModelMap model){
+    @RequestMapping(value = "/updatetask", method = RequestMethod.POST)
+    public String updateTask(@ModelAttribute("tasks") Tasks tasks, ModelMap model) {
 
-        updatetaskService.updateTask(updatetaskBean);
+        updatetaskService.updateTask(tasks);
         model.put("sucessMsg", "Task Sucessfully updated");
         return "/update_tasks";
     }

@@ -1,30 +1,29 @@
 package org.pms.orm.impl;
 
-import org.pms.orm.beans.ProjectBean;
+
 import org.pms.orm.dao.ProjectDao;
-import org.springframework.jdbc.core.JdbcTemplate;
+
+import org.pms.orm.model.Projects;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Created by jaliya on 7/21/17.
  */
 
 @Repository
+@Transactional
 public class ProjectDaoImpl implements ProjectDao {
 
-    private JdbcTemplate jdbcTemplate;
+    @Autowired
+    private HibernateUtilImpl hibernateutilimpl;
 
-    public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
-    }
+    @Override
+    public String saveProject(Projects projects) {
 
-    public void saveProject(ProjectBean projectBean) {
-
-        String sql = "insert into project(project_no, project_name, client,project_type) values(?,?,?,?)";
-
-        jdbcTemplate.update(sql, new Object[]
-                {projectBean.getProjectNo(), projectBean.getProjectName(), projectBean.getClient(), projectBean.getType()});
-
+        return (String) hibernateutilimpl.create(projects);
     }
 
 }

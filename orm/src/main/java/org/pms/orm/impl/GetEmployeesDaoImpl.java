@@ -1,14 +1,15 @@
 package org.pms.orm.impl;
 
-import org.pms.orm.beans.EmployeeNumberBean;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.pms.orm.dao.GetEmployeesDao;
-import org.springframework.dao.DataAccessException;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.ResultSetExtractor;
+import org.pms.orm.model.Employees;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import javax.annotation.Resource;
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,32 +18,34 @@ import java.util.List;
  */
 
 @Repository
-public class GetEmployeesDaoImpl implements GetEmployeesDao{
+@Transactional
+public class GetEmployeesDaoImpl implements GetEmployeesDao {
 
-    private JdbcTemplate jdbcTemplate;
+    @Autowired
+    private HibernateUtilImpl hibernateutilimpl;
 
-    public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
-    }
+    @Resource(name = "sessionFactory")
+    protected SessionFactory sessionFactory;
 
-    public List<EmployeeNumberBean> getEmployees() {
 
-        String sql = "select employee_no from employee";
+    public List<Employees> getEmployees() {
 
-        List<EmployeeNumberBean> employeesList = jdbcTemplate.query(sql, new ResultSetExtractor<List<EmployeeNumberBean>>() {
+        Session session = sessionFactory.openSession();
 
-            @Override
-            public List<EmployeeNumberBean> extractData(ResultSet rs) throws SQLException, DataAccessException {
-                List<EmployeeNumberBean> list = new ArrayList<EmployeeNumberBean>();
-                while (rs.next()) {
+        String sql = "select employee_id from employee";
 
-                    EmployeeNumberBean  employeenumberBean = new EmployeeNumberBean();
-                    employeenumberBean.setEmp_no(rs.getString(1));
-                    list.add(employeenumberBean);
-                }
-                return list;
-            }
-        });
+        List<Object> employeeObjects = hibernateutilimpl.fetchAll(sql);
+
+        List<Employees> employeesList = new ArrayList<Employees>();
+
+        for (Object employeeObject : employeeObjects) {
+            Employees employee = new Employees();
+            String id = (String) employeeObject;
+
+            employee.setEmpId(id);
+
+            employeesList.add(employee);
+        }
         return employeesList;
     }
 

@@ -1,7 +1,6 @@
 package org.pms.core.service;
 
-import org.pms.orm.beans.GetProjectsBean;
-import org.pms.orm.beans.GetTasksBean;
+import org.pms.orm.model.Projects;
 
 import java.util.List;
 
@@ -12,6 +11,6 @@ import java.util.List;
 public interface GetProjectsService {
 
 
-    List<GetProjectsBean> getProjects();
+    List<Projects> getProjects();
 
 }

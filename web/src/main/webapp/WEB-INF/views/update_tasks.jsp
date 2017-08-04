@@ -18,15 +18,15 @@
     <h3><span class="label label-info">Update the task status here</span></h3>
 
     <div class="form-group">
-    <form:form name="updatetaskform" action="updatetask" method="POST" modelAttribute="updatetaskBean">
+    <form:form name="updatetaskform" action="updatetask" method="POST" modelAttribute="tasks">
         <table border="0" align="center">
             <tbody>
 
             <tr>
                 <td>Task Number</td><td>&nbsp;</td>
-                <td><form:select path="taskNo" class="form-control" data-toggle="dropdown" style="width: 220px;">
+                <td><form:select path="taskId" class="form-control" data-toggle="dropdown" style="width: 220px;">
                     <form:option value="NONE" label="--Select--"/>
-                    <form:options items="${tasksList}" itemLabel="task_no" itemValue="task_no"/>
+                    <form:options items="${tasksList}" itemLabel="taskId" itemValue="taskId"/>
                 </form:select></td>
 
             </tr>
@@ -36,7 +36,7 @@
 
             <tr>
                 <td>Status</td><td>&nbsp;</td>
-                <td><form:select path="taskStatus" class="form-control" data-toggle="dropdown" style="width:220px;" >
+                <td><form:select path="status" class="form-control" data-toggle="dropdown" style="width:220px;" >
                     <form:option value="NONE" label="--Select--"/>
                     <form:options items="${statusList}" />
                 </form:select></td>

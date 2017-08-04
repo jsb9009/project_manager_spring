@@ -2,8 +2,8 @@ package org.pms.core;
 
 import org.pms.core.service.GetEmployeesService;
 import org.pms.core.service.ViewAssignedTasksService;
-import org.pms.orm.beans.ViewAssignedTasksBean;
-import org.pms.orm.beans.EmployeeNumberBean;
+import org.pms.orm.model.Employees;
+import org.pms.orm.model.Tasks;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,7 +23,6 @@ import java.util.List;
 public class ViewAssignedTasksController {
 
 
-
     @Autowired
     private ViewAssignedTasksService viewassignedtasksService;
 
@@ -32,30 +31,29 @@ public class ViewAssignedTasksController {
 
     @RequestMapping("/view_assigned_tasks_list")
     public String projects(Model model7) {
-        model7.addAttribute("employeenumberBean", new EmployeeNumberBean());
+        model7.addAttribute("tasks", new Tasks());
         return "employee_choose";
     }
 
     @RequestMapping(value = "/select_employee", method = RequestMethod.POST)
-    public ModelAndView chooseEmpoyeeNo(@ModelAttribute("employeenumberBean") EmployeeNumberBean employeenumberBean, String indexNo) {
+    public ModelAndView chooseEmpoyeeNo(@ModelAttribute("tasks") Tasks tasks) {
 
-        viewassignedtasksService.chooseEmployeeNo(indexNo);
+//       viewassignedtasksService.chooseEmployeeNo(tasks);
         return new ModelAndView("view_assigned_tasks");
 
     }
 
     @RequestMapping(value = "/view_assigned_tasks", method = RequestMethod.POST)
-    public String viewassignedTasks(ModelMap model, EmployeeNumberBean employeenumberBean, ViewAssignedTasksBean viewassignedtasksBean) {
+    public String viewassignedTasks(ModelMap model,Tasks tasks) {
 
-        List<ViewAssignedTasksBean> tasksList1 = viewassignedtasksService.viewassignedTasks(employeenumberBean.getEmp_no());
+        List<Tasks> tasksList1 = viewassignedtasksService.viewassignedTasks(tasks);
         model.put("tasksList1", tasksList1);
         return "view_assigned_tasks";
 
     }
 
     @ModelAttribute("employeesList")
-    public List<EmployeeNumberBean> getEmployees()
-    {
+    public List<Employees> getEmployees(){
         List employeesList = getemployeesService.getEmployees();
 
         return employeesList;

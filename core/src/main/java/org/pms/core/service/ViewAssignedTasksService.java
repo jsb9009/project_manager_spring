@@ -1,6 +1,7 @@
 package org.pms.core.service;
 
-import org.pms.orm.beans.ViewAssignedTasksBean;
+import org.pms.orm.model.Employees;
+import org.pms.orm.model.Tasks;
 
 import java.util.List;
 
@@ -9,8 +10,8 @@ import java.util.List;
  */
 public interface ViewAssignedTasksService {
 
-    String chooseEmployeeNo(String indexNo);
+//    Tasks chooseEmployeeNo(Tasks tasks);
 
-    List<ViewAssignedTasksBean> viewassignedTasks(String indexNo);
+    List<Tasks> viewassignedTasks(Tasks tasks);
 
 }

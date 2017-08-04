@@ -1,7 +1,6 @@
 package org.pms.orm.dao;
 
-import org.pms.orm.beans.GetProjectsBean;
-import org.pms.orm.beans.GetTasksBean;
+import org.pms.orm.model.Projects;
 
 import java.util.List;
 
@@ -10,5 +9,5 @@ import java.util.List;
  */
 public interface GetProjectsDao {
 
-    List<GetProjectsBean> getProjects();
+    List<Projects> getProjects();
 }

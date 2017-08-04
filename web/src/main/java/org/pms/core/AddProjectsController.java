@@ -1,7 +1,7 @@
 package org.pms.core;
 
 import org.pms.core.service.AddProjectsService;
-import org.pms.orm.beans.ProjectBean;
+import org.pms.orm.model.Projects;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,14 +23,14 @@ public class AddProjectsController {
 
     @RequestMapping("/add_projects")
     public String projects(Model model3) {
-        model3.addAttribute("projectBean", new ProjectBean());
+        model3.addAttribute("projects", new Projects());
         return "add_projects";
     }
 
     @RequestMapping(value = "/addproject", method = RequestMethod.POST)
-    public String saveProject(@ModelAttribute("projectBean") ProjectBean projectBean,ModelMap model) {
+    public String saveProject(@ModelAttribute("projects") Projects projects, ModelMap model) {
 
-        addprojectsService.addProjects(projectBean);
+        addprojectsService.addProjects(projects);
         model.put("sucessMsg", "Project Sucessfully added");
         return "/add_projects";
     }

@@ -1,7 +1,7 @@
 package org.pms.core;
 
 import org.pms.core.service.LoginService;
-import org.pms.orm.beans.LoginBean;
+import org.pms.orm.model.Login;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,24 +21,24 @@ public class LoginController {
     private LoginService loginService;
 
     @RequestMapping(value = "/loginin", method = RequestMethod.POST)
-    public ModelAndView assignTask(@ModelAttribute("loginBean") LoginBean loginBean, Model model) {
+    public ModelAndView assignTask(@ModelAttribute("loginBean") Login login, Model model) {
 
-        int result = loginService.login(loginBean);
+        String rs = loginService.login(login);
+
+        int result = Integer.parseInt(rs);
 
         if (result == 1) {
             model.addAttribute("msg", "welcome manager");
             return new ModelAndView("manager_direct");
-        }
-        else if (result == 2) {
+        } else if (result == 2) {
             model.addAttribute("msg", "welcome manager");
             return new ModelAndView("supervisor_direct");
-        }
-        else if (result == 3) {
+        } else if (result == 3) {
             model.addAttribute("msg", "welcome manager");
             return new ModelAndView("employee_direct");
-        }
-        else
-        return new ModelAndView("error_page");
+        } else
+            return new ModelAndView("error_page");
     }
 
-}
+    }
+

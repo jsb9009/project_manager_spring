@@ -1,10 +1,13 @@
 package org.pms.core.impl;
 
 import org.pms.core.service.GetTasksService;
-import org.pms.orm.beans.GetTasksBean;
-import org.pms.orm.impl.GetTasksDaoImpl;
+
+import org.pms.orm.dao.GetTasksDao;
+
+import org.pms.orm.model.Tasks;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -13,12 +16,13 @@ import java.util.List;
  */
 
 @Service
+@Transactional
 public class GetTasksServiceImpl implements GetTasksService{
 
     @Autowired
-    private GetTasksDaoImpl gettasksdao;
+    private GetTasksDao gettasksdao;
 
-    public List<GetTasksBean> getTasks() {
+    public List<Tasks> getTasks() {
 
         return gettasksdao.getTasks();
 

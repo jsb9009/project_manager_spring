@@ -19,12 +19,12 @@
     <h3><span class="label label-info">Add new employee details</span></h3>
 
     <div class="form-group">
-    <form:form name="employeeform" action="addemployee" method="POST" modelAttribute="employeeBean">
+    <form:form name="employeeform" action="addemployee" method="POST" modelAttribute="employees">
         <table border="0" align="center">
             <tbody>
             <tr>
                 <td>Employee Number</td>
-                <td><form:input required="required" class="form-control" path="empNo"/></td>
+                <td><form:input required="required" class="form-control" path="empId"/></td>
             </tr>
             <tr>
                 <td colspan="5">&nbsp;</td>

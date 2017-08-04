@@ -29,13 +29,13 @@
 
     </tr>
 
-    <c:forEach items="${tasksList}" var="viewtasksBean">
+    <c:forEach items="${tasksList}" var="tasks">
         <tr>
-            <td>${viewtasksBean.task_no}</td>
-            <td>${viewtasksBean.task_name}</td>
-            <td>${viewtasksBean.status}</td>
-            <td>${viewtasksBean.projectNo}</td>
-            <td>${viewtasksBean.empNo}</td>
+            <td>${tasks.taskId}</td>
+            <td>${tasks.taskName}</td>
+            <td>${tasks.status}</td>
+            <td>${tasks.projects.projectId}</td>
+            <td>${tasks.employees.empId}</td>
         </tr>
 
     </c:forEach>

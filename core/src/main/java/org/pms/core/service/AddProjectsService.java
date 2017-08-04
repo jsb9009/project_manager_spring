@@ -1,6 +1,7 @@
 package org.pms.core.service;
 
-import org.pms.orm.beans.ProjectBean;
+
+import org.pms.orm.model.Projects;
 
 /**
  * Created by jaliya on 7/26/17.
@@ -8,5 +9,5 @@ import org.pms.orm.beans.ProjectBean;
 
 public interface AddProjectsService {
 
-     void addProjects(ProjectBean projectBean);
+     void addProjects(Projects projects);
 }

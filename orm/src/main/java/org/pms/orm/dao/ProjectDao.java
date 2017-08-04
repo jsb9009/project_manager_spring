@@ -1,6 +1,6 @@
 package org.pms.orm.dao;
 
-import org.pms.orm.beans.ProjectBean;
+import org.pms.orm.model.Projects;
 
 /**
  * Created by jaliya on 7/21/17.
@@ -8,7 +8,7 @@ import org.pms.orm.beans.ProjectBean;
 
 public interface ProjectDao {
 
-    void saveProject(ProjectBean projectBean);
+    String saveProject(Projects projects);
 }
 
 

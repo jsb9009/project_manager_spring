@@ -1,32 +1,39 @@
 package org.pms.orm.impl;
 
-import org.pms.orm.beans.LoginBean;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.pms.orm.dao.LoginDao;
-import org.springframework.jdbc.core.JdbcTemplate;
+import org.pms.orm.model.Login;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+import javax.annotation.Resource;
 
 /**
  * Created by jaliya on 7/26/17.
  */
 
 @Repository
+@Transactional
 public class LoginDaoImpl implements LoginDao {
 
-    private JdbcTemplate jdbcTemplate;
 
-    public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
-    }
+    @Resource(name = "sessionFactory")
+    protected SessionFactory sessionFactory;
 
-    public int login(LoginBean loginBean) {
+    public String login(Login login) {
 
+        Session session = sessionFactory.openSession();
 
-        String sql = "select index_no from login where username=? and password=?";
+        String sql = "Select login_id from login where username=:username and password=:password";
+        Query query = session.createNativeQuery(sql);
 
+        query.setParameter("username", login.getUsername());
+        query.setParameter("password", login.getPassword());
 
-        int rs = jdbcTemplate.queryForObject(
-                sql, new Object[]{loginBean.getUsername(), loginBean.getPassword()}, int.class);
+        String rs = query.getSingleResult().toString();
 
         return rs;
     }
+
 }

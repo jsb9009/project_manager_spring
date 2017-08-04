@@ -20,12 +20,12 @@
     <h3><span class="label label-info">Add new project details</span></h3>
 
     <div class="form-group">
-    <form:form name="projectform" action="addproject" method="POST" modelAttribute="projectBean">
+    <form:form name="projectform" action="addproject" method="POST" modelAttribute="projects">
         <table border="0" align="center">
             <tbody>
             <tr>
                 <td>Project Number</td>
-                <td><form:input required="required" class="form-control" path="projectNo"/></td>
+                <td><form:input required="required" class="form-control" path="projectId"/></td>
             </tr>
             <tr>
                 <td colspan="5">&nbsp;</td>
@@ -46,7 +46,7 @@
             </tr>
             <tr>
                 <td>Project Type</td>
-                <td><form:input required="required" class="form-control" path="type"/></td>
+                <td><form:input required="required" class="form-control" path="projectType"/></td>
             </tr>
             <td></td>
             <td></td>

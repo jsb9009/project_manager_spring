@@ -3,9 +3,7 @@ package org.pms.core;
 import org.pms.core.service.AssignTasksService;
 import org.pms.core.service.GetEmployeesService;
 import org.pms.core.service.GetTasksService;
-import org.pms.orm.beans.AssignBean;
-import org.pms.orm.beans.EmployeeNumberBean;
-import org.pms.orm.beans.GetTasksBean;
+import org.pms.orm.model.Tasks;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -36,21 +34,20 @@ public class AssignTasksController {
 
     @RequestMapping(value = "/assign_tasks", method = RequestMethod.GET)
     public String projects(Model model4) {
-        model4.addAttribute("assignBean", new AssignBean());
+        model4.addAttribute("tasks", new Tasks());
         return "assign_tasks";
     }
 
     @RequestMapping(value = "/assigntask", method = RequestMethod.POST)
-    public String assignTask(@ModelAttribute("assignBean") AssignBean assignBean,ModelMap model) {
+    public String assignTask(@ModelAttribute("tasks") Tasks tasks, ModelMap model) {
 
-        assigntasksService.assignTask(assignBean);
+        assigntasksService.assignTask(tasks);
         model.put("sucessMsg", "Task Sucessfully assigned");
         return "/assign_tasks";
     }
 
     @ModelAttribute("tasksList")
-    public List<GetTasksBean> getTasks()
-    {
+    public List<Tasks> getTasks() {
         List tasksList = gettasksService.getTasks();
 
         return tasksList;
@@ -58,8 +55,7 @@ public class AssignTasksController {
 
 
     @ModelAttribute("employeesList")
-    public List<EmployeeNumberBean> getEmployees()
-    {
+    public List<Tasks> getEmployees() {
         List employeesList = getemployeesService.getEmployees();
 
         return employeesList;

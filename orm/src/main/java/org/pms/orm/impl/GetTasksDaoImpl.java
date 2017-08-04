@@ -1,13 +1,15 @@
 package org.pms.orm.impl;
 
-import org.pms.orm.beans.GetTasksBean;
+
 import org.pms.orm.dao.GetTasksDao;
-import org.springframework.dao.DataAccessException;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.ResultSetExtractor;
+import org.pms.orm.model.Tasks;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Repository;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.math.BigInteger;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,33 +18,30 @@ import java.util.List;
  */
 
 @Repository
-public class GetTasksDaoImpl implements GetTasksDao{
+@Transactional
+public class GetTasksDaoImpl implements GetTasksDao {
 
-    private JdbcTemplate jdbcTemplate;
-
-    public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
-    }
+    @Autowired
+    private HibernateUtilImpl hibernateutilimpl;
 
 
-    public List<GetTasksBean> getTasks() {
+    public List<Tasks> getTasks() {
 
-        String sql = "select task_no from task";
+        String sql = "select task_id from task";
 
-        List<GetTasksBean> tasksList = jdbcTemplate.query(sql, new ResultSetExtractor<List<GetTasksBean>>() {
+        List<Object> taskObjects = hibernateutilimpl.fetchAll(sql);
 
-            @Override
-            public List<GetTasksBean> extractData(ResultSet rs) throws SQLException, DataAccessException {
-                List<GetTasksBean> list = new ArrayList<GetTasksBean>();
-                while (rs.next()) {
+        List<Tasks> tasksList = new ArrayList<Tasks>();
 
-                    GetTasksBean  gettasksBean = new GetTasksBean();
-                    gettasksBean.setTask_no(rs.getString(1));
-                    list.add(gettasksBean);
-                }
-                return list;
-            }
-        });
+        for (Object taskObject : taskObjects) {
+            Tasks task = new Tasks();
+            String id = (String) taskObject;
+
+            task.setTaskId(id);
+
+            tasksList.add(task);
+        }
+
         return tasksList;
     }
 }

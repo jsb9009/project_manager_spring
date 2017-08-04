@@ -1,24 +1,27 @@
 package org.pms.core.impl;
 
 import org.pms.core.service.CreateTasksService;
-import org.pms.orm.beans.TaskBean;
-import org.pms.orm.impl.TaskDaoImpl;
+
+import org.pms.orm.dao.TaskDao;
+import org.pms.orm.model.Tasks;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Created by jaliya on 7/26/17.
  */
 
 @Service
+@Transactional
 public class CreateTasksServiceImpl implements CreateTasksService {
 
     @Autowired
-    private TaskDaoImpl taskDao;
+    private TaskDao taskDao;
 
-    public void createTasks(TaskBean taskBean) {
+    public String createTasks(Tasks tasks) {
 
-        taskDao.createTask(taskBean);
+        return taskDao.createTask(tasks);
 
     }
 }

@@ -1,29 +1,30 @@
 package org.pms.core.impl;
 
 import org.pms.core.service.UpdateTaskService;
-import org.pms.orm.beans.TaskBean;
-import org.pms.orm.beans.UpdateTaskBean;
-import org.pms.orm.beans.ViewTasksBean;
-import org.pms.orm.impl.UpdateTaskDaoImpl;
+
+import org.pms.orm.dao.UpdateTaskDao;
+
+import org.pms.orm.model.Tasks;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
 
 /**
  * Created by jaliya on 7/26/17.
  */
 
 @Service
+@Transactional
 public class UpdateTaskServiceImpl implements UpdateTaskService {
 
 
     @Autowired
-    private UpdateTaskDaoImpl updatetaskDao;
+    private UpdateTaskDao updatetaskDao;
 
-    public void updateTask(UpdateTaskBean updatetaskBean) {
+    public void updateTask(Tasks tasks) {
 
-        updatetaskDao.updateTask(updatetaskBean);
+        updatetaskDao.updateTask(tasks);
     }
 
 }

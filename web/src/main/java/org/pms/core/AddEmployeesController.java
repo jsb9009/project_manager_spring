@@ -1,7 +1,7 @@
 package org.pms.core;
 
 import org.pms.core.service.AddEmployeesService;
-import org.pms.orm.beans.EmployeeBean;
+import org.pms.orm.model.Employees;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,14 +23,14 @@ public class AddEmployeesController {
 
     @RequestMapping("/add_employees")
     public String add_employees(Model model2) {
-        model2.addAttribute("employeeBean", new EmployeeBean());
+        model2.addAttribute("employees", new Employees());
         return "add_employees";
     }
 
     @RequestMapping(value = "/addemployee", method = RequestMethod.POST)
-    public String saveEmployee(@ModelAttribute("employeeBean") EmployeeBean employeeBean, ModelMap model) {
+    public String saveEmployee(@ModelAttribute("employees") Employees employees, ModelMap model) {
 
-        addemployeesService.addEmployee(employeeBean);
+        addemployeesService.addEmployee(employees);
         model.put("sucessMsg", "Employee Sucessfully added");
         return "/add_employees";
     }

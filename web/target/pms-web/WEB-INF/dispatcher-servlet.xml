@@ -2,11 +2,13 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:mvc="http://www.springframework.org/schema/mvc"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+       xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
 
     <mvc:annotation-driven />
+
+    <context:property-placeholder location="classpath:application.properties" />
     <context:component-scan  base-package="org.pms" />
     <mvc:resources mapping="/css/**" location="css"/>
     <mvc:resources mapping="/resources/**" location="bootstrap/" />
@@ -19,60 +21,50 @@
     </bean>
 
 
-    <bean id="employeeDao" class="org.pms.orm.impl.EmployeeDaoImpl">
-        <property name="jdbcTemplate" ref="jdbcTemplate" />
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+          destroy-method="close">
+
+        <property name="driverClass" value="${database.driverClass}" />
+        <property name="jdbcUrl" value="${database.url}" />
+        <property name="user" value="${database.username}" />
+        <property name="password" value="${database.password}" />
+
+        <property name="acquireIncrement" value="${connection.acquireIncrement}" />
+        <property name="minPoolSize" value="${connection.minPoolSize}" />
+        <property name="maxPoolSize" value="${connection.maxPoolSize}" />
+        <property name="maxIdleTime" value="${connection.maxIdleTime}" />
     </bean>
 
-    <bean id="projectDao" class="org.pms.orm.impl.ProjectDaoImpl">
-        <property name="jdbcTemplate" ref="jdbcTemplate" />
+    <bean id="sessionFactory"
+          class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"></property>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">${hibernate.dialect}</prop>
+                <prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
+                <prop key="hibernate.format_sql">${hibernate.format_sql}</prop>
+                <prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
+<!-- <prop key="hibernate.transaction.jta.platform">org.hibernate.service.jta.platform.internal.WeblogicJtaPlatform</prop>-->
+            </props>
+        </property>
+        <property name="packagesToScan" value="org.pms.orm"></property>
     </bean>
 
-    <bean id="taskDao" class="org.pms.orm.impl.TaskDaoImpl">
-        <property name="jdbcTemplate" ref="jdbcTemplate" />
+
+    <bean id="txManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory" />
     </bean>
 
-    <bean id="viewtasksDao" class="org.pms.orm.impl.ViewTasksDaoImpl">
-        <property name="jdbcTemplate" ref="jdbcTemplate" />
-    </bean>
 
-    <bean id="assignDao" class="org.pms.orm.impl.AssignDaoImpl">
-        <property name="jdbcTemplate" ref="jdbcTemplate" />
-    </bean>
 
-    <bean id="updatetaskDao" class="org.pms.orm.impl.UpdateTaskDaoImpl">
-        <property name="jdbcTemplate" ref="jdbcTemplate" />
-    </bean>
 
-    <bean id="viewassignedtasksdao" class="org.pms.orm.impl.ViewAssignedTasksDaoImpl">
-        <property name="jdbcTemplate" ref="jdbcTemplate" />
-    </bean>
+    <!--<bean id="transactionManager"-->
+          <!--class="org.springframework.orm.hibernate5.HibernateTransactionManager">-->
+        <!--<property name="sessionFactory" ref="sessionFactory" />-->
+    <!--</bean>-->
 
-    <bean id="logindao" class="org.pms.orm.impl.LoginDaoImpl">
-        <property name="jdbcTemplate" ref="jdbcTemplate" />
-    </bean>
+    <tx:annotation-driven transaction-manager="txManager" />
 
-    <bean id="gettasksdao" class="org.pms.orm.impl.GetTasksDaoImpl">
-        <property name="jdbcTemplate" ref="jdbcTemplate" />
-    </bean>
 
-    <bean id="getprojectsdao" class="org.pms.orm.impl.GetProjectsDaoImpl">
-        <property name="jdbcTemplate" ref="jdbcTemplate" />
-    </bean>
-
-    <bean id="getemployeesdao" class="org.pms.orm.impl.GetEmployeesDaoImpl">
-        <property name="jdbcTemplate" ref="jdbcTemplate" />
-    </bean>
-
-    <bean id="dataSource"
-          class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
-        <property name="url" value="jdbc:mysql://localhost:3306/pms" />
-        <property name="username" value="root" />
-        <property name="password" value="" />
-    </bean>
-
-    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
-        <property name="dataSource" ref="dataSource" />
-    </bean>
 
         </beans>

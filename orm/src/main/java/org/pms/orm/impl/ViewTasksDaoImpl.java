@@ -1,14 +1,17 @@
 package org.pms.orm.impl;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.pms.orm.dao.ViewTasksDao;
-import org.pms.orm.beans.ViewTasksBean;
-import org.springframework.dao.DataAccessException;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.ResultSetExtractor;
+import org.pms.orm.model.Employees;
+import org.pms.orm.model.Projects;
+import org.pms.orm.model.Tasks;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import javax.annotation.Resource;
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,36 +20,52 @@ import java.util.List;
  */
 
 @Repository
+@Transactional
 public class ViewTasksDaoImpl implements ViewTasksDao {
 
+    @Autowired
+    private HibernateUtilImpl hibernateutilimpl;
 
-    private JdbcTemplate jdbcTemplate;
+    @Resource(name = "sessionFactory")
+    protected SessionFactory sessionFactory;
 
-    public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
-    }
 
-    public List<ViewTasksBean> viewTasks() {
-        String sql = "select task_no,task_name,status,project_no,employee_no from task,project,employee where task.index_no_project=project.index_no and task.index_no_employee=employee.index_no";
+    public List<Tasks> viewTasks() {
 
-        List<ViewTasksBean> tasksList = jdbcTemplate.query(sql, new ResultSetExtractor<List<ViewTasksBean>>() {
-            @Override
-            public List<ViewTasksBean> extractData(ResultSet rs) throws SQLException, DataAccessException {
-                List<ViewTasksBean> list = new ArrayList<ViewTasksBean>();
-                while (rs.next()) {
-                    ViewTasksBean viewtasksBean = new ViewTasksBean();
-                    viewtasksBean.setTask_no(rs.getString(1));
-                    viewtasksBean.setTask_name(rs.getString(2));
-                    viewtasksBean.setStatus(rs.getString(3));
-                    viewtasksBean.setProjectNo(rs.getString(4));
-                    viewtasksBean.setEmpNo(rs.getString(5));
-                    list.add(viewtasksBean);
-                }
-                return list;
-            }
-        });
+        Session session = sessionFactory.openSession();
+
+        List<Tasks> tasksList = session.createCriteria(Tasks.class).list();
+
+        /*String sql = "select task_id,task_name,status,project_id,employee_id from task";
+
+        List<Object[]> taskObjects = hibernateutilimpl.fetchAll(sql);
+
+        List<Tasks> tasksList = new ArrayList<Tasks>();
+
+        for(Object[] taskObject: taskObjects) {
+
+            Tasks tasks = new Tasks();
+            Employees employees = tasks.getEmployees();
+            Projects projects = tasks.getProjects();
+
+            String id = (String) taskObject[0];
+            String name = (String) taskObject[1];
+            String status = (String) taskObject[2];
+            String projectId = (String) taskObject[3];
+            String empId = (String) taskObject[4];
+
+            tasks.setTaskId(id);
+            tasks.setTaskName(name);
+            tasks.setStatus(status);
+            projects.setProjectId(projectId);
+//            tasks.setProjects(projects);
+//            employees.setEmpId(empId);
+//            tasks.setEmployees(employees);
+
+            tasksList.add(tasks);
+        }*/
+
         return tasksList;
-
     }
 
 }

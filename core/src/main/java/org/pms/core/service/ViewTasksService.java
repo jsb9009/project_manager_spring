@@ -1,6 +1,6 @@
 package org.pms.core.service;
 
-import org.pms.orm.beans.ViewTasksBean;
+import org.pms.orm.model.Tasks;
 
 import java.util.List;
 
@@ -9,6 +9,6 @@ import java.util.List;
  */
 public interface ViewTasksService {
 
-     List<ViewTasksBean> viewTasks();
+     List<Tasks> viewTasks();
 
 }

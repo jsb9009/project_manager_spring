@@ -30,7 +30,7 @@
 
     <ul class="nav nav-pills nav-stacked">
         <li class="active" style="font-size:25px;"><a href="add_employees">Add employees to the workstation</a></li>
-        <li class="active" style="font-size:25px;"><a href="add_projects">Add projects</a></li>
+        <li class="active" style="font-size:25px;"><a href="add_projects">Add projects to the workstation</a></li>
 
     </ul>
 

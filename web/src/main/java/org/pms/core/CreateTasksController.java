@@ -2,8 +2,8 @@ package org.pms.core;
 
 import org.pms.core.service.CreateTasksService;
 import org.pms.core.service.GetProjectsService;
-import org.pms.orm.beans.GetProjectsBean;
-import org.pms.orm.beans.TaskBean;
+import org.pms.orm.model.Projects;
+import org.pms.orm.model.Tasks;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,21 +30,20 @@ public class CreateTasksController {
 
     @RequestMapping("/create_tasks")
     public String projects(Model model3) {
-        model3.addAttribute("taskBean", new TaskBean());
+        model3.addAttribute("tasks", new Tasks());
         return "create_tasks";
     }
 
     @RequestMapping(value = "/createtask", method = RequestMethod.POST)
-    public String createTask(@ModelAttribute("taskBean") TaskBean taskBean,ModelMap model) {
+    public String createTask(@ModelAttribute("tasks") Tasks tasks, ModelMap model) {
 
-        createtasksService.createTasks(taskBean);
+        createtasksService.createTasks(tasks);
         model.put("sucessMsg", "Task Sucessfully created");
         return "/create_tasks";
     }
 
     @ModelAttribute("statusList")
-    public List<String> getNumbersList()
-    {
+    public List<String> getNumbersList() {
         List<String> statusList = new ArrayList<String>();
         statusList.add("Beginning");
         statusList.add("On going");
@@ -53,8 +52,7 @@ public class CreateTasksController {
     }
 
     @ModelAttribute("projectsList")
-    public List<GetProjectsBean> getProjects()
-    {
+    public List<Projects> getProjects() {
         List projectsList = getprojectsService.getProjects();
 
         return projectsList;

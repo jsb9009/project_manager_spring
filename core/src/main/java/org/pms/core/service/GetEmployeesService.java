@@ -1,6 +1,6 @@
 package org.pms.core.service;
 
-import org.pms.orm.beans.EmployeeNumberBean;
+import org.pms.orm.model.Employees;
 
 import java.util.List;
 
@@ -9,5 +9,5 @@ import java.util.List;
  */
 public interface GetEmployeesService {
 
-    List<EmployeeNumberBean> getEmployees();
+    List<Employees> getEmployees();
 }
