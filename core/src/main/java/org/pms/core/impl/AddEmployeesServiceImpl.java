@@ -4,7 +4,7 @@ import org.pms.core.service.AddEmployeesService;
 
 import org.pms.orm.dao.EmployeeDao;
 
-import org.pms.orm.model.Employees;
+import org.pms.orm.model.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,9 +21,9 @@ public class AddEmployeesServiceImpl implements AddEmployeesService {
     private EmployeeDao employeeDao;
 
 
-    public String addEmployee(Employees employees) {
+    public Long addEmployee(Employee employee) {
 
-       return employeeDao.saveEmployee(employees);
+       return employeeDao.saveEmployee(employee);
 
     }
 

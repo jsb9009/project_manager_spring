@@ -1,6 +1,6 @@
 package org.pms.orm.dao;
 
-import org.pms.orm.model.Tasks;
+import org.pms.orm.model.Task;
 
 import java.util.List;
 
@@ -9,5 +9,5 @@ import java.util.List;
  */
 public interface GetTasksDao {
 
-    List<Tasks> getTasks();
+    List<Task> getTasks();
 }

@@ -1,6 +1,6 @@
 package org.pms.orm.dao;
 
-import org.pms.orm.model.Employees;
+import org.pms.orm.model.Employee;
 
 import java.util.List;
 
@@ -9,5 +9,5 @@ import java.util.List;
  */
 public interface GetEmployeesDao {
 
-    List<Employees> getEmployees();
+    List<Employee> getEmployees();
 }

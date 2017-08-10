@@ -10,7 +10,7 @@
 <html>
 <head>
     <title>Error</title>
-  <link rel="stylesheet" href="<c:url value="/bootstrap/css/bootstrap.min.css"/>"/>
+    <link rel="stylesheet" href="<c:url value="/bootstrap/css/bootstrap.min.css"/>"/>
 </head>
 <body>
 

@@ -15,7 +15,12 @@ public class Login implements Serializable {
     private static final long serialVersionUID = -7988799579036225137L;
 
     @Id
-    private String login_id;
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Column(name="id")
+    private long id;
+
+    @Column(name="login_id", nullable = false)
+    private String loginId;
 
     @Column
     private String username;
@@ -26,8 +31,23 @@ public class Login implements Serializable {
     public Login() {
     }
 
-    public String getUsername() {
+    public long getId() {
+        return id;
+    }
 
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getLoginId() {
+        return loginId;
+    }
+
+    public void setLoginId(String loginId) {
+        this.loginId = loginId;
+    }
+
+    public String getUsername() {
         return username;
     }
 
@@ -41,13 +61,5 @@ public class Login implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getLogin_id() {
-        return login_id;
-    }
-
-    public void setLogin_id(String login_id) {
-        this.login_id = login_id;
     }
 }

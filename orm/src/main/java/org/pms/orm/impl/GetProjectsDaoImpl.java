@@ -2,21 +2,18 @@ package org.pms.orm.impl;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-
 import org.pms.orm.dao.GetProjectsDao;
 
-import org.pms.orm.model.Projects;
+import org.pms.orm.model.Project;
+import org.pms.orm.model.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
-import java.math.BigInteger;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 /**
  * Created by jaliya on 7/31/17.
@@ -29,23 +26,16 @@ public class GetProjectsDaoImpl implements GetProjectsDao {
     @Autowired
     private HibernateUtilImpl hibernateutilimpl;
 
-    public List<Projects> getProjects() {
+    @Resource(name = "sessionFactory")
+    protected SessionFactory sessionFactory;
 
-        String sql = "select project_id from project";
+    public List<Project> getProjects() {
 
-        List<Object> projectObjects = hibernateutilimpl.fetchAll(sql);
+        Session session = sessionFactory.openSession();
 
-        List<Projects> projectsList = new ArrayList<Projects>();
+        List<Project> projectList = session.createCriteria(Project.class).list();
 
-        for (Object projectObject : projectObjects) {
-            Projects project = new Projects();
-            String id = (String) projectObject;
-
-            project.setProjectId(id);
-
-            projectsList.add(project);
-        }
-        return projectsList;
+        return projectList;
     }
 
 }

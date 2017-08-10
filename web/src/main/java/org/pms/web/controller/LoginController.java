@@ -30,10 +30,10 @@ public class LoginController {
         if (result == 1) {
             model.addAttribute("msg", "welcome manager");
             return new ModelAndView("manager_direct");
-        } else if (result == 2) {
+        } else if (result == 3) {
             model.addAttribute("msg", "welcome manager");
             return new ModelAndView("supervisor_direct");
-        } else if (result == 3) {
+        } else if (result == 4) {
             model.addAttribute("msg", "welcome manager");
             return new ModelAndView("employee_direct");
         } else

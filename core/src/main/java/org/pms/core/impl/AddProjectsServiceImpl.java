@@ -4,7 +4,7 @@ import org.pms.core.service.AddProjectsService;
 
 import org.pms.orm.dao.ProjectDao;
 
-import org.pms.orm.model.Projects;
+import org.pms.orm.model.Project;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,10 +21,12 @@ public class AddProjectsServiceImpl implements AddProjectsService {
     @Autowired
     private ProjectDao projectDao;
 
-    public void addProjects(Projects projects) {
+    public Long addProjects(Project project) {
 
-        projectDao.saveProject(projects);
+        return projectDao.saveProject(project);
 
 
     }
+
+
 }

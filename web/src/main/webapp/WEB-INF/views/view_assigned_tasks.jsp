@@ -15,32 +15,32 @@
 <body>
 
 <div>
-<h3><span class="label label-info">Your assigned tasks are..</span></h3>
+    <h3><span class="label label-info">Your assigned tasks are..</span></h3>
 
 
-<table border="1" class="table table-striped" align="centre">
-    <tr>
-        <th>Task Number</th>
-        <th>Task Name</th>
-        <th>Number of Hours</th>
-        <th>Project</th>
-
-    </tr>
-
-    <c:forEach items="${tasksList1}" var="tasks">
+    <table border="1" class="table table-striped" align="centre">
         <tr>
-            <td>${tasks.taskId}</td>
-            <td>${tasks.taskName}</td>
-            <td>${tasks.noOfHours}</td>
-            <td>${tasks.projects.projectId}</td>
+            <th>Task Number</th>
+            <th>Task Name</th>
+            <th>Number of Hours</th>
+            <th>Project</th>
+
         </tr>
 
-    </c:forEach>
+        <c:forEach items="${tasksList1}" var="task">
+            <tr>
+                <td>${task.taskId}</td>
+                <td>${task.taskName}</td>
+                <td>${task.noOfHours}</td>
+                <td>${task.project.projectId}</td>
+            </tr>
 
-</table>
-<br>
-<br>
-<input type="button" name="home" class="btn btn-primary" value="Back" onclick="history.go(-1);">
+        </c:forEach>
+
+    </table>
+    <br>
+    <br>
+    <input type="button" name="home" class="btn btn-primary" value="Back" onclick="history.go(-1);">
 </div>
 </body>
 </html>

@@ -10,12 +10,16 @@ import java.io.Serializable;
 
 @Entity
 @Table(name="project")
-public class Projects implements Serializable {
+public class Project implements Serializable {
 
     private static final long serialVersionUID = -7988799579036225137L;
 
     @Id
-    @Column(name="project_id")
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Column(name="id")
+    private long id;
+
+    @Column(name="project_id", nullable = false)
     private String projectId;
 
     @Column(name="project_name")
@@ -27,7 +31,7 @@ public class Projects implements Serializable {
     @Column(name="project_type")
     private String projectType;
 
-    public Projects() {
+    public Project() {
     }
 
     public String getProjectId() {
@@ -36,6 +40,14 @@ public class Projects implements Serializable {
 
     public void setProjectId(String projectId) {
         this.projectId = projectId;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getProjectName() {

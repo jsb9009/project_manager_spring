@@ -1,7 +1,7 @@
 package org.pms.core.service;
 
 
-import org.pms.orm.model.Projects;
+import org.pms.orm.model.Project;
 
 /**
  * Created by jaliya on 7/26/17.
@@ -9,5 +9,5 @@ import org.pms.orm.model.Projects;
 
 public interface AddProjectsService {
 
-     void addProjects(Projects projects);
+     Long addProjects(Project project);
 }

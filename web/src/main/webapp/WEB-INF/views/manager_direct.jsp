@@ -25,7 +25,6 @@
 <br>
 
 
-
 <div class="container" align="center">
 
     <ul class="nav nav-pills nav-stacked">
@@ -36,7 +35,8 @@
 
     <br>
     <br>
-    <td><input type="button" class="btn btn-primary" name="home" style=" float: right" value="Log Out" onclick="history.go(-1);"></td>
+    <td><input type="button" class="btn btn-primary" name="home" style=" float: right" value="Log Out"
+               onclick="history.go(-1);"></td>
 </div>
 
 </body>

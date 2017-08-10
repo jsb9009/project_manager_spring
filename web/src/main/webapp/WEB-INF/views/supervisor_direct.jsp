@@ -35,7 +35,8 @@
 
     <br>
     <br>
-    <input type="button" class="btn btn-primary" name="home" style=" float: right" value="Log Out" onclick="history.go(-1);">
+    <input type="button" class="btn btn-primary" name="home" style=" float: right" value="Log Out"
+           onclick="history.go(-1);">
 </div>
 </body>
 

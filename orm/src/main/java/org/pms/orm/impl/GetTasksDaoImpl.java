@@ -1,16 +1,16 @@
 package org.pms.orm.impl;
 
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.pms.orm.dao.GetTasksDao;
-import org.pms.orm.model.Tasks;
+import org.pms.orm.model.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.math.BigInteger;
-
-import java.util.ArrayList;
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -24,24 +24,15 @@ public class GetTasksDaoImpl implements GetTasksDao {
     @Autowired
     private HibernateUtilImpl hibernateutilimpl;
 
+    @Resource(name = "sessionFactory")
+    protected SessionFactory sessionFactory;
 
-    public List<Tasks> getTasks() {
+    public List<Task> getTasks() {
 
-        String sql = "select task_id from task";
+        Session session = sessionFactory.openSession();
 
-        List<Object> taskObjects = hibernateutilimpl.fetchAll(sql);
+        List<Task> taskList = session.createCriteria(Task.class).list();
 
-        List<Tasks> tasksList = new ArrayList<Tasks>();
-
-        for (Object taskObject : taskObjects) {
-            Tasks task = new Tasks();
-            String id = (String) taskObject;
-
-            task.setTaskId(id);
-
-            tasksList.add(task);
-        }
-
-        return tasksList;
+        return taskList;
     }
 }

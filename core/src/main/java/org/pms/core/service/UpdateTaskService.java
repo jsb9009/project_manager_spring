@@ -1,7 +1,7 @@
 package org.pms.core.service;
 
 
-import org.pms.orm.model.Tasks;
+import org.pms.orm.model.Task;
 
 
 /**
@@ -9,6 +9,6 @@ import org.pms.orm.model.Tasks;
  */
 public interface UpdateTaskService {
 
-    void updateTask(Tasks tasks);
+    void updateTask(Task task);
 
 }

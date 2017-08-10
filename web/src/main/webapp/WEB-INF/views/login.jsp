@@ -28,40 +28,41 @@
 <div class="container">
     <div class="page-header" style=" float: right">
         <h1>Project Management System</h1>
+
         <p style=" float: right">Simply manage your tasks..</p>
     </div>
 </div>
 
-<div style=" float: right" >
-<form:form method="POST" name="loginsubmit" action="loginin"
-           modelAttribute="login">
-<div class="form-group">
-    <table align="center">
-        <tr>
-            <td>User Name</td>
-            <td><form:input required="required" class="form-control" path="username"/></td>
-        </tr>
-        <tr>
-            <td colspan="5">&nbsp;</td>
-        </tr>
-        <tr>
-            <td>Password</td>
-            <td><form:password required="required" class="form-control" path="password"/></td>
+<div style=" float: right">
+    <form:form method="POST" name="loginsubmit" action="loginin"
+               modelAttribute="login">
+        <div class="form-group">
+            <table align="center">
+                <tr>
+                    <td>User Name</td>
+                    <td><form:input required="required" class="form-control" path="username"/></td>
+                </tr>
+                <tr>
+                    <td colspan="5">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>Password</td>
+                    <td><form:password required="required" class="form-control" path="password"/></td>
 
-        </tr>
+                </tr>
 
-        <tr>
-            <td colspan="5">&nbsp;</td>
-        </tr>
-        <tr>
-            <td>&nbsp;</td>
-        <td>&nbsp;</td>
-            <td><input class="btn btn-primary" float="right" type="submit" value="Log In"/></td>
-        </tr>
+                <tr>
+                    <td colspan="5">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td><input class="btn btn-primary" float="right" type="submit" value="Log In"/></td>
+                </tr>
 
-    </table>
-    </div>
-</form:form>
+            </table>
+        </div>
+    </form:form>
 
 </div>
 </body>

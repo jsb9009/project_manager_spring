@@ -1,10 +1,7 @@
 package org.pms.orm.model;
 
-import org.hibernate.annotations.Cascade;
-
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
 
 /**
  * Created by jaliya on 8/1/17.
@@ -12,25 +9,24 @@ import java.util.List;
 
 @Entity
 @Table(name="task")
-public class Tasks implements Serializable {
+public class Task implements Serializable {
 
     private static final long serialVersionUID = -7988799579036225137L;
 
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Column(name="id")
+    private long id;
+
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="employee_id")
-    private Employees employees;
-//    private List<Employees> employees;
-
-//
+    private Employee employee;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="project_id")
-    private Projects projects;
-//    private List<Projects> projects;
+    private Project project;
 
-
-    @Id
-    @Column(name="task_id")
+    @Column(name="task_id", nullable = false)
     private String taskId;
 
     @Column(name="task_name")
@@ -43,23 +39,31 @@ public class Tasks implements Serializable {
     @Column(name="no_of_hours")
     private String noOfHours;
 
-    public Tasks() {
+    public Task() {
     }
 
-    public Employees getEmployees() {
-        return employees;
+    public Employee getEmployee() {
+        return employee;
     }
 
-    public void setEmployees(Employees employees) {
-        this.employees = employees;
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
     }
 
-    public Projects getProjects() {
-        return projects;
+    public long getId() {
+        return id;
     }
 
-    public void setProjects(Projects projects) {
-        this.projects = projects;
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public Project getProject() {
+        return project;
+    }
+
+    public void setProject(Project project) {
+        this.project = project;
     }
 
     public String getTaskId() {

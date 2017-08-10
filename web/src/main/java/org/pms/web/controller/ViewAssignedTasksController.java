@@ -2,8 +2,8 @@ package org.pms.web.controller;
 
 import org.pms.core.service.GetEmployeesService;
 import org.pms.core.service.ViewAssignedTasksService;
-import org.pms.orm.model.Employees;
-import org.pms.orm.model.Tasks;
+import org.pms.orm.model.Employee;
+import org.pms.orm.model.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,29 +31,28 @@ public class ViewAssignedTasksController {
 
     @RequestMapping("/view_assigned_tasks_list")
     public String projects(Model model7) {
-        model7.addAttribute("tasks", new Tasks());
+        model7.addAttribute("task", new Task());
         return "employee_choose";
     }
 
     @RequestMapping(value = "/select_employee", method = RequestMethod.POST)
-    public ModelAndView chooseEmpoyeeNo(@ModelAttribute("tasks") Tasks tasks) {
+    public ModelAndView chooseEmpoyeeNo(@ModelAttribute("task") Task task) {
 
-//       viewassignedtasksService.chooseEmployeeNo(tasks);
         return new ModelAndView("view_assigned_tasks");
 
     }
 
     @RequestMapping(value = "/view_assigned_tasks", method = RequestMethod.POST)
-    public String viewassignedTasks(ModelMap model,Tasks tasks) {
+    public String viewassignedTasks(ModelMap model,Task task) {
 
-        List<Tasks> tasksList1 = viewassignedtasksService.viewassignedTasks(tasks);
-        model.put("tasksList1", tasksList1);
+        List<Task> taskList1 = viewassignedtasksService.viewassignedTasks(task);
+        model.put("tasksList1", taskList1);
         return "view_assigned_tasks";
 
     }
 
     @ModelAttribute("employeesList")
-    public List<Employees> getEmployees(){
+    public List<Employee> getEmployees(){
         List employeesList = getemployeesService.getEmployees();
 
         return employeesList;

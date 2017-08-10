@@ -4,7 +4,7 @@ import org.pms.core.service.GetTasksService;
 
 import org.pms.orm.dao.GetTasksDao;
 
-import org.pms.orm.model.Tasks;
+import org.pms.orm.model.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,7 +22,7 @@ public class GetTasksServiceImpl implements GetTasksService{
     @Autowired
     private GetTasksDao gettasksdao;
 
-    public List<Tasks> getTasks() {
+    public List<Task> getTasks() {
 
         return gettasksdao.getTasks();
 

@@ -2,8 +2,10 @@ package org.pms.core.impl;
 
 import org.pms.core.service.CreateTasksService;
 
+import org.pms.orm.dao.ProjectDao;
 import org.pms.orm.dao.TaskDao;
-import org.pms.orm.model.Tasks;
+import org.pms.orm.model.Project;
+import org.pms.orm.model.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,9 +21,16 @@ public class CreateTasksServiceImpl implements CreateTasksService {
     @Autowired
     private TaskDao taskDao;
 
-    public String createTasks(Tasks tasks) {
+    @Autowired
+    private ProjectDao projectDao;
 
-        return taskDao.createTask(tasks);
+    public Long createTasks(Task task) {
+
+        Long id = task.getProject().getId();
+        Project project =  projectDao.getProject(id);
+        task.setProject(project);
+
+        return taskDao.createTask(task);
 
     }
 }

@@ -1,7 +1,7 @@
 package org.pms.core.service;
 
 
-import org.pms.orm.model.Employees;
+import org.pms.orm.model.Employee;
 
 
 /**
@@ -10,5 +10,5 @@ import org.pms.orm.model.Employees;
 
 public interface AddEmployeesService {
 
-     String addEmployee(Employees employees);
+     Long addEmployee(Employee employee);
 }

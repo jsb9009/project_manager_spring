@@ -34,7 +34,7 @@ public class LoginDaoImpl implements LoginDao {
     -persistentclas
      */
 
-        String sql = "Select login_id from login where username=:username and password=:password";
+        String sql = "Select id from login where username=:username and password=:password";
         Query query = session.createNativeQuery(sql);
 
         query.setParameter("username", login.getUsername());

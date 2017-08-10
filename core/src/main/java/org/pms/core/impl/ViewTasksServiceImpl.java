@@ -3,7 +3,7 @@ package org.pms.core.impl;
 import org.pms.core.service.ViewTasksService;
 
 import org.pms.orm.dao.ViewTasksDao;
-import org.pms.orm.model.Tasks;
+import org.pms.orm.model.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,7 +21,7 @@ public class ViewTasksServiceImpl implements ViewTasksService {
     @Autowired
     private ViewTasksDao viewtasksDao;
 
-    public List<Tasks> viewTasks() {
+    public List<Task> viewTasks() {
 
         return viewtasksDao.viewTasks();
 

@@ -34,16 +34,10 @@ public class HibernateUtilImpl implements HibernateUtil {
         sessionFactory.getCurrentSession().delete(entity);
     }
 
-
     @SuppressWarnings("rawtypes")
     public <T> List<T> fetchAll(String query) {
         return sessionFactory.getCurrentSession().createNativeQuery(query).list();
     }
 
-
-//    public <T> void delete(Serializable id, Class<T> entityClass) {
-//        T entity = fetchById(id, entityClass);
-//        delete(entity);
-//    }
 
 }

@@ -2,7 +2,7 @@ package org.pms.web.controller;
 
 import org.pms.core.service.GetTasksService;
 import org.pms.core.service.UpdateTaskService;
-import org.pms.orm.model.Tasks;
+import org.pms.orm.model.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,7 +29,7 @@ public class UpdateTaskController {
 
     @RequestMapping(value = "/update_tasks", method = RequestMethod.GET)
     public String projects(Model model6) {
-        model6.addAttribute("tasks", new Tasks());
+        model6.addAttribute("task", new Task());
         return "update_tasks";
     }
 
@@ -44,7 +44,7 @@ public class UpdateTaskController {
 
 
     @ModelAttribute("tasksList")
-    public List<Tasks> getTasks() {
+    public List<Task> getTasks() {
         List tasksList = gettasksService.getTasks();
 
         return tasksList;
@@ -52,9 +52,9 @@ public class UpdateTaskController {
 
 
     @RequestMapping(value = "/updatetask", method = RequestMethod.POST)
-    public String updateTask(@ModelAttribute("tasks") Tasks tasks, ModelMap model) {
+    public String updateTask(@ModelAttribute("task") Task task, ModelMap model) {
 
-        updatetaskService.updateTask(tasks);
+        updatetaskService.updateTask(task);
         model.put("sucessMsg", "Task Sucessfully updated");
         return "/update_tasks";
     }

@@ -1,6 +1,6 @@
 package org.pms.orm.dao;
 
-import org.pms.orm.model.Employees;
+import org.pms.orm.model.Employee;
 
 /**
  * Created by jaliya on 7/21/17.
@@ -8,6 +8,8 @@ import org.pms.orm.model.Employees;
 
 public interface EmployeeDao {
 
-    String saveEmployee(Employees employees);
+    Long saveEmployee(Employee employee);
+
+    Employee getEmployee(Long empId);
 
 }

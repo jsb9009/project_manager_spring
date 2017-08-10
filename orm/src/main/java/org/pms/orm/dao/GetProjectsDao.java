@@ -1,6 +1,6 @@
 package org.pms.orm.dao;
 
-import org.pms.orm.model.Projects;
+import org.pms.orm.model.Project;
 
 import java.util.List;
 
@@ -9,5 +9,5 @@ import java.util.List;
  */
 public interface GetProjectsDao {
 
-    List<Projects> getProjects();
+    List<Project> getProjects();
 }

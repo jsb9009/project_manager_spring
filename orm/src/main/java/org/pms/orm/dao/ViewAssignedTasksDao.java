@@ -1,7 +1,6 @@
 package org.pms.orm.dao;
 
-import org.pms.orm.model.Employees;
-import org.pms.orm.model.Tasks;
+import org.pms.orm.model.Task;
 
 import java.util.List;
 
@@ -10,6 +9,6 @@ import java.util.List;
  */
 public interface ViewAssignedTasksDao {
 
-    List<Tasks> viewassignedTasks(Tasks tasks);
+    List<Task> viewassignedTasks(Task task);
 
 }

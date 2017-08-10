@@ -1,14 +1,12 @@
 package org.pms.orm.dao;
 
-import org.pms.orm.model.Tasks;
-
-import java.util.List;
+import org.pms.orm.model.Task;
 
 /**
  * Created by jaliya on 7/24/17.
  */
 public interface UpdateTaskDao {
 
-    void updateTask(Tasks tasks);
+    void updateTask(Task task);
 
 }

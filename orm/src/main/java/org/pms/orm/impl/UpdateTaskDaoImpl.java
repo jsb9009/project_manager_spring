@@ -5,7 +5,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.pms.orm.dao.UpdateTaskDao;
 
-import org.pms.orm.model.Tasks;
+import org.pms.orm.model.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,16 +27,10 @@ public class UpdateTaskDaoImpl implements UpdateTaskDao {
     @Resource(name = "sessionFactory")
     protected SessionFactory sessionFactory;
 
-    public void updateTask(Tasks tasks) {
+    public void updateTask(Task task) {
 
-        Session session = sessionFactory.openSession();
-
-        Tasks taskDb = session.get(Tasks.class, tasks.getTaskId());
-        taskDb.setStatus(tasks.getStatus());
-
-        hibernateutilimpl.update(taskDb);
+        hibernateutilimpl.update(task);
 
     }
-
 
 }
