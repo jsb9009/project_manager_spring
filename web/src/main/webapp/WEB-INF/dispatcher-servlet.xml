@@ -44,7 +44,7 @@
                 <prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
                 <prop key="hibernate.format_sql">${hibernate.format_sql}</prop>
                 <prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
-<!-- <prop key="hibernate.transaction.jta.platform">org.hibernate.service.jta.platform.internal.WeblogicJtaPlatform</prop>-->
+
             </props>
         </property>
         <property name="packagesToScan" value="org.pms.orm"></property>
@@ -56,12 +56,6 @@
     </bean>
 
 
-
-
-    <!--<bean id="transactionManager"-->
-          <!--class="org.springframework.orm.hibernate5.HibernateTransactionManager">-->
-        <!--<property name="sessionFactory" ref="sessionFactory" />-->
-    <!--</bean>-->
 
     <tx:annotation-driven transaction-manager="txManager" />
 

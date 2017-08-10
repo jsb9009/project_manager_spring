@@ -17,7 +17,6 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class LoginServiceImpl implements LoginService {
 
-
     @Autowired
     private LoginDao logindao;
 
