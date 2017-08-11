@@ -1,7 +1,7 @@
 package org.pms.web.controller;
 
-import org.pms.core.service.GetEmployeesService;
-import org.pms.core.service.ViewAssignedTasksService;
+import org.pms.core.service.EmployeeService;
+import org.pms.core.service.TaskService;
 import org.pms.orm.model.Employee;
 import org.pms.orm.model.Task;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,10 +24,10 @@ public class ViewAssignedTasksController {
 
 
     @Autowired
-    private ViewAssignedTasksService viewassignedtasksService;
+    private TaskService taskService;
 
     @Autowired
-    private GetEmployeesService getemployeesService;
+    private EmployeeService employeeService;
 
     @RequestMapping("/view_assigned_tasks_list")
     public String projects(Model model7) {
@@ -45,7 +45,7 @@ public class ViewAssignedTasksController {
     @RequestMapping(value = "/view_assigned_tasks", method = RequestMethod.POST)
     public String viewassignedTasks(ModelMap model,Task task) {
 
-        List<Task> taskList1 = viewassignedtasksService.viewassignedTasks(task);
+        List<Task> taskList1 = taskService.viewassignedTasks(task);
         model.put("tasksList1", taskList1);
         return "view_assigned_tasks";
 
@@ -53,7 +53,7 @@ public class ViewAssignedTasksController {
 
     @ModelAttribute("employeesList")
     public List<Employee> getEmployees(){
-        List employeesList = getemployeesService.getEmployees();
+        List employeesList = employeeService.getEmployees();
 
         return employeesList;
     }

@@ -1,7 +1,6 @@
 package org.pms.web.controller;
 
-import org.pms.core.service.GetTasksService;
-import org.pms.core.service.UpdateTaskService;
+import org.pms.core.service.TaskService;
 import org.pms.orm.model.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,10 +21,7 @@ import java.util.List;
 public class UpdateTaskController {
 
     @Autowired
-    private UpdateTaskService updatetaskService;
-
-    @Autowired
-    private GetTasksService gettasksService;
+    private TaskService taskService;
 
     @RequestMapping(value = "/update_tasks", method = RequestMethod.GET)
     public String projects(Model model6) {
@@ -45,16 +41,15 @@ public class UpdateTaskController {
 
     @ModelAttribute("tasksList")
     public List<Task> getTasks() {
-        List tasksList = gettasksService.getTasks();
+        List tasksList = taskService.getTasks();
 
         return tasksList;
     }
 
-
     @RequestMapping(value = "/updatetask", method = RequestMethod.POST)
     public String updateTask(@ModelAttribute("task") Task task, ModelMap model) {
 
-        updatetaskService.updateTask(task);
+        taskService.updateTask(task);
         model.put("sucessMsg", "Task Sucessfully updated");
         return "/update_tasks";
     }

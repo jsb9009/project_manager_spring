@@ -1,7 +1,7 @@
 package org.pms.core.impl;
 
 import org.pms.core.service.TaskService;
-import org.pms.orm.dao.AssignDao;
+
 
 import org.pms.orm.dao.EmployeeDao;
 import org.pms.orm.dao.ProjectDao;
@@ -24,9 +24,6 @@ import java.util.List;
 public class TaskServiceImpl implements TaskService {
 
     @Autowired
-    private AssignDao assignDao;
-
-    @Autowired
     private EmployeeDao employeeDao;
 
     @Autowired
@@ -43,7 +40,7 @@ public class TaskServiceImpl implements TaskService {
         Employee employee =  employeeDao.getEmployee(id);
         task.setEmployee(employee);
 
-        assignDao.assignTask(task);
+        taskDao.assignTask(task);
 
     }
 

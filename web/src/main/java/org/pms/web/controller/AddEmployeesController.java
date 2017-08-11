@@ -1,6 +1,6 @@
 package org.pms.web.controller;
 
-import org.pms.core.service.AddEmployeesService;
+import org.pms.core.service.EmployeeService;
 import org.pms.orm.model.Employee;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +20,7 @@ public class AddEmployeesController {
 
 
     @Autowired
-    private AddEmployeesService addemployeesService;
+    private EmployeeService employeeService;
 
     @RequestMapping("/add_employees")
     public String add_employees(Model model2) {
@@ -31,7 +31,7 @@ public class AddEmployeesController {
     @RequestMapping(value = "/addemployee", method = RequestMethod.POST)
     public String saveEmployee(@ModelAttribute("employee") Employee employee, ModelMap model) {
 
-        addemployeesService.addEmployee(employee);
+        employeeService.addEmployee(employee);
         model.put("sucessMsg", "Employee Sucessfully added");
         return "/add_employees";
     }
