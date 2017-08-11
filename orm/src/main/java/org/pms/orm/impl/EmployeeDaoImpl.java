@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * Created by jaliya on 7/21/17.
@@ -52,5 +53,15 @@ public class EmployeeDaoImpl implements EmployeeDao {
         }
 
         return employee1;
+    }
+
+
+    public List<Employee> getEmployees() {
+
+        Session session = sessionFactory.openSession();
+
+        List<Employee> employeeList = session.createCriteria(Employee.class).list();
+
+        return employeeList;
     }
 }

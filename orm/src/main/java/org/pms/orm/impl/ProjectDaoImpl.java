@@ -14,6 +14,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.List;
 import java.util.LongSummaryStatistics;
 
 /**
@@ -55,4 +56,17 @@ public class ProjectDaoImpl implements ProjectDao {
 
         return project1;
     }
+
+
+
+    public List<Project> getProjects() {
+
+        Session session = sessionFactory.openSession();
+
+        List<Project> projectList = session.createCriteria(Project.class).list();
+
+        return projectList;
+    }
+
+
 }

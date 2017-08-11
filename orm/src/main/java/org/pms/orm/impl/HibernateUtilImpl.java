@@ -39,5 +39,8 @@ public class HibernateUtilImpl implements HibernateUtil {
         return sessionFactory.getCurrentSession().createNativeQuery(query).list();
     }
 
-
+    @SuppressWarnings("unchecked")
+    public <T> List<T> fetchAll(Class<T> entityClass) {
+        return sessionFactory.getCurrentSession().createQuery(" FROM "+entityClass.getName()).list();
+    }
 }
