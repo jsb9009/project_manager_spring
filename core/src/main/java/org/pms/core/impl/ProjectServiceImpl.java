@@ -1,6 +1,6 @@
 package org.pms.core.impl;
 
-import org.pms.core.service.AddProjectsService;
+import org.pms.core.service.ProjectService;
 
 import org.pms.orm.dao.ProjectDao;
 
@@ -9,13 +9,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * Created by jaliya on 7/26/17.
  */
 
 @Service
 @Transactional
-public class AddProjectsServiceImpl implements AddProjectsService {
+public class ProjectServiceImpl implements ProjectService {
 
 
     @Autowired
@@ -25,6 +27,12 @@ public class AddProjectsServiceImpl implements AddProjectsService {
 
         return projectDao.saveProject(project);
 
+
+    }
+
+    public List<Project> getProjects() {
+
+        return projectDao.getProjects();
 
     }
 
