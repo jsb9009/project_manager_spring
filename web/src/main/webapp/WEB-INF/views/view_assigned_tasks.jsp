@@ -18,7 +18,7 @@
     <h3><span class="label label-info">Your assigned tasks are..</span></h3>
 
 
-    <table border="1" class="table table-striped" align="centre">
+    <table border="1" class="table table-bordered table-hover" style="width: auto;" align="centre">
         <tr>
             <th>Task Number</th>
             <th>Task Name</th>

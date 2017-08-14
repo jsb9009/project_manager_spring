@@ -1,11 +1,14 @@
 package org.pms.orm.impl;
 
+import org.hibernate.Criteria;
 import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
+import org.hibernate.query.Query;
 import org.pms.orm.dao.EmployeeDao;
 import org.pms.orm.model.Employee;
-import org.pms.orm.model.Project;
+import org.pms.orm.model.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -64,4 +67,19 @@ public class EmployeeDaoImpl implements EmployeeDao {
 
         return employeeList;
     }
-}
+
+
+
+    public Employee getUser(Employee employee){
+
+
+        Session session = sessionFactory.openSession();
+
+        Criteria cr = session.createCriteria(Employee.class);
+        cr.add(Restrictions.eq("username", employee.getUsername()));
+        Employee employee1 = (Employee) cr.uniqueResult();
+
+        return employee1;
+    }
+
+    }

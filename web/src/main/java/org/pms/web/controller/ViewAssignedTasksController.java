@@ -11,7 +11,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
+
 
 import java.util.List;
 
@@ -35,17 +35,11 @@ public class ViewAssignedTasksController {
         return "employee_choose";
     }
 
-    @RequestMapping(value = "/select_employee", method = RequestMethod.POST)
-    public ModelAndView chooseEmpoyeeNo(@ModelAttribute("task") Task task) {
 
-        return new ModelAndView("view_assigned_tasks");
+    @RequestMapping(value = "/view_assigned_tasks",method = RequestMethod.GET)
+    public String viewassignedTasks(ModelMap model) {
 
-    }
-
-    @RequestMapping(value = "/view_assigned_tasks", method = RequestMethod.POST)
-    public String viewassignedTasks(ModelMap model,Task task) {
-
-        List<Task> taskList1 = taskService.viewassignedTasks(task);
+        List<Task> taskList1 = taskService.viewassignedTasks(LoginController.loggedEmployee);
         model.put("tasksList1", taskList1);
         return "view_assigned_tasks";
 

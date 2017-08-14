@@ -19,7 +19,7 @@
 
 <body>
 
-<h1><span class="label label-default">Welcome Employee..</span></h1>
+<h1><span class="label label-default">Welcome ${user}..</span></h1>
 
 <br>
 <br>
@@ -29,7 +29,7 @@
 
     <ul class="nav nav-pills nav-stacked">
         <li class="active" style="font-size:25px;"><a href="update_tasks">Update assigned tasks status</a></li>
-        <li class="active" style="font-size:25px;"><a href="view_assigned_tasks_list">View assigned tasks</a></li>
+        <li class="active" style="font-size:25px;"><a href="view_assigned_tasks">View assigned tasks</a></li>
 
     </ul>
 

@@ -35,4 +35,10 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     }
 
+//    public String getUser(Employee employee){
+//
+//
+//       return employeeDao.getUser(employee);
+//    }
+
 }

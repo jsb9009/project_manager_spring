@@ -4,7 +4,7 @@ import org.pms.core.service.LoginService;
 
 import org.pms.orm.dao.LoginDao;
 
-import org.pms.orm.model.Login;
+import org.pms.orm.model.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,9 +20,9 @@ public class LoginServiceImpl implements LoginService {
     @Autowired
     private LoginDao logindao;
 
-    public String login(Login login){
+    public String login(Employee employee){
 
-        return logindao.login(login);
+        return logindao.login(employee);
     }
 
 

@@ -2,10 +2,11 @@ package org.pms.orm.impl;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Restrictions;
+
 import org.hibernate.query.Query;
 import org.pms.orm.dao.LoginDao;
-import org.pms.orm.model.Login;
+import org.pms.orm.model.Employee;
+
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,20 +26,15 @@ public class LoginDaoImpl implements LoginDao {
     @Resource(name = "sessionFactory")
     protected SessionFactory sessionFactory;
 
-    public String login(Login login) {
+    public String login(Employee employee) {
 
         Session session = sessionFactory.openSession();
 
-    /*Try to convert logic with according to the answer of the following question
-    https://stackoverflow.com/questions/37857482/correct-alternative-to-sharedsessioncontrac-createcriteriaclass
-    -persistentclas
-     */
-
-        String sql = "Select id from login where username=:username and password=:password";
+        String sql = "Select authentication_level from employee where username=:username and password=:password";
         Query query = session.createNativeQuery(sql);
 
-        query.setParameter("username", login.getUsername());
-        query.setParameter("password", login.getPassword());
+        query.setParameter("username", employee.getUsername());
+        query.setParameter("password", employee.getPassword());
 
         String rs = query.getSingleResult().toString();
 

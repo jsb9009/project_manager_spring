@@ -17,7 +17,7 @@
 
 <div>
     <h3><span class="label label-info">Add new employee details</span></h3>
-
+</div>
     <div class="form-group">
         <form:form name="employeeform" action="addemployee" method="POST" modelAttribute="employee">
             <table border="0" align="center">
@@ -39,6 +39,36 @@
                 <tr>
                     <td>Position</td>
                     <td><form:input required="required" class="form-control" path="position"/></td>
+                </tr>
+                <tr>
+                    <td colspan="5">&nbsp;</td>
+                </tr>
+
+                <%--<tr>--%>
+                    <%--<h4><span class="label label-info">Give authentication details for the employee..</span></h4>--%>
+                    <%--</tr>--%>
+                <tr>
+                    <td>Username</td>
+                    <td><form:input required="required" class="form-control" path="username"/></td>
+                </tr>
+                <tr>
+                    <td colspan="5">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>Password</td>
+                    <td><form:input required="required" class="form-control" path="password"/></td>
+                </tr>
+                <tr>
+                    <td colspan="5">&nbsp;</td>
+                </tr>
+
+                <tr>
+                    <td>Authentication Level</td>
+                    <td><form:select path="authinticationLevel" class="form-control"  data-toggle="dropdown" style="width:220px;">
+                        <form:option value="0" label="--Select--"/>
+                        <form:options items="${authenticationList}"/>
+                    </form:select></td>
+
                 </tr>
 
                 <td></td>
@@ -65,7 +95,6 @@
         <h4 class="alert alert-success" style="width: 900px">${sucessMsg}</h4>
     </c:if>
 
-</div>
 </body>
 </html>
 

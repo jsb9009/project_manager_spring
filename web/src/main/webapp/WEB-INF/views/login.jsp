@@ -35,7 +35,7 @@
 
 <div style=" float: right">
     <form:form method="POST" name="loginsubmit" action="loginin"
-               modelAttribute="login">
+               modelAttribute="employee">
         <div class="form-group">
             <table align="center">
                 <tr>

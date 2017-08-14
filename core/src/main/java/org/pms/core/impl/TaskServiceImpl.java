@@ -58,13 +58,13 @@ public class TaskServiceImpl implements TaskService {
         taskDao.updateTask(task1);
     }
 
-    public List<Task> viewassignedTasks(Task task) {
+    public List<Task> viewassignedTasks(Employee employee) {
 
-        Long id = task.getEmployee().getId();
-        Employee employee =  employeeDao.getEmployee(id);
-        task.setEmployee(employee);
+//        Long id = employee.getId();
+//        Employee employee1 =  employeeDao.getEmployee(id);
+//        employee.setEmployee(employee1);
 
-        return taskDao.viewassignedTasks(task);
+        return taskDao.viewassignedTasks(employee);
     }
 
     public List<Task> viewTasks() {

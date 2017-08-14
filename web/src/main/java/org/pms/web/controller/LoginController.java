@@ -1,7 +1,9 @@
 package org.pms.web.controller;
 
+
 import org.pms.core.service.LoginService;
-import org.pms.orm.model.Login;
+import org.pms.orm.dao.EmployeeDao;
+import org.pms.orm.model.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+
 
 /**
  * Created by jaliya on 7/20/17.
@@ -20,24 +23,34 @@ public class LoginController {
     @Autowired
     private LoginService loginService;
 
+    @Autowired
+    private EmployeeDao employeeDao;
+
+    static Employee loggedEmployee;
+
     @RequestMapping(value = "/loginin", method = RequestMethod.POST)
-    public ModelAndView assignTask(@ModelAttribute("loginBean") Login login, Model model) {
+    public ModelAndView assignTask(@ModelAttribute("employee")Employee employee, Model model) {
 
-        String rs = loginService.login(login);
+        String rs = loginService.login(employee);
 
-        int result = Integer.parseInt(rs);
+        loggedEmployee = employeeDao.getUser(employee);
 
-        if (result == 1) {
-            model.addAttribute("msg", "welcome manager");
+        if (rs.equals("Manager")) {
+
+            model.addAttribute("user", loggedEmployee.getEmpName());
             return new ModelAndView("manager_direct");
-        } else if (result == 3) {
-            model.addAttribute("msg", "welcome manager");
+        } else if (rs.equals("Supervisor")) {
+
+            model.addAttribute("user", loggedEmployee.getEmpName());
             return new ModelAndView("supervisor_direct");
-        } else if (result == 4) {
-            model.addAttribute("msg", "welcome manager");
+        } else if (rs.equals("Employee")) {
+
+            model.addAttribute("user", loggedEmployee.getEmpName());
             return new ModelAndView("employee_direct");
         } else
+            model.addAttribute("msg", "Invalid username or password.");
             return new ModelAndView("error_page");
+
     }
 
     }

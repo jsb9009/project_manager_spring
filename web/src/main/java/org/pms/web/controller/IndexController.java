@@ -5,7 +5,7 @@ package org.pms.web.controller;
  */
 
 
-import org.pms.orm.model.Login;
+import org.pms.orm.model.Employee;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.ui.Model;
@@ -19,7 +19,7 @@ public class IndexController {
 
     @GetMapping("/")
     public String index(Model m) {
-        m.addAttribute("login", new Login());
+        m.addAttribute("employee", new Employee());
         return "login";
     }
 

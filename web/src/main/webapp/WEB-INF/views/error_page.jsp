@@ -15,7 +15,9 @@
 <body>
 
 <h2><span class="label label-danger">Error occured!!! Try again later.</span></h2>
+
 <br>
+<h4>${msg}</h4>
 <br>
 <br>
 <input type="button" class="btn btn-primary" name="home" value="Back" onclick="history.go(-1);">

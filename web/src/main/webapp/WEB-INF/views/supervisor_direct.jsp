@@ -19,7 +19,7 @@
 
 <body>
 
-<h1><span class="label label-default">Welcome Supervisor..</span></h1>
+<h1><span class="label label-default">Welcome ${user}..</span></h1>
 
 <br>
 <br>

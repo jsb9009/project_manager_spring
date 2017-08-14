@@ -15,4 +15,6 @@ public interface EmployeeDao {
     Employee getEmployee(Long empId);
 
     List<Employee> getEmployees();
+
+  Employee getUser(Employee employee);
 }

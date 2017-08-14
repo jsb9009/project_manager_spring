@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by jaliya on 7/20/17.
  */
@@ -34,6 +37,15 @@ public class AddEmployeesController {
         employeeService.addEmployee(employee);
         model.put("sucessMsg", "Employee Sucessfully added");
         return "/add_employees";
+    }
+
+    @ModelAttribute("authenticationList")
+    public List<String> getAuthenticationList() {
+        List<String> authenticationList = new ArrayList<String>();
+        authenticationList.add("Manager");
+        authenticationList.add("Supervisor");
+        authenticationList.add("Employee");
+        return authenticationList;
     }
 
 }

@@ -87,12 +87,12 @@ public class TaskDaoImpl implements TaskDao {
     }
 
 
-    public List<Task> viewassignedTasks(Task task) {
+    public List<Task> viewassignedTasks(Employee employee) {
 
         Session session = sessionFactory.openSession();
 
         Criteria cr = session.createCriteria(Task.class);
-        cr.add(Restrictions.eq("employee.id", task.getEmployee().getId()));
+        cr.add(Restrictions.eq("employee.id", employee.getId()));
         List<Task> taskList = cr.list();
 
         return taskList;
