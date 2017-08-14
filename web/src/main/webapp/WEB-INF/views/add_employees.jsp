@@ -44,9 +44,6 @@
                     <td colspan="5">&nbsp;</td>
                 </tr>
 
-                <%--<tr>--%>
-                    <%--<h4><span class="label label-info">Give authentication details for the employee..</span></h4>--%>
-                    <%--</tr>--%>
                 <tr>
                     <td>Username</td>
                     <td><form:input required="required" class="form-control" path="username"/></td>

@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-
 import java.util.List;
 
 /**
@@ -36,7 +35,7 @@ public class ViewAssignedTasksController {
     }
 
 
-    @RequestMapping(value = "/view_assigned_tasks",method = RequestMethod.GET)
+    @RequestMapping(value = "/view_assigned_tasks", method = RequestMethod.GET)
     public String viewassignedTasks(ModelMap model) {
 
         List<Task> taskList1 = taskService.viewassignedTasks(LoginController.loggedEmployee);
@@ -46,7 +45,7 @@ public class ViewAssignedTasksController {
     }
 
     @ModelAttribute("employeesList")
-    public List<Employee> getEmployees(){
+    public List<Employee> getEmployees() {
         List employeesList = employeeService.getEmployees();
 
         return employeesList;

@@ -5,10 +5,8 @@ import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
-import org.hibernate.query.Query;
 import org.pms.orm.dao.EmployeeDao;
 import org.pms.orm.model.Employee;
-import org.pms.orm.model.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -38,14 +36,13 @@ public class EmployeeDaoImpl implements EmployeeDao {
     }
 
 
-
-    public Employee getEmployee(Long empId){
+    public Employee getEmployee(Long empId) {
 
         Session session = sessionFactory.openSession();
 
         Employee employee1 = null;
         try {
-            employee1 =  (Employee) session.get(Employee.class,empId);
+            employee1 = (Employee) session.get(Employee.class, empId);
             Hibernate.initialize(employee1);
         } catch (Exception e) {
             e.printStackTrace();
@@ -69,8 +66,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
     }
 
 
-
-    public Employee getUser(Employee employee){
+    public Employee getUser(Employee employee) {
 
 
         Session session = sessionFactory.openSession();
@@ -82,4 +78,4 @@ public class EmployeeDaoImpl implements EmployeeDao {
         return employee1;
     }
 
-    }
+}

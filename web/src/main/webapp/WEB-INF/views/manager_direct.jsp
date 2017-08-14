@@ -18,21 +18,14 @@
 </head>
 
 <body>
-
 <h1><span class="label label-default">Welcome ${user}..</span></h1>
-
 <br>
 <br>
-
-
 <div class="container" align="center">
-
     <ul class="nav nav-pills nav-stacked">
         <li class="active" style="font-size:25px;"><a href="add_employees">Add employees to the workstation</a></li>
         <li class="active" style="font-size:25px;"><a href="add_projects">Add projects to the workstation</a></li>
-
     </ul>
-
     <br>
     <br>
     <td><input type="button" class="btn btn-primary" name="home" style=" float: right" value="Log Out"

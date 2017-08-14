@@ -29,7 +29,7 @@ public class LoginController {
     static Employee loggedEmployee;
 
     @RequestMapping(value = "/loginin", method = RequestMethod.POST)
-    public ModelAndView assignTask(@ModelAttribute("employee")Employee employee, Model model) {
+    public ModelAndView assignTask(@ModelAttribute("employee") Employee employee, Model model) {
 
         String rs = loginService.login(employee);
 
@@ -49,9 +49,9 @@ public class LoginController {
             return new ModelAndView("employee_direct");
         } else
             model.addAttribute("msg", "Invalid username or password.");
-            return new ModelAndView("error_page");
+        return new ModelAndView("error_page");
 
     }
 
-    }
+}
 

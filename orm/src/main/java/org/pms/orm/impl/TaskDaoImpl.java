@@ -7,7 +7,6 @@ import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.pms.orm.dao.TaskDao;
 import org.pms.orm.model.Employee;
-import org.pms.orm.model.Project;
 import org.pms.orm.model.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -37,14 +36,14 @@ public class TaskDaoImpl implements TaskDao {
         return (Long) hibernateutilimpl.create(task);
     }
 
-    public Task getTask(Long taskId){
 
+    public Task getTask(Long taskId) {
 
         Session session = sessionFactory.openSession();
 
         Task task1 = null;
         try {
-            task1 =  (Task) session.get(Task.class,taskId);
+            task1 = (Task) session.get(Task.class, taskId);
             Hibernate.initialize(task1);
         } catch (Exception e) {
             e.printStackTrace();
@@ -53,9 +52,7 @@ public class TaskDaoImpl implements TaskDao {
                 session.close();
             }
         }
-
-       return task1;
-
+        return task1;
     }
 
 
@@ -76,9 +73,9 @@ public class TaskDaoImpl implements TaskDao {
         Session session = sessionFactory.openSession();
 
         List<Task> taskList = session.createCriteria(Task.class).list();
-
         return taskList;
     }
+
 
     public void updateTask(Task task) {
 
@@ -96,7 +93,6 @@ public class TaskDaoImpl implements TaskDao {
         List<Task> taskList = cr.list();
 
         return taskList;
-
     }
 
 
@@ -108,7 +104,6 @@ public class TaskDaoImpl implements TaskDao {
 
         return taskList;
     }
-
 
 
 }

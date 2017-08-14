@@ -13,20 +13,15 @@
     <link rel="stylesheet" href="<c:url value="/bootstrap/css/bootstrap.min.css"/>"/>
 </head>
 <body>
-
 <div>
     <h3><span class="label label-info">Your assigned tasks are..</span></h3>
-
-
     <table border="1" class="table table-bordered table-hover" style="width: auto;" align="centre">
         <tr>
             <th>Task Number</th>
             <th>Task Name</th>
             <th>Number of Hours</th>
             <th>Project</th>
-
         </tr>
-
         <c:forEach items="${tasksList1}" var="task">
             <tr>
                 <td>${task.taskId}</td>
@@ -34,9 +29,7 @@
                 <td>${task.noOfHours}</td>
                 <td>${task.project.projectId}</td>
             </tr>
-
         </c:forEach>
-
     </table>
     <br>
     <br>

@@ -1,9 +1,7 @@
 package org.pms.core.impl;
 
 import org.pms.core.service.LoginService;
-
 import org.pms.orm.dao.LoginDao;
-
 import org.pms.orm.model.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

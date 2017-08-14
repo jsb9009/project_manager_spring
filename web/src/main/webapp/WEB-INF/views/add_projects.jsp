@@ -11,7 +11,6 @@
 <head>
     <title>Add_projects</title>
     <link rel="stylesheet" href="<c:url value="/bootstrap/css/bootstrap.min.css"/>"/>
-    <%--<div class="container" style="background-image:<c:url value="/css/sky.jpg"/>" />">--%>
     </div>
 </head>
 <body>

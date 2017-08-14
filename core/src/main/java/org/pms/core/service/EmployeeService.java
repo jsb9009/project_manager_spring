@@ -14,5 +14,4 @@ public interface EmployeeService {
 
      Long addEmployee(Employee employee);
      List<Employee> getEmployees();
-//     String getUser(Employee employee);
 }

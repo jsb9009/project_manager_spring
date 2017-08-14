@@ -21,7 +21,6 @@
         <form:form name="updatetaskform" action="updatetask" method="POST" modelAttribute="task">
             <table border="0" align="center">
                 <tbody>
-
                 <tr>
                     <td>Task Number</td>
                     <td>&nbsp;</td>
@@ -29,7 +28,6 @@
                         <form:option value="0" label="--Select--"/>
                         <form:options items="${tasksList}" itemLabel="taskId" itemValue="id"/>
                     </form:select></td>
-
                 </tr>
                 <tr>
                     <td colspan="5">&nbsp;</td>
@@ -42,7 +40,6 @@
                         <form:option value="0" label="--Select--"/>
                         <form:options items="${statusList}"/>
                     </form:select></td>
-
                 </tr>
 
                 <td></td>

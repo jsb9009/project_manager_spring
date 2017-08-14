@@ -18,21 +18,16 @@
 </head>
 
 <body>
-
 <h1><span class="label label-default">Welcome ${user}..</span></h1>
-
 <br>
 <br>
 
 <div class="container" align="center">
-
     <ul class="nav nav-pills nav-stacked">
         <li class="active" style="font-size:25px;"><a href="create_tasks">Create tasks for projects</a></li>
         <li class="active" style="font-size:25px;"><a href="assign_tasks">Assign tasks to employees</a></li>
         <li class="active" style="font-size:25px;"><a href="view_tasks">View current tasks status</a></li>
-
     </ul>
-
     <br>
     <br>
     <input type="button" class="btn btn-primary" name="home" style=" float: right" value="Log Out"
