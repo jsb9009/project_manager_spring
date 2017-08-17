@@ -2,6 +2,7 @@ package org.pms.web.controller;
 
 
 import org.pms.core.service.LoginService;
+import org.pms.core.util.LoggedUser;
 import org.pms.orm.dao.EmployeeDao;
 import org.pms.orm.model.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,26 +27,27 @@ public class LoginController {
     @Autowired
     private EmployeeDao employeeDao;
 
-    static Employee loggedEmployee;
+    @Autowired
+    private LoggedUser loggedUser;
 
     @RequestMapping(value = "/loginin", method = RequestMethod.POST)
-    public ModelAndView assignTask(@ModelAttribute("employee") Employee employee, Model model) {
+    public ModelAndView login(@ModelAttribute("employee") Employee employee, Model model) {
 
         String rs = loginService.login(employee);
 
-        loggedEmployee = employeeDao.getUser(employee);
+        loggedUser.setLoggedEmployee(employeeDao.getUser(employee));
 
         if (rs.equals("Manager")) {
 
-            model.addAttribute("user", loggedEmployee.getEmpName());
+            model.addAttribute("user", LoggedUser.loggedEmployee.getEmpName());
             return new ModelAndView("manager_direct");
         } else if (rs.equals("Supervisor")) {
 
-            model.addAttribute("user", loggedEmployee.getEmpName());
+            model.addAttribute("user", LoggedUser.loggedEmployee.getEmpName());
             return new ModelAndView("supervisor_direct");
         } else if (rs.equals("Employee")) {
 
-            model.addAttribute("user", loggedEmployee.getEmpName());
+            model.addAttribute("user", LoggedUser.loggedEmployee.getEmpName());
             return new ModelAndView("employee_direct");
         } else
             model.addAttribute("msg", "Invalid username or password.");

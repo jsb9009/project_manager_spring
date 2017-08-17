@@ -71,6 +71,28 @@
         <h4 class="alert alert-success" style="width: 900px">${sucessMsg}</h4>
     </c:if>
 </div>
+
+<h3><span class="label label-info">Existing projects are..</span></h3>
+<table border="1" class="table table-bordered table-hover" style="width: auto;" align="centre">
+    <tr>
+        <th>Project Id</th>
+        <th>Project Name</th>
+        <th>Project Type</th>
+        <th>Client</th>
+
+    </tr>
+    <c:forEach items="${projectList}" var="project">
+        <tr>
+            <td>${project.projectId}</td>
+            <td>${project.projectName}</td>
+            <td>${project.projectType}</td>
+            <td>${project.client}</td>
+            <th><a href="deleteProject?id=<c:out value='${project.id}'/>">Delete</a></th>
+        </tr>
+    </c:forEach>
+</table>
+
+<td><input onclick="location.href = 'go_to_manager_direct1';"  type="button" class="btn btn-primary" name="home" style=" float: left" value="Back to Home"></td>
 </body>
 </html>
 

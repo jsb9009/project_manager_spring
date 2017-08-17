@@ -2,6 +2,7 @@ package org.pms.web.controller;
 
 import org.pms.core.service.EmployeeService;
 import org.pms.core.service.TaskService;
+import org.pms.core.util.LoggedUser;
 import org.pms.orm.model.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +11,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -54,6 +56,12 @@ public class AssignTasksController {
         List employeesList = employeeService.getEmployees();
 
         return employeesList;
+    }
+
+    @RequestMapping("/go_to_supervisor_direct1")
+    public ModelAndView redirect(Model model) {
+        model.addAttribute("user", LoggedUser.loggedEmployee.getEmpName());
+        return new ModelAndView("supervisor_direct");
     }
 
 }

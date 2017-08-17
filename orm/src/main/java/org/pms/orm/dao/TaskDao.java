@@ -16,5 +16,6 @@ public interface TaskDao {
     void updateTask(Task task);
     List<Task> viewassignedTasks(Employee employee);
     List<Task> viewTasks();
+    public void deleteTask(long id);
 
 }

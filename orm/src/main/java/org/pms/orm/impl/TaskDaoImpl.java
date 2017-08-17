@@ -3,16 +3,14 @@ package org.pms.orm.impl;
 import org.hibernate.Criteria;
 import org.hibernate.Hibernate;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.pms.orm.dao.TaskDao;
 import org.pms.orm.model.Employee;
 import org.pms.orm.model.Task;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
-import javax.annotation.Resource;
+import org.springframework.stereotype.Repository;
+
+
 import java.util.List;
 
 /**
@@ -20,57 +18,44 @@ import java.util.List;
  */
 
 @Repository
-@Transactional
-public class TaskDaoImpl implements TaskDao {
+public class TaskDaoImpl extends HibernateUtilImpl implements TaskDao {
 
-    @Autowired
-    private HibernateUtilImpl hibernateutilimpl;
-
-    @Resource(name = "sessionFactory")
-    protected SessionFactory sessionFactory;
 
 
     @Override
     public Long createTask(Task task) {
 
-        return (Long) hibernateutilimpl.create(task);
+        return (Long) create(task);
     }
 
 
     public Task getTask(Long taskId) {
 
-        Session session = sessionFactory.openSession();
+        Session session = getSession();
 
         Task task1 = null;
-        try {
-            task1 = (Task) session.get(Task.class, taskId);
-            Hibernate.initialize(task1);
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            if (session != null && session.isOpen()) {
-                session.close();
-            }
-        }
+        task1 = (Task) session.get(Task.class, taskId);
+        Hibernate.initialize(task1);
+
         return task1;
     }
 
 
     public void assignTask(Task task) {
 
-        Session session = sessionFactory.openSession();
+        Session session = getSession();
 
         Employee employee = session.get(Employee.class, task.getEmployee().getId());
         Task taskDb = session.get(Task.class, task.getId());
         taskDb.setEmployee(employee);
 
-        hibernateutilimpl.update(taskDb);
+        update(taskDb);
 
     }
 
     public List<Task> getTasks() {
 
-        Session session = sessionFactory.openSession();
+        Session session = getSession();
 
         List<Task> taskList = session.createCriteria(Task.class).list();
         return taskList;
@@ -79,14 +64,14 @@ public class TaskDaoImpl implements TaskDao {
 
     public void updateTask(Task task) {
 
-        hibernateutilimpl.update(task);
+        update(task);
 
     }
 
 
     public List<Task> viewassignedTasks(Employee employee) {
 
-        Session session = sessionFactory.openSession();
+        Session session = getSession();
 
         Criteria cr = session.createCriteria(Task.class);
         cr.add(Restrictions.eq("employee.id", employee.getId()));
@@ -98,11 +83,18 @@ public class TaskDaoImpl implements TaskDao {
 
     public List<Task> viewTasks() {
 
-        Session session = sessionFactory.openSession();
+        Session session = getSession();
 
         List<Task> taskList = session.createCriteria(Task.class).list();
 
         return taskList;
+    }
+
+    @Override
+    public void deleteTask(long id) {
+        Task task = new Task();
+        task.setId(id);
+        delete(task);
     }
 
 

@@ -3,15 +3,11 @@ package org.pms.orm.impl;
 import org.hibernate.Criteria;
 import org.hibernate.Hibernate;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.pms.orm.dao.EmployeeDao;
 import org.pms.orm.model.Employee;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -20,37 +16,24 @@ import java.util.List;
 
 
 @Repository
-@Transactional
-public class EmployeeDaoImpl implements EmployeeDao {
+public class EmployeeDaoImpl extends HibernateUtilImpl implements EmployeeDao {
 
-    @Autowired
-    private HibernateUtilImpl hibernateutilimpl;
-
-    @Resource(name = "sessionFactory")
-    protected SessionFactory sessionFactory;
 
     @Override
     public Long saveEmployee(Employee employee) {
 
-        return (Long) hibernateutilimpl.create(employee);
+        return (Long) create(employee);
     }
+
 
 
     public Employee getEmployee(Long empId) {
 
-        Session session = sessionFactory.openSession();
-
+        Session session = getSession();
         Employee employee1 = null;
-        try {
+
             employee1 = (Employee) session.get(Employee.class, empId);
             Hibernate.initialize(employee1);
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            if (session != null && session.isOpen()) {
-                session.close();
-            }
-        }
 
         return employee1;
     }
@@ -58,7 +41,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 
     public List<Employee> getEmployees() {
 
-        Session session = sessionFactory.openSession();
+        Session session = getSession();
 
         List<Employee> employeeList = session.createCriteria(Employee.class).list();
 
@@ -69,13 +52,21 @@ public class EmployeeDaoImpl implements EmployeeDao {
     public Employee getUser(Employee employee) {
 
 
-        Session session = sessionFactory.openSession();
+        Session session = getSession();
 
         Criteria cr = session.createCriteria(Employee.class);
         cr.add(Restrictions.eq("username", employee.getUsername()));
         Employee employee1 = (Employee) cr.uniqueResult();
 
         return employee1;
+    }
+
+
+    @Override
+    public void deleteEmployee(long id) {
+        Employee employee = new Employee();
+        employee.setId(id);
+        delete(employee);
     }
 
 }

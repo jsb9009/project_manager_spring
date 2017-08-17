@@ -28,16 +28,15 @@
 <div class="container" align="center">
 
     <ul class="nav nav-pills nav-stacked">
-        <li class="active" style="font-size:25px;"><a href="update_tasks">Update assigned tasks status</a></li>
-        <li class="active" style="font-size:25px;"><a href="view_assigned_tasks">View assigned tasks</a></li>
+        <li class="active" style="font-size:25px;"><a href="update_tasks">View your assigned tasks and Update</a></li>
+
 
     </ul>
 
     <br>
     <br>
 
-    <td><input type="button" class="btn btn-primary" name="home" style=" float: right" value="Log Out"
-               onclick="history.go(-1);"></td>
+    <td><input onclick="location.href = 'go_to_login3';"  type="button" class="btn btn-primary" name="home" style=" float: left" value="Log Out"></td>
 </div>
 </body>
 

@@ -20,15 +20,44 @@ public class Employee implements Serializable {
     @Column(name="id")
     private long id;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="login_id")
-    private Login login;
-
-    @Column(name="employee_id", nullable = false)
+    @Column(name="employee_id")
     private String empId;
 
     @Column(name="employee_name")
     private String empName;
+
+    @Column
+    private String username;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    @Column
+    private String password;
+
+    @Column(name="authentication_level")
+    private String authinticationLevel;
+
+    public String getAuthinticationLevel() {
+        return authinticationLevel;
+    }
+
+    public void setAuthinticationLevel(String authinticationLevel) {
+        this.authinticationLevel = authinticationLevel;
+    }
 
     @Column(name="employee_position")
     private String position;
@@ -36,13 +65,6 @@ public class Employee implements Serializable {
     public Employee() {
     }
 
-    public Login getLogin() {
-        return login;
-    }
-
-    public void setLogin(Login login) {
-        this.login = login;
-    }
 
     public long getId() {
         return id;

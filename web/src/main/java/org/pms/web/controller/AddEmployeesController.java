@@ -1,15 +1,16 @@
 package org.pms.web.controller;
 
 import org.pms.core.service.EmployeeService;
+import org.pms.core.util.LoggedUser;
+import org.pms.orm.dao.EmployeeDao;
 import org.pms.orm.model.Employee;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,9 +26,15 @@ public class AddEmployeesController {
     @Autowired
     private EmployeeService employeeService;
 
+    @Autowired
+    private EmployeeDao employeeDao;
+
+
     @RequestMapping("/add_employees")
-    public String add_employees(Model model2) {
+    public String add_employees(Model model2, ModelMap model) {
         model2.addAttribute("employee", new Employee());
+        List employeeList = employeeService.getEmployees();
+        model.put("employeeList", employeeList);
         return "add_employees";
     }
 
@@ -36,7 +43,7 @@ public class AddEmployeesController {
 
         employeeService.addEmployee(employee);
         model.put("sucessMsg", "Employee Sucessfully added");
-        return "/add_employees";
+        return "redirect:/add_employees";
     }
 
     @ModelAttribute("authenticationList")
@@ -46,6 +53,18 @@ public class AddEmployeesController {
         authenticationList.add("Supervisor");
         authenticationList.add("Employee");
         return authenticationList;
+    }
+
+    @RequestMapping("deleteEmployee")
+    public ModelAndView deleteEmployee(@RequestParam long id) {
+        employeeService.deleteEmployee(id);
+        return new ModelAndView("redirect:/add_employees");
+    }
+
+    @RequestMapping("/go_to_manager_direct")
+    public ModelAndView redirect(Model model) {
+        model.addAttribute("user", LoggedUser.loggedEmployee.getEmpName());
+        return new ModelAndView("manager_direct");
     }
 
 }

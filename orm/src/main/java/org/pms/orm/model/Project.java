@@ -19,7 +19,7 @@ public class Project implements Serializable {
     @Column(name="id")
     private long id;
 
-    @Column(name="project_id", nullable = false)
+    @Column(name="project_id")
     private String projectId;
 
     @Column(name="project_name")

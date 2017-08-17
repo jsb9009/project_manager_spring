@@ -55,6 +55,7 @@ public class TaskServiceImpl implements TaskService {
 
 
     public List<Task> viewassignedTasks(Employee employee) {
+
         return taskDao.viewassignedTasks(employee);
     }
 
@@ -71,5 +72,9 @@ public class TaskServiceImpl implements TaskService {
         task.setProject(project);
         return taskDao.createTask(task);
 
+    }
+
+    public void deleteTask(long id) {
+        taskDao.deleteTask(id);
     }
 }

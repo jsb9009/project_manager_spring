@@ -16,5 +16,6 @@ public interface TaskService {
      List<Task> viewassignedTasks(Employee employee);
      List<Task> viewTasks();
      Long createTasks(Task task);
+     public void deleteTask(long id);
 
 }

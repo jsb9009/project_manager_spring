@@ -1,9 +1,10 @@
 package org.pms.orm.impl;
 
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.pms.orm.dao.HibernateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 
 import java.io.Serializable;
 import java.util.List;
@@ -12,15 +13,19 @@ import java.util.List;
  * Created by jaliya on 8/1/17.
  */
 
-@Repository
 public class HibernateUtilImpl implements HibernateUtil {
-
 
     @Autowired
     private SessionFactory sessionFactory;
 
-    public <T> Serializable create(final T entity) {
+    public Session getSession(){
+        try{ return  sessionFactory.getCurrentSession();
+        }
+        catch (HibernateException e){ return  sessionFactory.openSession();
+        }
+    }
 
+    public <T> Serializable create(final T entity) {
         return sessionFactory.getCurrentSession().save(entity);
     }
 
@@ -30,7 +35,6 @@ public class HibernateUtilImpl implements HibernateUtil {
     }
 
     public <T> void delete(final T entity) {
-
         sessionFactory.getCurrentSession().delete(entity);
     }
 

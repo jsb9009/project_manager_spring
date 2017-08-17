@@ -72,6 +72,8 @@
         <h4 class="alert alert-success" style="width: 900px">${sucessMsg}</h4>
     </c:if>
 </div>
+
+<td><input onclick="location.href = 'go_to_supervisor_direct1';"  type="button" class="btn btn-primary" name="home" style=" float: left" value="Back to Home"></td>
 </body>
 </html>
 

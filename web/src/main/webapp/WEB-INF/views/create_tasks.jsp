@@ -11,6 +11,12 @@
 <head>
     <title>Create_tasks</title>
     <link rel="stylesheet" href="<c:url value="/bootstrap/css/bootstrap.min.css"/>"/>
+
+    <%--<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>--%>
+    <%--<script type="text/javascript" src="//code.jquery.com/jquery-1.12.4.js"></script>--%>
+    <%--<script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>--%>
+    <%--<link rel="stylesheet" href="<c:url value="/css/datatable.css"/>"/>--%>
+
 </head>
 <body>
 
@@ -77,9 +83,7 @@
                 <tr>
                     <td colspan="5">&nbsp;</td>
                 </tr>
-                <tr>
-                    <td colspan="5">&nbsp;</td>
-                </tr>
+
                 <tr>
                     <td><input type="button" class="btn btn-primary" name="home" style=" float: left" value="Back"
                                onclick="history.go(-1);"></td>
@@ -97,6 +101,36 @@
         <h4 class="alert alert-success" style="width: 900px">${sucessMsg}</h4>
     </c:if>
 </div>
+
+<br>
+<h3><span class="label label-info">Existing tasks are..</span></h3>
+<table border="1" class="table table-bordered table-hover" style="width: auto;" align="centre">
+    <tr>
+        <th>Task Number</th>
+        <th>Task Name</th>
+        <th>Status</th>
+        <th>Number of hours</th>
+        <th>Project Id</th>
+        <th>Project Name</th>
+        <th>Employee Name</th>
+    </tr>
+    <c:forEach items="${tasksList}" var="task">
+        <tr>
+            <td>${task.taskId}</td>
+            <td>${task.taskName}</td>
+            <td>${task.status}</td>
+            <td>${task.noOfHours}</td>
+            <td>${task.project.projectId}</td>
+            <td>${task.project.projectName}</td>
+            <td>${task.employee.empName}</td>
+            <th><a href="deleteTask?id=<c:out value='${task.id}'/>">Delete</a></th>
+
+        </tr>
+    </c:forEach>
+</table>
+
+<td><input onclick="location.href = 'go_to_supervisor_direct';"  type="button" class="btn btn-primary" name="home" style=" float: left" value="Back to Home"></td>
 </body>
 </html>
 
+<script type="text/javascript" src="<c:url value="/js/show_employees.js"/>"></script>

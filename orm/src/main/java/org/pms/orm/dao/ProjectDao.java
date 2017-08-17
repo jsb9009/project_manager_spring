@@ -14,6 +14,8 @@ public interface ProjectDao {
     Project getProject(Long projectId);
 
     List<Project> getProjects();
+
+    public void deleteProject(long id);
 }
 
 

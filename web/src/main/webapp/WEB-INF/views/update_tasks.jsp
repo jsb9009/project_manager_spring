@@ -51,12 +51,10 @@
                     <td colspan="5">&nbsp;</td>
                 </tr>
                 <tr>
-                    <td><input type="button" class="btn btn-primary" name="home" style=" float: left" value="Back"
-                               onclick="history.go(-1);"></td>
+                    <td><input type="reset"  class="btn btn-primary" value="Clear" name="reset" style=" float: left"></td>
                     <td>&nbsp;</td>
                     <td><input type="submit" class="btn btn-success" style=" float: right" value="Update"
                                name="submit"/>
-                        <input type="reset" class="btn btn-primary" style=" float: right" value="Clear" name="reset"/>
                     </td>
                 </tr>
                 </tbody>
@@ -67,5 +65,34 @@
         <h4 class="alert alert-success" style="width: 900px">${sucessMsg}</h4>
     </c:if>
 </div>
+<br>
+<br>
+<br>
+<div>
+    <h3><span class="label label-info">Your assigned tasks are..</span></h3>
+    <table border="1" class="table table-bordered table-hover" style="width: auto;" align="centre">
+        <tr>
+            <th>Task Number</th>
+            <th>Task Name</th>
+            <th>Number of Hours</th>
+            <th>Project</th>
+            <th>Status</th>
+        </tr>
+        <c:forEach items="${tasksList1}" var="task">
+            <tr>
+                <td>${task.taskId}</td>
+                <td>${task.taskName}</td>
+                <td>${task.noOfHours}</td>
+                <td>${task.project.projectId}</td>
+                <td>${task.status}</td>
+            </tr>
+        </c:forEach>
+    </table>
+    <br>
+    <br>
+
+</div>
+
+<td><input onclick="location.href = 'go_to_employee_direct';"  type="button" class="btn btn-primary" name="home" style=" float: left" value="Back to Home"></td>
 </body>
 </html>

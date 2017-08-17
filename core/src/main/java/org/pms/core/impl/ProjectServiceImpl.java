@@ -30,4 +30,7 @@ public class ProjectServiceImpl implements ProjectService {
         return projectDao.getProjects();
     }
 
+    public void deleteProject(long id) {
+        projectDao.deleteProject(id);
+    }
 }

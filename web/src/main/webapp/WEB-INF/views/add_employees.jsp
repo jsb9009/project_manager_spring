@@ -53,7 +53,7 @@
                 </tr>
                 <tr>
                     <td>Password</td>
-                    <td><form:input required="required" class="form-control" path="password"/></td>
+                    <td><form:password required="required" class="form-control" path="password"/></td>
                 </tr>
                 <tr>
                     <td colspan="5">&nbsp;</td>
@@ -92,6 +92,29 @@
         <h4 class="alert alert-success" style="width: 900px">${sucessMsg}</h4>
     </c:if>
 
+<br>
+<h3><span class="label label-info">Existing employee are..</span></h3>
+<table border="1" class="table table-bordered table-hover" style="width: auto;" align="centre">
+    <tr>
+        <th>Employee Id</th>
+        <th>Employee Name</th>
+        <th>Position</th>
+        <th>Authentication Level</th>
+
+    </tr>
+    <c:forEach items="${employeeList}" var="employee">
+        <tr>
+            <td>${employee.empId}</td>
+            <td>${employee.empName}</td>
+            <td>${employee.position}</td>
+            <td>${employee.authinticationLevel}</td>
+            <th><a href="deleteEmployee?id=<c:out value='${employee.id}'/>">Delete</a></th>
+        </tr>
+    </c:forEach>
+</table>
+
+
+<td><input onclick="location.href = 'go_to_manager_direct';"  type="button" class="btn btn-primary" name="home" style=" float: left" value="Back to Home"></td>
 </body>
 </html>
 
