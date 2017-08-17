@@ -18,10 +18,11 @@ public class HibernateUtilImpl implements HibernateUtil {
     @Autowired
     private SessionFactory sessionFactory;
 
-    public Session getSession(){
-        try{ return  sessionFactory.getCurrentSession();
-        }
-        catch (HibernateException e){ return  sessionFactory.openSession();
+    public Session getSession() {
+        try {
+            return sessionFactory.getCurrentSession();
+        } catch (HibernateException e) {
+            return sessionFactory.openSession();
         }
     }
 
@@ -45,6 +46,6 @@ public class HibernateUtilImpl implements HibernateUtil {
 
     @SuppressWarnings("unchecked")
     public <T> List<T> fetchAll(Class<T> entityClass) {
-        return sessionFactory.getCurrentSession().createQuery(" FROM "+entityClass.getName()).list();
+        return sessionFactory.getCurrentSession().createQuery(" FROM " + entityClass.getName()).list();
     }
 }

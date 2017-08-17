@@ -13,10 +13,8 @@
     <link rel="stylesheet" href="<c:url value="/bootstrap/css/bootstrap.min.css"/>"/>
 </head>
 <body>
-
 <div>
     <h3><span class="label label-info">Update the task status here</span></h3>
-
     <div class="form-group">
         <form:form name="updatetaskform" action="updatetask" method="POST" modelAttribute="task">
             <table border="0" align="center">
@@ -32,7 +30,6 @@
                 <tr>
                     <td colspan="5">&nbsp;</td>
                 </tr>
-
                 <tr>
                     <td>Status</td>
                     <td>&nbsp;</td>
@@ -41,9 +38,6 @@
                         <form:options items="${statusList}"/>
                     </form:select></td>
                 </tr>
-
-                <td></td>
-                <td></td>
                 <tr>
                     <td colspan="5">&nbsp;</td>
                 </tr>
@@ -90,9 +84,8 @@
     </table>
     <br>
     <br>
-
 </div>
-
-<td><input onclick="location.href = 'go_to_employee_direct';"  type="button" class="btn btn-primary" name="home" style=" float: left" value="Back to Home"></td>
+<td><input onclick="location.href = 'go_to_employee_direct';"  type="button" class="btn btn-primary"
+           name="home" style=" float: left" value="Back to Home"></td>
 </body>
 </html>

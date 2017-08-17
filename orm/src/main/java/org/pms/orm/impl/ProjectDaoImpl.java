@@ -22,33 +22,25 @@ public class ProjectDaoImpl extends HibernateUtilImpl implements ProjectDao {
 
     @Override
     public Long saveProject(Project project) {
-
         return (Long) create(project);
     }
 
 
-    public Project getProject(Long projectId){
+    public Project getProject(Long projectId) {
 
         Session session = getSession();
-
         Project project1 = null;
 
-            project1 =  (Project) session.get(Project.class,projectId);
-            Hibernate.initialize(project1);
-
-
+        project1 = (Project) session.get(Project.class, projectId);
+        Hibernate.initialize(project1);
         return project1;
     }
 
 
-
     public List<Project> getProjects() {
 
-
         Session session = getSession();
-
         List<Project> projectList = session.createCriteria(Project.class).list();
-
         return projectList;
     }
 

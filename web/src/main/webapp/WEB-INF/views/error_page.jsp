@@ -15,7 +15,6 @@
     <link rel="stylesheet" href="<c:url value="/bootstrap/css/bootstrap.min.css"/>"/>
 </head>
 <body>
-
 <h2><span class="label label-danger">Error occured!!! Try again later.</span></h2>
 <br>
 <h2><span class="label label-default">${msg}</span></h2>

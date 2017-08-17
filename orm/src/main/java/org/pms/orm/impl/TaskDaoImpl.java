@@ -21,10 +21,8 @@ import java.util.List;
 public class TaskDaoImpl extends HibernateUtilImpl implements TaskDao {
 
 
-
     @Override
     public Long createTask(Task task) {
-
         return (Long) create(task);
     }
 
@@ -32,11 +30,9 @@ public class TaskDaoImpl extends HibernateUtilImpl implements TaskDao {
     public Task getTask(Long taskId) {
 
         Session session = getSession();
-
         Task task1 = null;
         task1 = (Task) session.get(Task.class, taskId);
         Hibernate.initialize(task1);
-
         return task1;
     }
 
@@ -44,11 +40,9 @@ public class TaskDaoImpl extends HibernateUtilImpl implements TaskDao {
     public void assignTask(Task task) {
 
         Session session = getSession();
-
         Employee employee = session.get(Employee.class, task.getEmployee().getId());
         Task taskDb = session.get(Task.class, task.getId());
         taskDb.setEmployee(employee);
-
         update(taskDb);
 
     }
@@ -56,27 +50,22 @@ public class TaskDaoImpl extends HibernateUtilImpl implements TaskDao {
     public List<Task> getTasks() {
 
         Session session = getSession();
-
         List<Task> taskList = session.createCriteria(Task.class).list();
         return taskList;
     }
 
 
     public void updateTask(Task task) {
-
         update(task);
-
     }
 
 
     public List<Task> viewassignedTasks(Employee employee) {
 
         Session session = getSession();
-
         Criteria cr = session.createCriteria(Task.class);
         cr.add(Restrictions.eq("employee.id", employee.getId()));
         List<Task> taskList = cr.list();
-
         return taskList;
     }
 
@@ -84,9 +73,7 @@ public class TaskDaoImpl extends HibernateUtilImpl implements TaskDao {
     public List<Task> viewTasks() {
 
         Session session = getSession();
-
         List<Task> taskList = session.createCriteria(Task.class).list();
-
         return taskList;
     }
 
@@ -96,6 +83,5 @@ public class TaskDaoImpl extends HibernateUtilImpl implements TaskDao {
         task.setId(id);
         delete(task);
     }
-
 
 }

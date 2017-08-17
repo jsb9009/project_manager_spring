@@ -11,13 +11,11 @@
 <head>
     <title>Add_projects</title>
     <link rel="stylesheet" href="<c:url value="/bootstrap/css/bootstrap.min.css"/>"/>
-    </div>
 </head>
 <body>
 
 <div>
     <h3><span class="label label-info">Add new project details</span></h3>
-
     <div class="form-group">
         <form:form name="projectform" action="addproject" method="POST" modelAttribute="project">
             <table border="0" align="center">
@@ -46,9 +44,6 @@
                 <tr>
                     <td>Project Type</td>
                     <td><form:input required="required" class="form-control" path="projectType"/></td>
-                </tr>
-                <td></td>
-                <td></td>
                 </tr>
                 <tr>
                     <td colspan="5">&nbsp;</td>
@@ -79,7 +74,6 @@
         <th>Project Name</th>
         <th>Project Type</th>
         <th>Client</th>
-
     </tr>
     <c:forEach items="${projectList}" var="project">
         <tr>
@@ -92,7 +86,8 @@
     </c:forEach>
 </table>
 
-<td><input onclick="location.href = 'go_to_manager_direct1';"  type="button" class="btn btn-primary" name="home" style=" float: left" value="Back to Home"></td>
+<td><input onclick="location.href = 'go_to_manager_direct1';"  type="button" class="btn btn-primary"
+           name="home" style=" float: left" value="Back to Home"></td>
 </body>
 </html>
 

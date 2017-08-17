@@ -26,14 +26,13 @@ public class EmployeeDaoImpl extends HibernateUtilImpl implements EmployeeDao {
     }
 
 
-
     public Employee getEmployee(Long empId) {
 
         Session session = getSession();
         Employee employee1 = null;
 
-            employee1 = (Employee) session.get(Employee.class, empId);
-            Hibernate.initialize(employee1);
+        employee1 = (Employee) session.get(Employee.class, empId);
+        Hibernate.initialize(employee1);
 
         return employee1;
     }

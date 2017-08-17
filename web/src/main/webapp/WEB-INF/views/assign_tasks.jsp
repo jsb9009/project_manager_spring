@@ -16,12 +16,10 @@
 
 <div>
     <h3><span class="label label-info">Assign the tasks here</span></h3>
-
     <div class="form-group">
         <form:form name="assigntaskform" action="assigntask" method="POST" modelAttribute="task">
             <table border="0" align="center">
                 <tbody>
-
                 <tr>
                     <td>Employee Number</td>
                     <td>&nbsp;</td>
@@ -30,12 +28,10 @@
                         <form:option value="0" label="--Select--"/>
                         <form:options items="${employeesList}" itemLabel="empId" itemValue="id"/>
                     </form:select></td>
-
                 </tr>
                 <tr>
                     <td colspan="5">&nbsp;</td>
                 </tr>
-
                 <tr>
                     <td>Task Number</td>
                     <td>&nbsp;</td>
@@ -44,10 +40,6 @@
                         <form:options items="${tasksList}" itemLabel="taskId" itemValue="id"/>
                     </form:select></td>
 
-                </tr>
-
-                <td></td>
-                <td></td>
                 </tr>
                 <tr>
                     <td colspan="5">&nbsp;</td>
@@ -73,7 +65,8 @@
     </c:if>
 </div>
 
-<td><input onclick="location.href = 'go_to_supervisor_direct1';"  type="button" class="btn btn-primary" name="home" style=" float: left" value="Back to Home"></td>
+<td><input onclick="location.href = 'go_to_supervisor_direct1';"  type="button" class="btn btn-primary"
+           name="home" style=" float: left" value="Back to Home"></td>
 </body>
 </html>
 

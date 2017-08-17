@@ -78,17 +78,6 @@ public class CreateTasksController {
 
 }
 
-//TODO using datatables for displaying objects
-//    @RequestMapping(value = "/generate", method = RequestMethod.POST)
-//    public @ResponseBody List<Task> generate() {
-//
-//        List tasksList = taskService.viewTasks();
-//
-//
-//        return tasksList;
-//
-//
-//    }
 
 
 

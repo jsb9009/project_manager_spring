@@ -133,4 +133,3 @@
 </body>
 </html>
 
-<script type="text/javascript" src="<c:url value="/js/show_employees.js"/>"></script>

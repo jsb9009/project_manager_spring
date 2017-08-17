@@ -23,15 +23,12 @@
         }
     </style>
 </head>
-
 <div class="container">
     <div class="page-header" style=" float: right">
         <h1>Project Management System</h1>
-
         <p style=" float: right">Simply manage your tasks..</p>
     </div>
 </div>
-
 <div style=" float: right">
     <form:form method="POST" name="loginsubmit" action="loginin"
                modelAttribute="employee">
@@ -47,9 +44,7 @@
                 <tr>
                     <td>Password</td>
                     <td><form:password required="required" class="form-control" path="password"/></td>
-
                 </tr>
-
                 <tr>
                     <td colspan="5">&nbsp;</td>
                 </tr>
