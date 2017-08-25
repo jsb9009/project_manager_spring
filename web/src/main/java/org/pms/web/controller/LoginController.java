@@ -49,9 +49,11 @@ public class LoginController {
 
             model.addAttribute("user", LoggedUser.loggedEmployee.getEmpName());
             return new ModelAndView("employee_direct");
-        } else
+        } else {
+            
             model.addAttribute("msg", "Invalid username or password.");
-        return new ModelAndView("error_page");
+            return new ModelAndView("error");
+        }
 
     }
 

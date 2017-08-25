@@ -47,11 +47,12 @@ public class AddEmployeesController {
     }
 
     @ModelAttribute("authenticationList")
-    public List<String> getAuthenticationList() {
+    public List<String> getAuthenticationList(Model model) {
         List<String> authenticationList = new ArrayList<String>();
         authenticationList.add("Manager");
         authenticationList.add("Supervisor");
         authenticationList.add("Employee");
+
         return authenticationList;
     }
 

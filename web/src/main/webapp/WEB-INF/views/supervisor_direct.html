@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+<html>
+<head lang="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Supervisor Direct</title>
+</head>
+
+<body>
+
+<h1>Welcome <span th:text="${user}"></span></h1>
+<br>
+<br>
+
+<div>
+    <ul>
+        <li style="font-size:25px;"><a th:href="create_tasks">Create tasks for projects</a></li>
+        <li style="font-size:25px;"><a th:href="assign_tasks">Assign tasks to employees</a></li>
+    </ul>
+    <br>
+    <br>
+    <td><input onclick="location.href = 'go_to_login2';" th:type="button" name="home"
+               value="Log Out"></td>
+</div>
+
+</body>
+</html>

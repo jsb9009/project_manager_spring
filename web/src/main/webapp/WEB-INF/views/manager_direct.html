@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+<html>
+<head lang="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Manager Direct</title>
+</head>
+
+<body>
+<h1>Welcome <span th:text="${user}"></span></h1>
+<br>
+<br>
+
+<div>
+    <ul>
+        <li> <a href="add_employees">Add employees to the workstation</a></li>
+        <li><a href="add_projects">Add projects to the workstation</a></li>
+    </ul>
+    <br>
+    <br>
+    <td><input onclick="location.href = 'go_to_login';" th:type="button" name="home"
+               value="Log Out"></td>
+</div>
+</body>
+</html>

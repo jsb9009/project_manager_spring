@@ -28,10 +28,15 @@ public class LoginDaoImpl extends HibernateUtilImpl implements LoginDao {
 
         query.setParameter("username", employee.getUsername());
         query.setParameter("password", employee.getPassword());
+        try {
+            String rs = query.getSingleResult().toString();
+            return rs;
+        } catch (Exception e) {
+            return "";
 
-        String rs = query.getSingleResult().toString();
 
-        return rs;
+        }
+
     }
 
 }

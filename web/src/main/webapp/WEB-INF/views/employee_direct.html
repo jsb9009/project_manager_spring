@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html>
+<head lang="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <title>Employees</title>
+</head>
+<body>
+
+
+<h1>Welcome <span th:text="${user}"></span></h1>
+<br>
+<br>
+
+<div>
+    <ul>
+        <li class="active" style="font-size:25px;"><a href="update_tasks">
+            View your assigned tasks and Update</a></li>
+    </ul>
+    <br>
+    <br>
+    <td><input onclick="location.href = 'go_to_login3';" th:type="button" name="home"
+               value="Log Out"></td>
+</div>
+
+</body>
+</html>
+
+
+

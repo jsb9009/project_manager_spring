@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html>
+<head lang="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <title>Update Tasks</title>
+</head>
+<body>
+
+<form action="#" th:action="@{/updatetask}" th:object="${task}" method="post">
+
+
+    <table border="0" align="center">
+
+
+        <tbody>
+        <tr>
+            <td>Task Number</td>
+            <td>&nbsp;</td>
+            <td>
+                <select  th:field="*{id}" id="task">
+
+                    <option th:each="task : ${tasksList}"
+                            th:value="${task.id}"
+                            th:text="${task.taskId}"></option>
+                </select>
+
+            </td>
+        </tr>
+
+        <tr>
+            <td>Status</td>
+            <td>
+                <select  th:field="*{status}" id="status">
+                    <!--@thymesVar id="authenticationList" type=""-->
+                    <option th:each="status : ${statusList}"
+                            th:value="${status}"
+                            th:text="${status}"></option>
+                </select></td>
+        </tr>
+        <tr>
+            <td><input type="button"  name="home" style=" float: left" value="Back"
+                       onclick="history.go(-1);"></td>
+            <td><input type="submit" style=" float: right" value="Update" name="submit"/>
+                <input type="reset" style=" float: right" value="Clear" name="reset"/>
+            </td>
+        </tr>
+</tbody>
+        </table>
+    </form>
+
+<div>
+    <h3><span>Your assigned tasks are..</span></h3>
+    <table border="1"  style="width: auto;" align="centre">
+        <tr>
+            <th>Task Number</th>
+            <th>Task Name</th>
+            <th>Number of Hours</th>
+            <th>Project</th>
+            <th>Status</th>
+        </tr>
+
+        </tr>
+        <tr id="task" th:each="task : ${tasksList}" >
+            <td th:text="${task.taskId}"></td>
+            <td th:text="${task.taskName}"></td>
+            <td th:text="${task.noOfHours}"></td>
+            <td th:text="${task.project.projectId}"></td>
+            <td th:text="${task.status}"></td>
+        </tr>
+    </table>
+
+    </div>
+<td><input onclick="location.href = 'go_to_employee_direct';" type="button"  name="home"
+           style=" float: left" value="Back to Home"></td>
+</body>
+</html>

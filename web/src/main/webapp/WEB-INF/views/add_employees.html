@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html>
+<head lang="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <title>Add employees</title>
+</head>
+<body>
+
+<form action="#" th:action="@{/addemployee}" th:object="${employee}" method="post">
+
+    <table align="center">
+        <tr>
+            <td>Employee Number</td>
+            <td><input type="text" th:field="*{empId}" required="required"/></td>
+        </tr>
+
+        <tr>
+            <td>Employee Name</td>
+            <td><input type="text" th:field="*{empName}" required="required"/></td>
+        </tr>
+        <tr>
+            <td>Position</td>
+            <td><input type="text" th:field="*{position}" required="required"/></td>
+        </tr>
+
+        <tr>
+            <td>Username</td>
+            <td><input type="text" th:field="*{username}" required="required"/></td>
+        </tr>
+        <tr>
+            <td>Password</td>
+            <td><input type="password" th:field="*{password}" required="required"/></td>
+        </tr>
+
+        <tr>
+            <td>Authentication Level</td>
+            <td>
+                <select  th:field="*{authinticationLevel}" id="authinticationLevel">
+                    <!--@thymesVar id="authenticationList" type=""-->
+                    <option th:each="authinticationLevel : ${authenticationList}"
+                     th:value="${authinticationLevel}"
+                     th:text="${authinticationLevel}"></option>
+            </select></td>
+        </tr>
+
+        </select>
+
+    <tr>
+        <td><input type="button"  name="home" style=" float: left" value="Back"
+                   onclick="history.go(-1);"></td>
+        <td><input type="submit" style=" float: right" value="Add" name="submit"/>
+            <input type="reset" style=" float: right" value="Clear" name="reset"/>
+        </td>
+    </tr>
+    </table>
+
+</form>
+
+<br>
+<h3>Existing employee are..</h3>
+<table border="1" style="width: auto;" align="centre">
+    <tr>
+        <th>Employee Id</th>
+        <th>Employee Name</th>
+        <th>Position</th>
+        <th>Authentication Level</th>
+    </tr>
+        <tr id="employee" th:each="employee : ${employeeList}" >
+            <td th:text="${employee.empId}"></td>
+            <td th:text="${employee.empName}"></td>
+            <td th:text="${employee.position}"></td>
+            <td th:text="${employee.authinticationLevel}"></td>
+            <th><a th:href="@{/deleteEmployee(id=${employee.id})}">Delete</a></th>
+        </tr>
+</table>
+<td><input onclick="location.href = 'go_to_manager_direct';" type="button"  name="home"
+           style=" float: left" value="Back to Home"></td>
+</body>
+</html>
+

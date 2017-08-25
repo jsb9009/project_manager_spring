@@ -64,6 +64,13 @@ public class CreateTasksController {
         return projectsList;
     }
 
+    @ModelAttribute("tasksList")
+    public List<Task> getTasks() {
+        List tasksList = taskService.getTasks();
+
+        return tasksList;
+    }
+
     @RequestMapping("deleteTask")
     public ModelAndView deleteEmployee(@RequestParam long id) {
         taskService.deleteTask(id);

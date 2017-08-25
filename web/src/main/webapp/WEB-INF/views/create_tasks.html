@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html>
+<head lang="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <title>Create Tasks</title>
+</head>
+<body>
+
+<form action="#" th:action="@{/createtask}" th:object="${task}" method="post">
+
+    <table align="center">
+
+        <tbody>
+        <tr>
+            <td>Project Number</td>
+            <td>&nbsp;</td>
+            <td>
+                <select  th:field="*{Project.id}" id="projectId">
+
+                    <option th:each="projectId : ${projectsList}"
+                            th:value="${projectId.projectId}"
+                            th:text="${projectId.projectId}"></option>
+                </select>
+
+            </td>
+        </tr>
+
+        <tr>
+            <td>Task Number</td>
+            <td><input type="text" th:field="*{taskId}" required="required"/></td>
+        </tr>
+
+        <tr>
+            <td>Task Name</td>
+            <td><input type="text" th:field="*{taskName}" required="required"/></td>
+        </tr>
+
+        <tr>
+            <td>Status</td>
+            <td>
+                <select  th:field="*{status}" id="status">
+
+                    <option th:each="status : ${statusList}"
+                            th:value="${status}"
+                            th:text="${status}"></option>
+                </select></td>
+        </tr>
+
+        <tr>
+            <td>Number Of Hours</td>
+            <td><input type="text" th:field="*{noOfHours}" required="required"/></td>
+        </tr>
+
+        <tr>
+            <td><input type="button"  name="home" style=" float: left" value="Back"
+                       onclick="history.go(-1);"></td>
+            <td><input type="submit" style=" float: right" value="Submit" name="submit"/>
+                <input type="reset" style=" float: right" value="Clear" name="reset"/>
+            </td>
+        </tr>
+        </table>
+    </form>
+
+<br>
+<h3><span class="label label-info">Existing tasks are..</span></h3>
+<table border="1"  style="width: auto;" align="centre">
+    <tr>
+        <th>Task Number</th>
+        <th>Task Name</th>
+        <th>Status</th>
+        <th>Number of hours</th>
+        <th>Project Id</th>
+        <th>Project Name</th>
+    </tr>
+
+    <tr id="task" th:each="task : ${tasksList}" >
+        <td th:text="${task.taskId}"></td>
+        <td th:text="${task.taskName}"></td>
+        <td th:text="${task.status}"></td>
+        <td th:text="${task.noOfHours}"></td>
+        <td th:text="${task.project.projectId}"></td>
+        <td th:text="${task.project.projectName}"></td>
+        <td><a th:href="@{/deleteTask(id=${task.id})}">Delete</a></td>
+    </tr>
+    </table>
+    <input onclick="location.href = 'go_to_supervisor_direct';" type="button"  name="home"
+               style=" float: left" value="Back to Home">
+
+
+</body>
+</html>

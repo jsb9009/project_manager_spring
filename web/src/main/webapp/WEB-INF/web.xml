@@ -35,8 +35,7 @@
 
     <error-page>
         <error-code>500</error-code>
-        <location>/WEB-INF/views/error_page.jsp</location>
+        <location>/WEB-INF/views/error.html</location>
     </error-page>
-
 
 </web-app>

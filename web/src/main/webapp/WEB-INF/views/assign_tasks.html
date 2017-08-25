@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html>
+<head lang="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <title>Add employees</title>
+</head>
+<body>
+
+<form action="#" th:action="@{/assigntask}" th:object="${task}" method="post">
+
+    <table border="0" align="center">
+
+
+        <tbody>
+        <tr>
+            <td>Employee Number</td>
+            <td>&nbsp;</td>
+            <td>
+                <select  th:field="*{Employee.id}" id="empId">
+
+                    <option th:each="empId : ${employeesList}"
+                            th:value="${empId.id}"
+                            th:text="${empId.empId}"></option>
+                </select>
+
+                </td>
+</tr>
+        <tr>
+            <td colspan="5">&nbsp;</td>
+        </tr>
+        <tr>
+            <td>Task Number</td>
+            <td>&nbsp;</td>
+
+            <td>
+                <select  th:field="*{id}" id="taskId">
+
+                    <option th:each="taskId : ${tasksList}"
+                            th:value="${taskId.id}"
+                            th:text="${taskId.taskId}"></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><input type="button"  name="home" style=" float: left" value="Back"
+                       onclick="history.go(-1);"></td>
+            <td><input type="submit" style=" float: right" value="Assign" name="submit"/>
+                <input type="reset" style=" float: right" value="Clear" name="reset"/>
+            </td>
+        </tr>
+    </tbody>
+
+        </table>
+</form>
+
+<td><input onclick="location.href = 'go_to_supervisor_direct1';"  type="button"
+           name="home" style=" float: left" value="Back to Home"></td>
+</body>
+</html>

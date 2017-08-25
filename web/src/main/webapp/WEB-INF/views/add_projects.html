@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html>
+<head lang="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title></title>
+</head>
+<body>
+
+<form action="#" th:action="@{/addproject}" th:object="${project}" method="post">
+
+    <table align="center">
+        <tr>
+            <td>Project Number</td>
+            <td><input type="text" th:field="*{projectId}" required="required"/></td>
+        </tr>
+
+        <tr>
+            <td>Project Name</td>
+            <td><input type="text" th:field="*{projectName}" required="required"/></td>
+        </tr>
+        <tr>
+            <td>Client Name</td>
+            <td><input type="text" th:field="*{client}" required="required"/></td>
+        </tr>
+
+        <tr>
+            <td>Project Type</td>
+            <td><input type="text" th:field="*{projectType}" required="required"/></td>
+        </tr>
+
+        <tr>
+            <td><input type="button"  name="home" style=" float: left" value="Back"
+                       onclick="history.go(-1);"></td>
+            <td><input type="submit" style=" float: right" value="Add" name="submit"/>
+                <input type="reset" style=" float: right" value="Clear" name="reset"/>
+            </td>
+        </tr>
+    </table>
+
+</form>
+
+<br>
+
+<h3>Existing projects are..</h3>
+<table border="1" style="width: auto;" align="centre">
+    <tr>
+        <th>Project Id</th>
+        <th>Project Name</th>
+        <th>Project Type</th>
+        <th>Client Name</th>
+    </tr>
+    <tr id="project" th:each="project : ${projectList}" >
+        <td th:text="${project.projectId}"></td>
+        <td th:text="${project.projectName}"></td>
+        <td th:text="${project.projectType}"></td>
+        <td th:text="${project.client}"></td>
+        <th><a th:href="@{/deleteProject(id=${project.id})}">Delete</a></th>
+    </tr>
+</table>
+<input onclick="location.href = 'go_to_manager_direct';" type="button"  name="home"
+           style=" float: left" value="Back to Home">
+
+</body>
+</html>
