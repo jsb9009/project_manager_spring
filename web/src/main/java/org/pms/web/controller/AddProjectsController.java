@@ -35,11 +35,14 @@ public class AddProjectsController {
     }
 
     @RequestMapping(value = "/addproject", method = RequestMethod.POST)
-    public String saveProject(@ModelAttribute("project") Project project, ModelMap model) {
+    public ModelAndView saveProject(@ModelAttribute("project") Project project, ModelMap model) {
 
         projectService.addProjects(project);
         model.put("sucessMsg", "Project Sucessfully added");
-        return "redirect:/add_projects";
+        model.addAttribute("project", new Project());
+        List projectList = projectService.getProjects();
+        model.put("projectList", projectList);
+        return new ModelAndView("add_projects");
     }
 
     @RequestMapping("deleteProject")

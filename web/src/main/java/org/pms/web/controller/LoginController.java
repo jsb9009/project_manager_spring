@@ -8,6 +8,7 @@ import org.pms.orm.model.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -29,6 +30,9 @@ public class LoginController {
 
     @Autowired
     private LoggedUser loggedUser;
+
+
+
 
     @RequestMapping(value = "/loginin", method = RequestMethod.POST)
     public ModelAndView login(@ModelAttribute("employee") Employee employee, Model model) {
@@ -56,6 +60,13 @@ public class LoginController {
         }
 
     }
+
+    @GetMapping("/about")
+    public String index(Model m) {
+        m.addAttribute("employee", new Employee());
+        return "about";
+    }
+
 
 }
 

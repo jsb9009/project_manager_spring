@@ -31,19 +31,23 @@ public class AddEmployeesController {
 
 
     @RequestMapping("/add_employees")
-    public String add_employees(Model model2, ModelMap model) {
+    public String add_employees(Model model2) {
         model2.addAttribute("employee", new Employee());
         List employeeList = employeeService.getEmployees();
-        model.put("employeeList", employeeList);
+        model2.addAttribute("employeeList", employeeList);
         return "add_employees";
     }
 
     @RequestMapping(value = "/addemployee", method = RequestMethod.POST)
-    public String saveEmployee(@ModelAttribute("employee") Employee employee, ModelMap model) {
+    public ModelAndView saveEmployee(@ModelAttribute("employee") Employee employee, ModelMap model) {
 
         employeeService.addEmployee(employee);
         model.put("sucessMsg", "Employee Sucessfully added");
-        return "redirect:/add_employees";
+
+        model.addAttribute("employee", new Employee());
+        List employeeList = employeeService.getEmployees();
+        model.addAttribute("employeeList", employeeList);
+        return new ModelAndView("add_employees");
     }
 
     @ModelAttribute("authenticationList")

@@ -2,60 +2,166 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <html>
 <head lang="en">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-
-    <title>Add employees</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Assign Tasks</title>
 </head>
 <body>
 
-<form action="#" th:action="@{/assigntask}" th:object="${task}" method="post">
+<div id="wrap">
+    <div id="content">
 
-    <table border="0" align="center">
+        <div class="w3-bar w3-dark-gray">
+            <a th:href="@{/}" class="w3-bar-item w3-button"><i class="fa fa-home"></i>Home</a>
+            <a th:href="@{/about}" class="w3-bar-item w3-button"><i class="fa fa-building" aria-hidden="true"></i>
+                About</a>
+            <a th:href="@{/go_to_supervisor_direct}" class="w3-bar-item w3-button"><i class="fa fa-tachometer"
+                                                                                      aria-hidden="true"></i>
+                Back to Dashboard</a>
+            <a th:href='@{/go_to_login}' class="w3-bar-item w3-button" style="float: right;"><i class="fa fa-sign-out"
+                                                                                                aria-hidden="true"></i>
+                Log Out</a>
+        </div>
 
 
-        <tbody>
-        <tr>
-            <td>Employee Number</td>
-            <td>&nbsp;</td>
-            <td>
-                <select  th:field="*{Employee.id}" id="empId">
+        <div class="w3-container">
+            <div class="w3-panel w3-pale-blue w3-leftbar w3-rightbar w3-border-blue">
+                <p class="w3-text-blue-gray"> Assign the tasks to employees..</p>
+            </div>
+        </div>
 
-                    <option th:each="empId : ${employeesList}"
-                            th:value="${empId.id}"
-                            th:text="${empId.empId}"></option>
-                </select>
+        <form action="#" th:action="@{/assigntask}" th:object="${task}" method="post" class="w3-container">
 
-                </td>
-</tr>
-        <tr>
-            <td colspan="5">&nbsp;</td>
-        </tr>
-        <tr>
-            <td>Task Number</td>
-            <td>&nbsp;</td>
+            <table align="left">
 
-            <td>
-                <select  th:field="*{id}" id="taskId">
+                <tbody>
+                <tr>
+                    <td><label>Task Number</label></td>
 
-                    <option th:each="taskId : ${tasksList}"
-                            th:value="${taskId.id}"
-                            th:text="${taskId.taskId}"></option>
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <td><input type="button"  name="home" style=" float: left" value="Back"
-                       onclick="history.go(-1);"></td>
-            <td><input type="submit" style=" float: right" value="Assign" name="submit"/>
-                <input type="reset" style=" float: right" value="Clear" name="reset"/>
-            </td>
-        </tr>
-    </tbody>
+                    <td>
+                        <select class="w3-button w3-gray" style="width:235px;" th:field="*{id}" id="taskId">
 
+                            <option th:each="taskId : ${tasksList}"
+                                    th:value="${taskId.id}"
+                                    th:text="${taskId.taskId}"></option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="5">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td><label>Employee Number</label></td>
+
+                    <td>
+                        <select class="w3-button w3-gray" style="width:235px;" th:field="*{Employee.id}" id="empId">
+
+                            <option th:each="empId : ${employeesList}"
+                                    th:value="${empId.id}"
+                                    th:text="${empId.empId}"></option>
+                        </select>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="5">&nbsp;</td>
+                </tr>
+
+                <tr>
+                    <td>
+                    </td>
+                    <td>
+                        <input type="submit" class="w3-button w3-dark-gray w3-round-large" style="float: right;"
+                               value="Assign" name="submit"/>
+                    </td>
+                </tr>
+
+                </tbody>
+
+            </table>
+        </form>
+        <br>
+
+        <div class="w3-container">
+            <div class="w3-panel w3-pale-blue w3-leftbar w3-rightbar w3-border-blue">
+                <p class="w3-text-blue-gray">Existing task assignations are..</p>
+            </div>
+        </div>
+
+        <table border="1" class="w3-table-all w3-card-4" style="width: auto;" align="centre">
+            <tr>
+                <th>Task Number</th>
+                <th>Task Name</th>
+                <th>Status</th>
+                <th>Employee</th>
+                <th>Employee Number</th>
+            </tr>
+
+            <tr id="task" th:each="task : ${tasksList}">
+                <td th:text="${task.taskId}"></td>
+                <td th:text="${task.taskName}"></td>
+                <td th:text="${task.status}"></td>
+                <td><span th:text="${task.employee != null} ? ${task.employee.empName} : 'N/A'"></span></td>
+                <td><span th:text="${task.employee != null} ? ${task.employee.empId} : 'N/A'"></span></td>
+
+            </tr>
         </table>
-</form>
+    </div>
+</div>
 
-<td><input onclick="location.href = 'go_to_supervisor_direct1';"  type="button"
-           name="home" style=" float: left" value="Back to Home"></td>
+<footer class="w3-container w3-dark-gray">
+    <p align="center">Version 3.0</p>
+
+    <p align="center">jaliya.bandara@hsenidmobile.com </p>
+
+    <p align="center">All rights reserved</p>
+</footer>
+
+</div>
+
+<style>
+
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    html,
+    body {
+        height: 100%;
+    }
+
+    #wrap {
+        min-height: 100%;
+    }
+
+    #content {
+        overflow: auto;
+        padding-bottom: 70px;
+
+    }
+
+    #footer {
+        position: relative;
+        margin-top: -70px;
+
+        height: 70px;
+        clear: both;
+        background-color: #454545;
+    }
+
+    body:before {
+        content: "";
+        height: 100%;
+        float: left;
+        width: 0;
+        margin-top: -32767px;
+
+    }
+
+</style>
+
+
 </body>
 </html>

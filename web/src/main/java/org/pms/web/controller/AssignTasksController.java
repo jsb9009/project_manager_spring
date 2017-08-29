@@ -30,8 +30,10 @@ public class AssignTasksController {
     private EmployeeService employeeService;
 
     @RequestMapping(value = "/assign_tasks", method = RequestMethod.GET)
-    public String projects(Model model4) {
+    public String projects(Model model4,ModelMap model) {
         model4.addAttribute("task", new Task());
+        List tasksList = taskService.getTasks();
+        model.put("tasksList", tasksList);
         return "assign_tasks";
     }
 
@@ -39,8 +41,7 @@ public class AssignTasksController {
     public String assignTask(@ModelAttribute("task") Task task, ModelMap model) {
 
         taskService.assignTask(task);
-        model.put("sucessMsg", "Task Sucessfully assigned");
-        return "/assign_tasks";
+        return "redirect:/assign_tasks";
     }
 
     @ModelAttribute("tasksList")

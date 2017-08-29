@@ -54,7 +54,6 @@ public class UpdateTaskController {
     public String updateTask(@ModelAttribute("task") Task task, ModelMap model) {
 
         taskService.updateTask(task);
-        model.put("sucessMsg", "Task Sucessfully updated");
         return "redirect:/update_tasks";
     }
 

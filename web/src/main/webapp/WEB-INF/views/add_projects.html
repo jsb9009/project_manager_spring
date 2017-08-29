@@ -2,64 +2,166 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <html>
 <head lang="en">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Add Projects</title>
 </head>
+
 <body>
 
-<form action="#" th:action="@{/addproject}" th:object="${project}" method="post">
+<div id="wrap">
+    <div id="content">
 
-    <table align="center">
-        <tr>
-            <td>Project Number</td>
-            <td><input type="text" th:field="*{projectId}" required="required"/></td>
-        </tr>
+        <div class="w3-bar w3-dark-gray">
+            <a th:href="@{/}" class="w3-bar-item w3-button"><i class="fa fa-home"></i>Home</a>
+            <a th:href="@{/about}" class="w3-bar-item w3-button"><i class="fa fa-building" aria-hidden="true"></i>
+                About</a>
+            <a th:href="@{/go_to_manager_direct}" class="w3-bar-item w3-button"><i class="fa fa-tachometer"
+                                                                                   aria-hidden="true"></i>
+                Back to Dashboard</a>
+            <a th:href='@{/go_to_login}' class="w3-bar-item w3-button" style="float: right;"><i class="fa fa-sign-out"
+                                                                                                aria-hidden="true"></i>
+                Log Out</a>
+        </div>
 
-        <tr>
-            <td>Project Name</td>
-            <td><input type="text" th:field="*{projectName}" required="required"/></td>
-        </tr>
-        <tr>
-            <td>Client Name</td>
-            <td><input type="text" th:field="*{client}" required="required"/></td>
-        </tr>
 
-        <tr>
-            <td>Project Type</td>
-            <td><input type="text" th:field="*{projectType}" required="required"/></td>
-        </tr>
+        <div class="w3-container">
+            <div class="w3-panel w3-pale-blue w3-leftbar w3-rightbar w3-border-blue">
+                <p class="w3-text-blue-gray"> Enter new project details here..</p>
+            </div>
+        </div>
 
-        <tr>
-            <td><input type="button"  name="home" style=" float: left" value="Back"
-                       onclick="history.go(-1);"></td>
-            <td><input type="submit" style=" float: right" value="Add" name="submit"/>
-                <input type="reset" style=" float: right" value="Clear" name="reset"/>
-            </td>
-        </tr>
-    </table>
+        <form action="#" th:action="@{/addproject}" th:object="${project}" method="post" class="w3-container">
 
-</form>
+            <table align="left">
+                <tr>
 
-<br>
+                    <td><label>Project Number</label></td>
+                    <td><input type="text" th:field="*{projectId}" required="required"/></td>
 
-<h3>Existing projects are..</h3>
-<table border="1" style="width: auto;" align="centre">
-    <tr>
-        <th>Project Id</th>
-        <th>Project Name</th>
-        <th>Project Type</th>
-        <th>Client Name</th>
-    </tr>
-    <tr id="project" th:each="project : ${projectList}" >
-        <td th:text="${project.projectId}"></td>
-        <td th:text="${project.projectName}"></td>
-        <td th:text="${project.projectType}"></td>
-        <td th:text="${project.client}"></td>
-        <th><a th:href="@{/deleteProject(id=${project.id})}">Delete</a></th>
-    </tr>
-</table>
-<input onclick="location.href = 'go_to_manager_direct';" type="button"  name="home"
-           style=" float: left" value="Back to Home">
+                    <td colspan="4">&nbsp;</td>
+
+                    <td>Project Name</td>
+                    <td><input type="text" th:field="*{projectName}" required="required"/></td>
+
+                <tr>
+                    <td>Client Name</td>
+                    <td><input type="text" th:field="*{client}" required="required"/></td>
+
+                    <td colspan="4">&nbsp;</td>
+
+                    <td>Project Type</td>
+                    <td><input type="text" th:field="*{projectType}" required="required"/></td>
+                </tr>
+                <tr>
+
+                    <td colspan="4">&nbsp;</td>
+
+                </tr>
+                <tr>
+                    <td>
+                        <input type="reset" class="w3-button w3-dark-gray w3-round-large" style="width:150px;"
+                               value="Clear" name="reset"/>
+                    </td>
+                    <td>
+                        <input type="submit" class="w3-button w3-dark-gray w3-round-large" style="width:150px;"
+                               value="Add" name="submit"/>
+                    </td>
+                </tr>
+            </table>
+
+        </form>
+
+        <br>
+
+        <div class="w3-container">
+            <div class="w3-panel w3-pale-blue w3-leftbar w3-rightbar w3-border-blue">
+                <p class="w3-text-blue-gray">Existing projects are..</p>
+            </div>
+        </div>
+
+        <table class="w3-table-all w3-card-4" border="1" style="width: auto;" align="centre">
+            <tr>
+                <th>Project Id</th>
+                <th>Project Name</th>
+                <th>Project Type</th>
+                <th>Client Name</th>
+            </tr>
+            <tr id="project" th:each="project : ${projectList}">
+                <td th:text="${project.projectId}"></td>
+                <td th:text="${project.projectName}"></td>
+                <td th:text="${project.projectType}"></td>
+                <td th:text="${project.client}"></td>
+                <th><a th:href="@{/deleteProject(id=${project.id})}">Delete</a></th>
+            </tr>
+        </table>
+
+    </div>
+</div>
+
+<footer class="w3-container w3-dark-gray">
+    <p align="center">Version 3.0</p>
+
+    <p align="center">jaliya.bandara@hsenidmobile.com </p>
+
+    <p align="center">All rights reserved</p>
+</footer>
+
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    html,
+    body {
+        height: 100%;
+    }
+
+    #wrap {
+        min-height: 100%;
+    }
+
+    #content {
+        overflow: auto;
+        padding-bottom: 70px;
+
+    }
+
+    #footer {
+        position: relative;
+        margin-top: -70px;
+
+        height: 70px;
+        clear: both;
+        background-color: #454545;
+    }
+
+    body:before {
+        content: "";
+        height: 100%;
+        float: left;
+        width: 0;
+        margin-top: -32767px;
+
+    }
+
+</style>
+
+<script th:inline="javascript">
+    /*<![CDATA[*/
+
+    if ([[${sucessMsg}]] != null) {
+        alert("Project successfully added!!!");
+
+    } else {
+        console.log([[${sucessMsg}]]);
+    }
+    /*]]>*/
+</script>
 
 </body>
 </html>
+

@@ -2,27 +2,144 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <html>
 <head lang="en">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-
-    <title>Employees</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Employee Direct</title>
 </head>
 <body>
 
 
-<h1>Welcome <span th:text="${user}"></span></h1>
-<br>
-<br>
+<div id="wrap">
+    <div id="content">
 
-<div>
-    <ul>
-        <li class="active" style="font-size:25px;"><a href="update_tasks">
-            View your assigned tasks and Update</a></li>
-    </ul>
-    <br>
-    <br>
-    <td><input onclick="location.href = 'go_to_login3';" th:type="button" name="home"
-               value="Log Out"></td>
+        <div class="w3-bar w3-dark-gray">
+            <a th:href="@{/}" class="w3-bar-item w3-button"><i class="fa fa-home"></i>Home</a>
+            <a th:href="@{/about}" class="w3-bar-item w3-button"><i class="fa fa-building" aria-hidden="true"></i>
+                About</a>
+            <a href="#" class="w3-bar-item w3-button"></a>
+            <a th:href='@{/go_to_login2}' class="w3-bar-item w3-button" style="float: right;"><i class="fa fa-sign-out"
+                                                                                                 aria-hidden="true"></i>
+                Log Out</a>
+        </div>
+
+
+        <div class="w3-sidebar w3-bar-block w3-card-2 w3-animate-left" style="display:none" id="mySidebar">
+            <button class="w3-bar-item w3-button w3-large"
+                    onclick="w3_close()">Close &times;</button>
+            <a th:href="@{/update_tasks}" class="w3-bar-item w3-button">View your assigned tasks and update</a>
+
+            <a href="#" class="w3-bar-item w3-button"></a>
+        </div>
+
+        <div zclass="w3-main" id="main">
+
+            <div class="w3-teal">
+                <button class="w3-button w3-teal w3-xlarge" onclick="w3_open()">&#9776;</button>
+
+                <h3>Welcome <span th:text="${user}"></span></h3>
+
+                <div class="w3-card-4 w3-dark-gray" style="width:15%; float: right;">
+
+                    <div class="w3-container w3-center">
+                        <h3>Profile</h3>
+                        <img src="images/employee_avatar.png" alt="Avatar" style="width:35%">
+
+                        <p><font size="2"> Name : <span th:text="${user}"></span></font></p>
+
+                        <p><font size="2"> Role : Employee</font></p>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <br>
+            <br>
+
+
+            <div class="w3-left-align">
+                <img src="images/employees.png"
+                     style="width:304px;height:228px; display:block; margin-left: auto;margin-right: auto;">
+                <br>
+                <br>
+
+                <p>The main three roles manager, supervisor and employees are delegated to their own responsibilities in
+                    a systematic form which makes the day to day tasks handling so much easy.</p>
+
+                <p>Employees are able to login to the system and view their assigned tasks</p>
+
+                <p>And also they can update their assigned tasks' statuses</p>
+            </div>
+
+        </div>
+    </div>
+
+    <footer class="w3-container w3-dark-gray">
+        <p align="center">Version 3.0</p>
+
+        <p align="center">jaliya.bandara@hsenidmobile.com </p>
+
+        <p align="center">All rights reserved</p>
+    </footer>
+
 </div>
+<script>
+    function w3_open() {
+        document.getElementById("main").style.marginLeft = "25%";
+        document.getElementById("mySidebar").style.width = "25%";
+        document.getElementById("mySidebar").style.display = "block";
+        document.getElementById("openNav").style.display = 'none';
+    }
+    function w3_close() {
+        document.getElementById("main").style.marginLeft = "0%";
+        document.getElementById("mySidebar").style.display = "none";
+        document.getElementById("openNav").style.display = "inline-block";
+    }
+</script>
+
+
+<style>
+
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    html,
+    body {
+        height: 100%;
+    }
+
+    #wrap {
+        min-height: 100%;
+    }
+
+    #content {
+        overflow: auto;
+        padding-bottom: 70px;
+
+    }
+
+    #footer {
+        position: relative;
+        margin-top: -70px;
+
+        height: 70px;
+        clear: both;
+        background-color: #454545;
+    }
+
+    body:before {
+        content: "";
+        height: 100%;
+        float: left;
+        width: 0;
+        margin-top: -32767px;
+
+    }
+
+</style>
 
 </body>
 </html>
