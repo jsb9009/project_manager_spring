@@ -44,14 +44,17 @@ public class LoginController {
         if (rs.equals("Manager")) {
 
             model.addAttribute("user", LoggedUser.loggedEmployee.getEmpName());
+            model.addAttribute("position",LoggedUser.loggedEmployee.getPosition());
             return new ModelAndView("manager_direct");
         } else if (rs.equals("Supervisor")) {
 
             model.addAttribute("user", LoggedUser.loggedEmployee.getEmpName());
+            model.addAttribute("position",LoggedUser.loggedEmployee.getPosition());
             return new ModelAndView("supervisor_direct");
         } else if (rs.equals("Employee")) {
 
             model.addAttribute("user", LoggedUser.loggedEmployee.getEmpName());
+            model.addAttribute("position",LoggedUser.loggedEmployee.getPosition());
             return new ModelAndView("employee_direct");
         } else {
             
