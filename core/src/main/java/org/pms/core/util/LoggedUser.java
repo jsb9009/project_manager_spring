@@ -12,10 +12,12 @@ public class LoggedUser {
     public static Employee loggedEmployee;
 
     public static Employee getLoggedEmployee() {
+
         return loggedEmployee;
     }
 
     public static void setLoggedEmployee(Employee loggedEmployee) {
+
         LoggedUser.loggedEmployee = loggedEmployee;
     }
 }

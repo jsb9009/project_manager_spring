@@ -16,9 +16,6 @@
             <a th:href="@{/}" class="w3-bar-item w3-button"><i class="fa fa-home"></i>Home</a>
             <a th:href="@{/about}" class="w3-bar-item w3-button"><i class="fa fa-building" aria-hidden="true"></i>
                 About</a>
-            <a th:href='@{/logout}' class="w3-bar-item w3-button" style="float: right;"><i class="fa fa-sign-out"
-                                                                                                aria-hidden="true"></i>
-                Log Out</a>
         </div>
 
         <br>
@@ -27,14 +24,14 @@
 
         <div class="w3-container">
             <div class="w3-panel w3-pale-red w3-leftbar w3-border-red">
-                <p>Error occured!!!</p>
+                <p><font size="7">You are not logged in!!!</font></p>
 
-                <p>Please try again later...</p>
+
             </div>
         </div>
 
         <br>
-        <input type="button" class="w3-button w3-dark-gray w3-round-large" value="Back" onclick="history.go(-1);">
+        <p style="display:block; margin-left: auto;margin-right: auto;">Please login <a th:href="@{/}">here</a> to continue..</p>
 
     </div>
 </div>

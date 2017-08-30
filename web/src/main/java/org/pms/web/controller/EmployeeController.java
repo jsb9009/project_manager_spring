@@ -1,5 +1,6 @@
 package org.pms.web.controller;
 
+import org.pms.core.util.LoggedUser;
 import org.pms.orm.model.Employee;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,9 +14,10 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class EmployeeController {
 
-    @RequestMapping("/go_to_login3")
+    @RequestMapping("/logout")
     public ModelAndView redirect(Model model) {
         model.addAttribute("employee", new Employee());
+        LoggedUser.loggedEmployee= new Employee();
         return new ModelAndView("login");
     }
 }

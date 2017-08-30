@@ -1,5 +1,6 @@
 package org.pms.web.controller;
 
+import org.pms.core.service.EmployeeService;
 import org.pms.core.service.ProjectService;
 import org.pms.core.util.LoggedUser;
 import org.pms.orm.model.Project;
@@ -26,12 +27,24 @@ public class AddProjectsController {
     @Autowired
     private ProjectService projectService;
 
+    @Autowired
+    private EmployeeService employeeService;
+
     @RequestMapping("/add_projects")
     public String projects(Model model3, ModelMap model) {
         model3.addAttribute("project", new Project());
         List projectList = projectService.getProjects();
-        model.put("projectList", projectList);
-        return "add_projects";
+        model.addAttribute("projectList", projectList);
+
+        if (LoggedUser.loggedEmployee.getAuthinticationLevel() != null){
+            if (LoggedUser.loggedEmployee.getAuthinticationLevel().equals("Manager")) {
+                return "add_projects";
+            } else {
+                return "please_login";
+            }
+        }else{
+            return "please_login";
+        }
     }
 
     @RequestMapping(value = "/addproject", method = RequestMethod.POST)

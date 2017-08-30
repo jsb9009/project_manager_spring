@@ -34,7 +34,16 @@ public class AssignTasksController {
         model4.addAttribute("task", new Task());
         List tasksList = taskService.getTasks();
         model.put("tasksList", tasksList);
-        return "assign_tasks";
+
+        if (LoggedUser.loggedEmployee.getAuthinticationLevel() != null){
+            if (LoggedUser.loggedEmployee.getAuthinticationLevel().equals("Supervisor")) {
+                return "assign_tasks";
+            } else {
+                return "please_login";
+            }
+        }else{
+            return "please_login";
+        }
     }
 
     @RequestMapping(value = "/assigntask", method = RequestMethod.POST)

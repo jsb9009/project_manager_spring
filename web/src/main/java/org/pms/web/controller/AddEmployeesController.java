@@ -35,7 +35,16 @@ public class AddEmployeesController {
         model2.addAttribute("employee", new Employee());
         List employeeList = employeeService.getEmployees();
         model2.addAttribute("employeeList", employeeList);
-        return "add_employees";
+
+        if (LoggedUser.loggedEmployee.getAuthinticationLevel() != null){
+            if (LoggedUser.loggedEmployee.getAuthinticationLevel().equals("Manager")) {
+                return "add_employees";
+            } else {
+                return "please_login";
+            }
+        }else{
+            return "please_login";
+        }
     }
 
     @RequestMapping(value = "/addemployee", method = RequestMethod.POST)

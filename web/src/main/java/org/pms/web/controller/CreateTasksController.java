@@ -37,7 +37,16 @@ public class CreateTasksController {
         model3.addAttribute("task", new Task());
         List tasksList = taskService.viewTasks();
         model.put("tasksList", tasksList);
-        return "create_tasks";
+
+        if (LoggedUser.loggedEmployee.getAuthinticationLevel() != null){
+            if (LoggedUser.loggedEmployee.getAuthinticationLevel().equals("Supervisor")) {
+                return "create_tasks";
+            } else {
+                return "please_login";
+            }
+        }else{
+            return "please_login";
+        }
     }
 
     @RequestMapping(value = "/createtask", method = RequestMethod.POST)
