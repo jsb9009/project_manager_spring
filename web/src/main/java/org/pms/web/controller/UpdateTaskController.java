@@ -30,7 +30,7 @@ public class UpdateTaskController {
         model6.addAttribute("task", new Task());
         List<Task> taskList1 = taskService.viewassignedTasks(LoggedUser.loggedEmployee);
         model.put("tasksList1", taskList1);
-        
+
         if (LoggedUser.loggedEmployee.getAuthinticationLevel() != null) {
             if (LoggedUser.loggedEmployee.getAuthinticationLevel().equals("Employee")) {
                 return "update_tasks";
